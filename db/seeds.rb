@@ -94,3 +94,45 @@
 # Task.create(level_id: 4, task: 'Invest in a portfolio of your risk level')
 # Task.create(level_id: 4, task: 'Invite 10 friends')
 # Task.create(level_id: 4, task: 'Invest in one of the social feed portfolios')
+
+# @understand = TableSkill.all.first
+# @invest = TableSkill.all.second
+# @coinvest = TableSkill.all.last
+
+# Task.create(level_id:1 , task:"What is investing", table_skill_id:1)
+# Task.create(level_id:1 , task:"Make one investment", table_skill_id:2)
+# Task.create(level_id:1 , task:"1 question quiz", table_skill_id:1)
+
+# Task.create(level_id:2 , task:"What is a stock?", table_skill_id:1)
+# Task.create(level_id:2 , task:"Make 2 investments", table_skill_id:2)
+# Task.create(level_id:2 , task:"2 question quiz", table_skill_id:1)
+
+# Task.create(level_id:3 , task:"Whats is bond", table_skill_id:1)
+# Task.create(level_id:3 , task:"Make an additional investment", table_skill_id:2)
+# Task.create(level_id:3 , task:"Take a quiz", table_skill_id:1)
+
+# Task.create(level_id:4 , task:"What is return", table_skill_id:1)
+# Task.create(level_id:4 , task:"What is interest", table_skill_id:1)
+# Task.create(level_id:4 , task:"Take a quiz", table_skill_id:1)
+
+# Task.create(level_id:5 , task:"What is risk", table_skill_id:1)
+# Task.create(level_id:5 , task:"Make a risky investment", table_skill_id:2)
+# Task.create(level_id:5 , task:"Invest through social feed", table_skill_id:3)
+
+# Task.create(level_id:6 , task:"Take a quiz for risk", table_skill_id:1)
+# Task.create(level_id:6 , task:"What is a portfolio", table_skill_id:1)
+# Task.create(level_id:6 , task:"Sell a bad performing portfolio", table_skill_id:2)
+
+# Task.create(level_id:7 , task:"What is diversification", table_skill_id:1)
+# Task.create(level_id:7 , task:"Special task/quiz. Based on your own information", table_skill_id:1)
+# Task.create(level_id:7 , task:"Take a quiz on portfolio", table_skill_id:1)
+
+# Task.create(level_id:8 , task:"What is a robot/ETF", table_skill_id:1)
+# Task.create(level_id:8 , task:"Reach 100$ in total investment", table_skill_id:2)
+# Task.create(level_id:8 , task:"Create a group", table_skill_id:3)
+
+# Task.create(level_id:9 , task:"What is a 'human'", table_skill_id:1)
+# Task.create(level_id:9 , task:"Create a group", table_skill_id:3)
+# Task.create(level_id:9 , task:"Create a group", table_skill_id:2)
+# Task.create(level_id:9 , task:"Quiz - Robots", table_skill_id:1)
+# Task.create(level_id:9 , task:"Quiz - Humans", table_skill_id:1)

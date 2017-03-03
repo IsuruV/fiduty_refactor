@@ -11,9 +11,9 @@ gem 'pry'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+# gem 'coffee-rails', '~> 4.2'
 gem 'rb-readline', '~> 0.5.3'
 gem 'active_model_serializers'
 gem 'faker', '~> 1.6', '>= 1.6.6'

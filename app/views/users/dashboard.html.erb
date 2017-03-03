@@ -64,7 +64,7 @@ div.panel
 		<div class="middle-content" style="padding-bottom:2em; border-style:none; margin-top: 0px;margin-right: 5px; margin-left: 5px;  box-shadow:none;padding-top:0px; padding-left:20px; padding-right:20px">
 		 <div class="row">
 		 <div class="col-sm-4" style="padding-top:25px;padding-right:20px; padding-left:30px;text-align:center">
-		    <h3 style="color:grey">Complete these tasks to get to: <br><span style="color:green">Level 4</span></h3>
+		    <h3 style="color:grey">Complete these tasks to get to: <br><span style="color:green">Level <%=@user.level.level+1 if @user%></span></h3>
 		 </div><!---><div class="col-sm-8" style="padding-left:0px;padding-right:30px">   
 		    <!--<h2 style="text-align:center;">Tasks</h2><br>-->
 	     <!--   <div class="row-fluid">-->
@@ -77,15 +77,21 @@ div.panel
         
  <!----------------Cards---------------------->
         
-            <div class="list-group" style="font-family:'Roboto'; font-size:16px; color:#666666; padding:0px; "><% @user.tasks.each do |task| %>
+      <div class="list-group" style="font-family:'Roboto'; font-size:16px; color:#666666; padding:0px; "><% @user.user_tasks.each do |user_task| %>
 
                 <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
                 <div class="row">
                     
-                    <div class="col-md-2"><h4 style="color:green"><i class="fa fa-check" aria-hidden="true"></i></h4>
-                    </div><!----><div class="col-md-6 vcenter" style="height:80;border:0px solid #F00; padding-left:10px;"><h4><%=task.task%></h4>
-                </div><!----><div class="col-md-3 vcenter" style="height:80;border:0px solid #F00; padding-left:10px;color:green"><h4>+0.5% Try</h4>
-                </div>
+                    <div class="col-md-2">
+                         <% if user_task.completed %>
+                        <h4 style="color:green">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                        </h4>
+                        <%end%>
+                    </div><!----><div class="col-md-6 vcenter" style="height:80;border:0px solid #F00; padding-left:10px;"><h4><%=user_task.task.task%></h4>
+                </div><!---->
+                 <div class="col-md-3 vcenter" style="height:80;border:0px solid #F00; padding-left:10px;color:green"><h4>+1 <%=user_task.task.table_skill.skill_name%></h4></div>
+   
                 </div>
                 </a>
                 <% end %>
@@ -241,7 +247,7 @@ div.panel
 
     
     
-    <div id="chatbotModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:50%; max-height:60%; margin-left:25%;margin-top:5%;margin-rigt:auto; position:fixed; overflow:hidden">
+    <div id="chatbotModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:50%; height:60%; margin-left:25%;margin-top:5%;margin-rigt:auto; position:fixed; overflow:hidden">
         
     <div class="modal-content">
         <h4 style="position-fixed; color:rgba(51, 153, 204, 1); text-align:center;padding-top:5px"><i class="fa fa-comments-o" aria-hidden="true"></i>
@@ -249,30 +255,20 @@ div.panel
         
         <div class="modal-body" style="overflow-x:hidden;overflow:hidden;">
 
-<div class="box" style="position-fixed;max-height:200px; overflow:auto;border-style:solid; border-color:#dcdcdc;border-width:thin;border-bottom-style:none">
-    <br>
-    <br>
-    <br>
-    <br>
-        <br>
-    <br>
-    <br>
-    <br>    <br>
-    <br>
-    <br>
-    <br>    <br>
-    <br>
-    <br>
-    <br>
+<div class="chat-box" style="position-fixed;max-height:200px; min-height:200px;overflow:auto;border-style:solid; border-color:#dcdcdc;border-width:thin;border-bottom-style:none">
+    <ul class="chat">
+    </ul>
 </div>
 
 
       	<div class="modal-footer" style="position-fixed">
       		    <div class="input-group">
-                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+      		<form id="watson">
+                <input id="user-input" type="text" class="user-input2 form-control input-sm" placeholder="Type your message here..." />
                 <button class="btn btn-primary" id="btn-chat" style="width:80px;">
                 Send</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal" style="width:80px;">Close</button>
+                <button id="btn-chat" type="button" class="btn btn-default" data-dismiss="modal" style="width:80px;">Close</button>
+            </form>
       	</div></div>
 
     </div>
@@ -291,3 +287,9 @@ div.panel
 	</script>			
 </body>
 </html>
+
+
+
+
+
+      

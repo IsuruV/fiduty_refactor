@@ -43,7 +43,7 @@
     background-color: #dcdcdc;
 }
 #myBar {
-    width: 10%;
+    width: 0%;
     height: 7px;
     background-color: green;
 }
@@ -66,38 +66,51 @@
 </script>
 
 
-<div class="content-top">
+<div class="content-top" style="max-width:1050px"> 
 		<div class="row-fluid" style="margin-left:40px; margin-right:40px; margin-bottom:5px; border-style:solid;border-color:#dcdcdc;border-width:thin;">	
+		
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-1" style="padding-top:30px;padding-left:10px;padding-right:10px">
-            <div style="padding-left:7%;padding-bottom:0px">
-                <img class="img-circle" src="/assets/ErmekProfile.jpg" style=";height:50px;border-width:3px; border-style:solid; border-color:rgba(51, 153, 204, 1);">
+            <div style="padding-left:34%;padding-bottom:0px">
+                <img class="img-circle" src=<%=@user.image+"?type=large" if @user%> style=";height:50px;border-width:3px; border-style:solid; border-color:rgba(51, 153, 204, 1);">
             </div>
-            </div><!---><div class="col-xs-2" style="text-align:right;padding-top:30px;padding-left:10px;padding-right:10px">
-            <h4>Goal: <span style="color:green">Level 60</span><br>Current: <span style="color:green">Level 3</span><br></h4>
-        </div>
+            </div><div class="col-xs-2" style="text-align:right;padding-top:30px;padding-left:10px;padding-right:10px">
+            <h4>Goal: <span style="color:green">Level 60</span><br>Current: <span style="color:green">Level <%=@user.level.level if @user%></span><br></h4>
+        </div></div>
         
         <div class="row" style=" ">
-			<div class="col-md-10 col-xs-offset-1" style="padding-top:5px;padding-left:10px;padding-right:10px;min-height:175px;background-position: center;background-image:url(/assets/backgroundwithbars.svg);background-size: cover;background-repeat:no-repeat;">
-            <div style="padding-left:7%">
+			<div class="col-md-10 col-xs-offset-1" style="padding-top:7px;padding-left:10px;padding-right:10px;min-height:100px;background-position:center;background-image:url(/assets/backgroundfinal.svg);background-size:contain;background-repeat:no-repeat;">
+            <div style="padding-left:27%">
               <img src="/assets/character2.svg" style=";height:100px">
             </div>
         </div>
         </div>
         
         <div class="row">
-		<div class="col-xs-10 col-xs-offset-1" style="padding-top:0px;padding-left:10px;padding-right:5px">
-		<div class="col-xs-3 lead" style="text-align:right;color:green;padding-left:0px;padding-right:10px">
-		<small>New Perks</small>
-        </div><!---><div class="col-xs-3" style="text-align:right;color:green;padding-left:0px;padding-right:0px">
-		<small>New Perks</small>
-        </div><!---><div class="col-xs-3" style="text-align:right;color:green;padding-left:0px;padding-right:0px">
-		<small>New Perks</small>
-        </div><!---><div class="col-xs-3" style="text-align:right;color:green;padding-left:0px;padding-right:0px">
-		<small>New Perks</small>
+        <div class="col-xs-10 col-xs-offset-1" style="padding-left:5px;padding-right:5px">
+        <div style="background:url('/assets/greybar2-01.svg');padding-left:0px;padding-right:0px;border-style:none;border-width:thin;background-color:white;width:100%;height:10px;"> 
+        <div id="myProgress" class="sub-block" style="background:url('/assets/bluebar2-01.svg');width:30%;height:10px;">
+        
+        <div id="myBar"></div>
+        </div>
+        </div> </div>
         </div>
         
         
+        <div class="row">
+		<div class="col-xs-10 col-xs-offset-1" style="padding-top:0px;padding-left:10px;padding-right:5px">
+		<div class="row">
+		<div class="col-xs-3 lead" style="text-align:right;color:green;padding-left:0px;padding-right:10px">
+		<small>Learn</small>
+		
+        </div><div class="col-xs-3" style="text-align:right;color:green;padding-left:0px;padding-right:0px">
+		<small>Real money</small>
+        </div><div class="col-xs-3" style="text-align:right;color:green;padding-left:0px;padding-right:0px">
+		<small>Finish Line</small>
+        </div><div class="col-xs-3" style="text-align:right;color:green;padding-left:0px;padding-right:15px">
+		<small>Graduated</small>
+		</div>
+        </div>
         </div>
         </div>
         <br>

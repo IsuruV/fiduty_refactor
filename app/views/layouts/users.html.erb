@@ -67,11 +67,12 @@
 					---------------------->
 
 <body style="font-family:'Roboto'; font-size: 20px; color:#666666;">
+ <input id="onboarding" type="hidden" value=<%=current_user.points if @user%>></input>
 	
 <!----Onboarding render a Partial _onboarding.html.erb---->
-
-
-
+<div style="display:<%= "none" if current_user.points > 0 %>">
+<%= render partial: '/layouts/onboarding' %>
+</div>
 <!----End Onboarding---->
 
 
@@ -79,7 +80,7 @@
 <%= render partial: '/layouts/nav' %>
 
 
-	<div id="wrapper">
+	<div id="wrapper" style="min-height:750px">
 		
 <!------------Chatbot Button------------->
 
@@ -87,12 +88,11 @@
 		<!--<p id ="writing" style="font-size:1em; color:rgba(51, 153, 204, 1);">Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime, I'm powered by Artificial Intelligence.</p>-->
 	<div class="col-md-3">
 	   <div class="box" style="min-height:310px;width:240px; margin-top:260px; margin-left:0px; margin-bottom:40px; position:fixed; font-size:16px; border-style:solid; border-color:black;border-width:thin;">
-	       <div class="row"><div class="col-xs-12"><h4 style="color:rgba(51, 153, 204, 1); text-align:center;padding-top:5px"><i class="fa fa-comments-o" aria-hidden="true"></i>
-Richie the Bot</h4></div></div>
+	       <div class="row"><div class="col-xs-9 col-xs-offset-0"><h4 style="color:rgba(51, 153, 204, 1); text-align:left;padding-top:5px;padding-left:12px"><i class="fa fa-comments-o" aria-hidden="true"></i>
+Richie the Bot</div><div class="col-xs-3" style="text-align:right;padding-right:20px;padding-top:5px"><a id="openChatBoxModal" href="#"><i class="fa fa-plus-square-o" aria-hidden="true" style="color:rgba(51, 153, 204, 1);"></i></a></h4></div></div>
 
 	       <div class="panel-body" style="overflow-y: scroll; padding:5px; max-height:180px">
             <ul class="chat">
-
                 <li class="left clearfix" style="padding:0px">
                 <div class="chat-body clearfix" style="padding:0px">
                 <div class="header">
@@ -100,32 +100,7 @@ Richie the Bot</h4></div></div>
                 <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
                 </div>
                         <p>
-                            Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime, I'm powered by Artificial Intelligence.
-                        </p>
-                </div>
-                </li>
-                              
-                <li class="right clearfix" style="padding:0px">
-                <div class="chat-body clearfix" style="padding:0px">
-                <div class="header">
-                <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>10 mins ago</small>
-                <strong class="pull-right primary-font" style="color:rgba(51, 153, 204, 1)"><%=@user.name if @user%></strong>
-                </div>
-                     <p>
-                        #next
-                     </p>
-                </div>
-                </li>
-                
-                
-                                <li class="left clearfix" style="padding:0px">
-                <div class="chat-body clearfix" style="padding:0px">
-                <div class="header">
-                <strong class="primary-font" style="color:rgba(51, 153, 204, 1)">Richie</strong> <small class="pull-right text-muted">
-                <span class="glyphicon glyphicon-time"></span>10 mins ago</small>
-                </div>
-                        <p>
-                            We think starting is already a big step forward, so we give you 3% in each skill. Hooray!
+                            Hi Im here to help
                         </p>
                 </div>
                 </li>
@@ -135,11 +110,12 @@ Richie the Bot</h4></div></div>
             <div class="panel-footer">
                 <div class="input-group">
                      <form id="watson">
-                        <input id="user-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <input id="user-input" type="text" class="user-input form-control input-sm" placeholder="Type your message here..." />
                         <span class="input-group-btn">
                            <input type="submit" class="btn btn-primary btn-sm" id="btn-chat"value="Send"></input>
                        </span>
                      </form>
+                     
                 </div>
             </div>
         </div></div>
@@ -147,7 +123,7 @@ Richie the Bot</h4></div></div>
 		<!--<a id="next" class="btn btn-default btn-lg" style="white-space: normal; margin-top:520px; margin-left:170px; margin-bottom:40px; position:fixed;"><h4>Next</h4></a>-->
 
 	
-	<div id="page-wrapper">
+	<div id="page-wrapper" >
 	<div class="content-main" style="background:white">
 
  
@@ -172,3 +148,4 @@ Richie the Bot</h4></div></div>
 
 </body>
 </html>
+
