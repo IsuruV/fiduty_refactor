@@ -93,5 +93,52 @@ class Portfolio < ApplicationRecord
         data_formatted = data[0]
         data_formatted[:last_trade_price]
       end
+      
+      def self.lvl_based_portfolios
+          [lvl_one_portfolios, lvl_two_portfolios, lvl_three_portfolios, lvl_four_portfolios]
+      end
+      
+      def self.lvl_one_portfolios
+        portfolios = {"level":"1", "description": "5 backbone Industries that is driving the US economy: Manufacturing, Energy, 
+                        Transportation, Agriculture and Healthcare. Here 3 of those sectors will be available for 
+                        Fiduty investors and they are Manufacturing, Energy and Transportation sectors of US economy.",
+                      portfolios: []
+        }
+        
+        portfolios['portfolios'] = Portfolio.where(symbol:['VGENX','IYT','RSP'])
+        portfolios
+      end
+      
+      def self.lvl_two_portfolios
+        portfolios = {"level":"2", "description": "Agriculture and Healthcare sectors will open here. Healthcare is one of the 
+                      fastest growing industries mainly because of the aging population. Agriculture has done well 
+                      since recession in 2008 due to the increase in the global demand for agricultural products. ",
+                      portfolios: []
+        }
+        
+        portfolios['portfolios'] = Portfolio.where(symbol:['DBA','XLV'])
+        portfolios
+      end
+      
+      def self.lvl_three_portfolios
+        portfolios = {"level":"3", "description": "",
+                      portfolios: []
+        }
+        
+        portfolios['portfolios'] = Portfolio.where(symbol:['XLB','VNQ','XLK'])
+        portfolios
+      end
+      
+      def self.lvl_four_portfolios
+        portfolios = {"level":"4", "description": "",
+                      portfolios: []
+        }
+        
+        portfolios['portfolios'] = Portfolio.where(symbol:['SPY','DIA'])
+        portfolios
+      end
 
 end
+# @port = Portfolio.all.where(symbol:'DIA').first
+# @port.update(simple_description: 'One of the oldest, most watched indices in the world. It consists of 30 companies. When media says: "The market is up, most likely they are referring to this fund which is known as Dow Jones in financial world.')
+# @port.save

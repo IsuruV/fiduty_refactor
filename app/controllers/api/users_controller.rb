@@ -90,6 +90,7 @@ end
     end
     
      def recent_everyone_investment
+    
       @users = User.everyone_investment
       respond_to do |format|
         format.json {render json: @users.last(25)}

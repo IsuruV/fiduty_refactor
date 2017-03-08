@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302230447) do
+ActiveRecord::Schema.define(version: 20170308200449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(version: 20170302230447) do
     t.string   "p_e"
     t.float    "beta"
     t.text     "description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "advisor_id"
     t.string   "investment_type"
     t.float    "down_side_risk"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20170302230447) do
     t.float    "ytd_raw"
     t.float    "yield"
     t.float    "price"
+    t.string   "simple_description"
+    t.string   "fiduty_name"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -167,3 +169,4 @@ ActiveRecord::Schema.define(version: 20170302230447) do
   end
 
 end
+

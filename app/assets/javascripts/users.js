@@ -292,6 +292,7 @@ var knowledgeContent = `<div class="main-dashboard">
 
 // Imagine all the tech companies in the United States. This portfolio represents little portion of each of them. Apple, Amazon and Google and all of them
 const etfList = (etfs)=>{
+  let userLvl = $('#userLvl').val();
   var etf_list = `<div class="content-mid">`
   etf_list += `<div class="middle-content" style="padding-top:0px; margin-top:0px; margin-bottom:0px; margin-left:10px; margin-right:10px;border-style:none; box-shadow:none " >`
   etf_list += `<div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;" >`;
@@ -325,26 +326,31 @@ const etfList = (etfs)=>{
 	<!------------Portfolio Listings------------->`
 	
   for(var i=0; i<etfs.length; i++){
-    if(etfs[i].ytd){
-    etf_list += ` <a id="etf" href="#" class="list-group-item clearfix list-group-item-action align-items-start"  style="border-radius:0px">
+           for(var z=0; z<etfs[i].portfolios.length; z++){
+             let lvlEtf = etfs[i].portfolios[z];
+      // if(etfs[i].level_id != )
+      etf_list += ` <a id="etf" href="#" class="list-group-item clearfix list-group-item-action align-items-start"  style="border-radius:0px">
         <div class="row">
           <div class="col-md-3">
           <div style="height:140;border:0px solid #000">
           <img src="/assets/SPDR.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:30px;margin-bottom:10px">
-          </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>American Jumbo Companies</h3><small class="text-muted">Underlying Asset: ${etfs[i].name}</small>
+          </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${lvlEtf.fiduty_name}</h3><small class="text-muted">Underlying Asset: ${lvlEtf.name} (${lvlEtf.symbol})</small>
           </div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:green">${etfs[i].ytd}</h2><br><input type="hidden" id="portfolioId" value=${etfs[i].id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn" class="btn btn-success btn-lg">Invest</button></div>
-        </div>
+          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:green">${lvlEtf.ytd}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn" class="btn btn-success btn-lg">Invest</button></div>
+        </div>s
         <div id="etf_detail" class="row" style="display:none;">
           <div class="col-md-3">
-          </div><!----><div class="col-md-7 vcenter"><div style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>${etfs[i].description}.
+          </div><!----><div class="col-md-7 vcenter"><div style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>${lvlEtf.simple_description}.
           <br><br><span style="color:grey">
           ----> Here --- how many friends have invested or smth</span></div>
           </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"></div>
         </div>
       </a>`
     }
-  }
+   
+
+
+}
   etf_list += `</div>`
   etf_list += `</div>`
   etf_list += `</div>`
@@ -438,7 +444,6 @@ function everyoneBtn(){
             dataType: 'json',
             data: {"choice": "everyone"}
           }).done(function(data) {
-            debugger;
              var result = data.slice(data.length-20,data.length)
              fader(everyone(result, d),"#people");
           });
@@ -703,6 +708,17 @@ const ibmBlueMixSendMesssage = ()=>{
   });
 }
 
+// moves character and increments progress bar
+const moveCharacter = ()=>{
+  $('#userChar').animate({left: "+=8px"}, 100);
+   $('#userPic').animate({left: "+=8px"}, 100);
+   incrementProgess();
+}
+
+const incrementProgess = ()=>{
+  let current_width = $('#myProgress').width();
+  $('#myProgress').width( current_width += 8 );
+}
 
 $(document).ready(function(){
     clickSocial();

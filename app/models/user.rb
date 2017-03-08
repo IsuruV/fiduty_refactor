@@ -283,8 +283,7 @@ end
   
   def get_friends
     graph = Koala::Facebook::API.new(self.fb_id)
-    require 'pry'; binding.pry
-    graph.get_connections("me", "friends")
+    graph.get_connections("me", "friends", api_version: 'v2.0')
   end
   
   def add_points(points = 1)
