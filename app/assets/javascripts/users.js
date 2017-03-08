@@ -326,10 +326,11 @@ const etfList = (etfs)=>{
 	<!------------Portfolio Listings------------->`
 	
   for(var i=0; i<etfs.length; i++){
+    let etfLvl = etfs[i].level;
            for(var z=0; z<etfs[i].portfolios.length; z++){
              let lvlEtf = etfs[i].portfolios[z];
-      // if(etfs[i].level_id != )
-      etf_list += ` <a id="etf" href="#" class="list-group-item clearfix list-group-item-action align-items-start"  style="border-radius:0px">
+      if(etfLvl == userLvl ){
+              etf_list += ` <a id="etf" href="#" class="list-group-item clearfix list-group-item-action align-items-start"  style="border-radius:0px">
         <div class="row">
           <div class="col-md-3">
           <div style="height:140;border:0px solid #000">
@@ -337,7 +338,7 @@ const etfList = (etfs)=>{
           </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${lvlEtf.fiduty_name}</h3><small class="text-muted">Underlying Asset: ${lvlEtf.name} (${lvlEtf.symbol})</small>
           </div>
           </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:green">${lvlEtf.ytd}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn" class="btn btn-success btn-lg">Invest</button></div>
-        </div>s
+        </div>
         <div id="etf_detail" class="row" style="display:none;">
           <div class="col-md-3">
           </div><!----><div class="col-md-7 vcenter"><div style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>${lvlEtf.simple_description}.
@@ -346,6 +347,26 @@ const etfList = (etfs)=>{
           </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"></div>
         </div>
       </a>`
+      }else{
+              etf_list += ` <a id="etf_grey" href="#" class="list-group-item clearfix list-group-item-action align-items-start"  style="border-radius:0px">
+        <div class="row grayout" >
+          <div class="col-md-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/SPDR.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:30px;margin-bottom:10px">
+          </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${lvlEtf.fiduty_name}</h3><small class="text-muted">Underlying Asset: ${lvlEtf.name} (${lvlEtf.symbol})</small>
+          </div>
+          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:green">${lvlEtf.ytd}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn_grey" class="btn btn-success btn-lg">Invest</button></div>
+        </div>
+        <div id="etf_detail" class="row" style="display:none;">
+          <div class="col-md-3">
+          </div><!----><div class="col-md-7 vcenter"><div style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>${lvlEtf.simple_description}.
+          <br><br><span style="color:grey">
+          ----> Here --- how many friends have invested or smth</span></div>
+          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"></div>
+        </div>
+      </a>`
+      }
+
     }
    
 
@@ -720,6 +741,14 @@ const incrementProgess = ()=>{
   $('#myProgress').width( current_width += 8 );
 }
 
+const etfLocked = ()=>{
+  $(document).on('click','a#etf_grey',(ev)=>{
+    ev.preventDefault();
+    alert("Sorry! You don't have access to this one yet, keep doing those tasks!")
+  })
+
+}
+
 $(document).ready(function(){
     clickSocial();
     clickDashBoard();
@@ -729,6 +758,7 @@ $(document).ready(function(){
     clickKnowledge();
     clickExperience();
     onClickETF();
+    etfLocked();
     updateInfo();
     openModal();
     clickAmount();
