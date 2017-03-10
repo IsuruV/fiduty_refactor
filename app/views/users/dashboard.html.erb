@@ -58,9 +58,6 @@ div.panel
  <!----------------Content Mid
 					---------------------->				
   <div class="main-dashboard">
-    	
-    	
-    	
 		<div class="middle-content" style="padding-bottom:2em; border-style:none; margin-top: 0px;margin-right: 5px; margin-left: 5px;  box-shadow:none;padding-top:0px; padding-left:20px; padding-right:20px">
 		 <div class="row">
 		 <div class="col-sm-4" style="padding-top:25px;padding-right:20px; padding-left:30px;text-align:center">
@@ -77,7 +74,7 @@ div.panel
         
  <!----------------Cards---------------------->
         
-      <div class="list-group" style="font-family:'Roboto'; font-size:16px; color:#666666; padding:0px; "><% @user.user_tasks.each do |user_task| %>
+      <div data-step="3" data-intro="Check the app and see where everything is located  Ive created few tasks for you, as you finish them you will get to the second level and get more perks opened for you. My primary job is to guide you, but I can definitely other things too. Feel free to ask me questions about your tasks, friends, rules, investments etc. " class="list-group" style="font-family:'Roboto'; font-size:16px; color:#666666; padding:0px; "><% @user.user_tasks.each do |user_task| %>
 
                 <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
                 <div class="row">

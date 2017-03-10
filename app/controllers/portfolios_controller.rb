@@ -2,10 +2,12 @@ class PortfoliosController < ApplicationController
     # before_action :authenticate_user!
 
     def ten_portfolios
-        @portfolios = Portfolio.lvl_based_portfolios
+        portfolios = Portfolio.lvl_based_portfolios
         # @portfolios = Portfolio.all[0..10]
+        user_portfolios = current_user.portfolio_with_vals
+        @portfolio_user = { 'portfolios': portfolios, 'user': user_portfolios }
         respond_to do |format|
-            format.json { render json: @portfolios.to_json}
+            format.json { render json: @portfolio_user.to_json}
         end
     end
 

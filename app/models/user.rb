@@ -48,24 +48,13 @@ end
   end
 
   def portfolio_with_vals
-    self.users_portfolios
     total_investments = self.calculate_total_investment
     total_gains = self.user_gain
     total_value = self.user_total_value
     roi = self.roi(total_value, total_investments)
-    transactions_by_portfolios = self.user_portfolios.select('portfolio_id, portfolios.name, portfolios.description,
-                                                                portfolios.ytd, portfolios.yield,portfolios.advisor_id, inital_investment,
-                                                                  investment_date, holding_return').joins('LEFT OUTER JOIN portfolios ON
-                                                                    portfolios.id = user_portfolios.portfolio_id')
-                                  .order('portfolio_id asc').group_by { |d| d[:portfolio_id]}
-
-
-    portfolio_sums = self.user_portfolios.select('portfolio_id, SUM(inital_investment)').group(:portfolio_id)
-    # portfolio_sums = self.user_portfolios.select('portfolio_id, SUM(inital_investment) as total_investment, SUM(value) AS total_current_value, SUM(gain_loss) AS total_gain_loss').group(:portfolio_id)
-
+    
     {"user_info": self, "total_gains": total_gains, "total_investments": total_investments,
-    "total_value": total_value, "portfolios": transactions_by_portfolios,"total_values_per_portfolio": portfolio_sums, "roi": roi }
-
+    "total_value": total_value, "roi": roi }
   end
 
   def roi(t_value, t_investment)

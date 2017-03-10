@@ -3,7 +3,7 @@ Devise.setup do |config|
   # If absent, mail is sent from "please-change-me-at-config-initializers-devise@example.com"
   config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
   # config.omniauth :facebook, '1023463931115178', 'a17cf83784ecebce64a98e8b8ea98ad5', :strategy_class => OmniAuth::Strategies::Facebook
-  config.omniauth :facebook, '228025157667481', '5ae25ba5ef16d8cb69112d051933cb90', :strategy_class => OmniAuth::Strategies::Facebook, :scope => 'email,read_stream, user_friends'
+  config.omniauth :facebook, '228025157667481', '5ae25ba5ef16d8cb69112d051933cb90', :strategy_class => OmniAuth::Strategies::Facebook
  # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
     config.secret_key = '8e04459f383316c2bb5c75ffa8d010234b0a46637119f42dc15592f115a35736bfe2defe9b68163080765c501eb8d1af9cbcc5406152ef49f1366cc6be0c0fb1'

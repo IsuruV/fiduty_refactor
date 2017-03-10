@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     end
     
     def social
-      require 'pry'; binding.pry
       choice = params[:choice]
       fb_ids = params[:fb_ids]
       case choice

@@ -1,3 +1,4 @@
+
 var socialContent = `  <div class="main-dashboard">
 		  <div class="social-content">
 		<div class="content-mid">
@@ -18,20 +19,20 @@ var socialContent = `  <div class="main-dashboard">
        
        
         
-<div id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
+<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
   <a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
     <div class="row">
       <div class="col-sm-3"><div style="height:140;border:0px solid #000">
       <img src="/assets/Isuruprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
       </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Bob chipped in SPYDR POOP index</h3><small class="text-muted">3 days ago</small> </div>
-      </div><!----><div class="col-md-2" style="margin-top:90px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
+      </div><!----><div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
       </div>
      </a>
   <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
 <div class="row">
   <div class="col-sm-3"><div style="height:140;border:0px solid #000"><img src="/assets/Rashidprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
   </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Trump chipped in The Wall Fund</h3><small class="text-muted">3 days ago</small> </div></div>
-  <div class="col-md-2" style="margin-top:90px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
+  <div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
   </div>
 </a>
   <a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
@@ -39,14 +40,14 @@ var socialContent = `  <div class="main-dashboard">
       <div class="col-sm-3"><div style="height:140;border:0px solid #000">
       <img src="/assets/Isuruprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
       </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Bob chipped in SPYDR POOP index</h3><small class="text-muted">3 days ago</small> </div>
-      </div><!----><div class="col-md-2" style="margin-top:90px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
+      </div><!----><div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
       </div>
      </a>
   <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
 <div class="row">
   <div class="col-sm-3"><div style="height:140;border:0px solid #000"><img src="/assets/Rashidprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
   </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Trump chipped in The Wall Fund</h3><small class="text-muted">3 days ago</small> </div></div>
-  <div class="col-md-2" style="margin-top:90px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
+  <div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
   </div>
 </a>
   </div>
@@ -55,7 +56,11 @@ var socialContent = `  <div class="main-dashboard">
 		</div>
 		</div>
 		</div>
-		</div>`
+		</div>
+		<script>
+			specificWalkThrough(".social-content");
+		</script>
+		`
 
 var mainDashBoardContent =`  <div class="main-dashboard">
     	
@@ -109,7 +114,9 @@ var mainDashBoardContent =`  <div class="main-dashboard">
 			</div>
 `
 
-var knowledgeContent = `<div class="main-dashboard">
+var knowledgeContent = `
+<div class="knowledge-content">
+<div class="main-dashboard">
 	<div class="middle-content" style="margin-top:0px; margin-bottom:10px; margin-left:10px; margin-right:10px;border-style:none; box-shadow:none " >
 		
 	<!------------Content title------------->	
@@ -132,7 +139,7 @@ var knowledgeContent = `<div class="main-dashboard">
         
  <!----------------Cards---------------------->
         
-    <div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
+    <div data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
     
     
       <a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
@@ -180,120 +187,26 @@ var knowledgeContent = `<div class="main-dashboard">
           </div>
         </div>
       </a>
-  
-  </div>`
-  
-  
-  var experienceContent = `		<div class="main-dashboard" style="margin-top:0px; margin-bottom:10px; margin-left:10px; margin-right:10px;border-style:none; box-shadow:none " >
-	
-	<!------------Content title------------->   
-		<div class="row-fluid" style="height:80px">
-		  <div class="col-sm-12" style="text-align:center"><p><h1>Here you invest and get experience</h1></p>
-      </div>
     </div>
-  <!------------------------->
+  </div>
+  </div>
+  		<script>
 
-		<div class="row">
-		  <div class="col-sm-12">
-		      <div style="margin-left:40px; margin-right:40px; margin-top:0px; padding-bottom:40px; padding-left:20px">
-		      <br>
-		      <p><h2 class="featurette-heading">Total Investment: <span style="color:green">$285</span></h2></p><br>
-		      <p><h2 class="featurette-heading">Total Value: <span style="color:green">$295</span></h2></p><br>
-		      <p><h2 class="featurette-heading">Total Gain/Loss: <span style="color:green">$10</span></h2></p><br>
-		      <p><h2 class="featurette-heading">ROI: <span style="color:green">1.6%</span></h2></p>
-		  </div></div>
-		</div>
-		    
-	<!------------Portfolio Listings------------->
-		    
-    <div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;" >
-    
-      <a id="etf" href="#" class="list-group-item clearfix list-group-item-action align-items-start"  style="border-radius:0px">
-        <div class="row">
-          <div class="col-md-3">
-          <div style="height:140;border:0px solid #000">
-          <img src="/assets/SPDR.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:30px;margin-bottom:10px">
-          </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>American Jumbo Companies</h3><small class="text-muted">Underlying Asset: SPDR S&P 500</small>
-          </div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:green">17.5%</h2><br><button type="button" id="investbtn" class="btn btn-success btn-lg">Invest</button></div>
-        </div>
-        <div id="etf_detail" class="row" style="display:none;">
-          <div class="col-md-3">
-          </div><!----><div class="col-md-7 vcenter"><div style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>Imagine all the tech companies in the United States. This portfolio represents little portion of each of them. Apple, Amazon and Google and all of them.
-          <br><br><span style="color:grey">
-          ----> Here --- how many friends have invested or smth</span></div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"></div>
-        </div>
-      </a>
-      
-      
-      <a href="#" id="etf" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px; border-style:solid; border-color:black; border-width:thin;">
-        <div class="row">
-          <div class="col-md-3">
-          <div style="height:140;border:0px solid #000">
-          <img src="/assets/ishares_logo.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:30px;margin-bottom:10px">
-          </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Techno Giants</h3><small class="text-muted">Underlying Asset: iShares U.S. Technology ETF</small>
-          </div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:green">7.84%</h2><br><button type="button" id="investbtn" class="btn btn-success btn-lg">Invest</button></div>
-        </div>
-        
-<!--------------------------More details when clicked on a portfolio------>
-        <div id="etf_detail" class="row" style="display:none;">
-          <div class="col-md-3">
-          </div><!----><div class="col-md-7 vcenter"><div style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>Imagine all the tech companies in the United States. This portfolio represents little portion of each of them. Apple, Amazon and Google and all of them.
-          <br><br><span style="color:grey">
-          ----> Here --- how many friends have invested or smth</span></div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"></div>
-        </div>
-      </a>
-      
-<!-------------------------------->
-        
-      <a href="#" id="etf" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px;border-top-style:solid; border-top-color:black; border-top-width:thin">
-        <div class="row">
-          <div class="col-md-3">
-          <div style="height:140;border:0px solid #000">
-          <img src="/assets/SPDR.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:10px;margin-bottom:10px">
-          </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Wall Street Companies</h3><small class="text-muted">Underlying Asset: Financial Select Sector SPDR Fund</small>
-          </div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:green">0.27%</h2><br><button id="investbtn" type="button" class="btn btn-success btn-lg">Invest</button></div>
-        </div>
-      <div id="etf_detail" class="row" style="display:none;">
-          <div class="col-md-3">
-          </div><!----><div class="col-md-7 vcenter"><div style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>Imagine all the tech companies in the United States. This portfolio represents little portion of each of them. Apple, Amazon and Google and all of them.
-          <br><br><span style="color:grey">
-          ----> Here --- how many friends have invested or smth</span></div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"></div>
-        </div>
-      </a>
-      
-      <a href="#" id="etf" class="list-group-item clearfix list-group-item-action align-items-start"  style="border-radius:0px">
-        <div class="row">
-          <div class="col-md-3">
-          <div style="height:140;border:0px solid #000">
-          <img src="/assets/ishares_logo.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:30px;margin-bottom:10px">
-          </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Oil and Gas companies</h3><small class="text-muted">Underlying Asset: U.S. Oil & Gas Exploration & Production ETF</small>
-          </div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:red">-1.39%</h2><br><button type="button" id="investbtn" class="btn btn-success btn-lg">Invest</button></div>
-        </div>
-         <div id="etf_detail" class="row" style="display:none;">
-          <div class="col-md-3">
-          </div><!----><div class="col-md-7 vcenter"><div style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>Imagine all the tech companies in the United States. This portfolio represents little portion of each of them. Apple, Amazon and Google and all of them.
-          <br><br><span style="color:grey">
-          ----> Here --- how many friends have invested or smth</span></div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"></div>
-        </div>
-      </a>
-    </div>
-    
-  <!------------ End Portfolio Listings------------->  
-    
-	</div>`
+			specificWalkThrough(".knowledge-content");
+		
+		</script>`
+  
+  
+
 
 // Imagine all the tech companies in the United States. This portfolio represents little portion of each of them. Apple, Amazon and Google and all of them
-const etfList = (etfs)=>{
+const etfList = (data)=>{
+  let etfs = data['portfolios'];
+  let userData = data['user'];
   let userLvl = $('#userLvl').val();
-  var etf_list = `<div class="content-mid">`
+  var etf_list = `<div class=main-dashboard>`
+  etf_list +=`<div class="etf-listing">`
+  etf_list += `<div class="content-mid">`
   etf_list += `<div class="middle-content" style="padding-top:0px; margin-top:0px; margin-bottom:0px; margin-left:10px; margin-right:10px;border-style:none; box-shadow:none " >`
   etf_list += `<div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;" >`;
   etf_list += `		<div class="row-fluid" style="height:80px; padding-top:0px">
@@ -303,12 +216,12 @@ const etfList = (etfs)=>{
   <!------------------------->
 
 		<div class="row" style="padding-top:0px;">
-		  <div class="col-md-10 col-md-offset-1" style="padding-top:0px;">
+		  <div data-intro="OMG there are only three portfolios to invest, but its just for now. As you progress and achieve new levels more portfolios will be available for you. Just keep swimming." class="col-md-10 col-md-offset-1" style="padding-top:0px;">
 		      <br>
-		      <p><h2 class="featurette-heading">Total Investment: <span style="color:green">$285</span></h2></p><br>
-		      <p><h2 class="featurette-heading">Total Value: <span style="color:green">$295</span></h2></p><br>
-		      <p><h2 class="featurette-heading">Total Gain/Loss: <span style="color:green">$10</span></h2></p><br>
-		      <p><h2 class="featurette-heading">ROI: <span style="color:green">1.6%</span></h2></p><br>
+		      <p><h2 class="featurette-heading">Total Investment: <span style="color:green">$${userData.total_investments}</span></h2></p><br>
+		      <p><h2 class="featurette-heading">Total Value: <span style="color:green">$${Math.round(userData.total_value * 100) / 100}</span></h2></p><br>
+		      <p><h2 class="featurette-heading">Total Gain/Loss: <span style="color:green">$${Math.round((userData.total_value - userData.total_investments )* 100) / 100}</span></h2></p><br>
+		      <p><h2 class="featurette-heading">ROI: <span style="color:green">${Math.round(userData.roi * 100) / 100}%</span></h2></p><br>
 		  </div>
 		</div>
 		
@@ -324,13 +237,13 @@ const etfList = (etfs)=>{
         <br>
 		    
 	<!------------Portfolio Listings------------->`
-	
+  etf_list += `<div>`
   for(var i=0; i<etfs.length; i++){
     let etfLvl = etfs[i].level;
            for(var z=0; z<etfs[i].portfolios.length; z++){
              let lvlEtf = etfs[i].portfolios[z];
       if(etfLvl == userLvl ){
-              etf_list += ` <a id="etf" href="#" class="list-group-item clearfix list-group-item-action align-items-start"  style="border-radius:0px">
+              etf_list += ` <a href="#" class="list-group-item clearfix list-group-item-action align-items-start"  style="border-radius:0px">
         <div class="row">
           <div class="col-md-3">
           <div style="height:140;border:0px solid #000">
@@ -375,6 +288,15 @@ const etfList = (etfs)=>{
   etf_list += `</div>`
   etf_list += `</div>`
   etf_list += `</div>`
+  etf_list += `</div>`
+  etf_list += `</div>`
+  etf_list += `</div>`
+  etf_list += 
+  `
+  <script>
+      specificWalkThrough(".etf-listing");
+  </script>
+  `
   return etf_list  
 
 }
@@ -412,22 +334,25 @@ function clickSocial(){
 function clickAmount(){
   $(document).on('click', '#amount', function(ev){
     ev.preventDefault();
+    $('#cashModal').modal('toggle');
      $('.box p').replaceWith(`<p>Would you really invest $100,000 in the next 5 years? I wouldn't, and probably you wouldn't too, so $10 is what I would really start with, and you get 10$ to invest. Guess what, even it is a virtual money, you gotta earn it. Click on it to see how you can do it. </p>`)
   })
 }
 
-function clickDashBoard(){
-    $(document).on('click',"#dashboard-tab",function(ev){
-         ev.preventDefault();
-          fader(mainDashBoardContent, '.main-dashboard');
-    });
-}
+// function clickDashBoard(){
+//     $(document).on('click',"#dashboard-tab",function(ev){
+//         ev.preventDefault();
+//           fader(mainDashBoardContent, '.main-dashboard');
+//     });
+// }
 
 function clickKnowledge(){
   $(document).on('click',"#knowledge-tab",function(ev){
     ev.preventDefault();
     fader(knowledgeContent,'.main-dashboard');
+    
   })
+  
 }
 
 function clickExperience(){
@@ -683,20 +608,6 @@ const ibmBlueMixSendMesssage = ()=>{
 
 }
 
-  // $.ajax
-  //   ({
-  //     type: "POST",
-  //       contentType: 'application/json',
-  //       dataType: 'json',
-  //       username: 'fcd45e5b-e1d8-42ea-8b1e-51b506b5d9dd',
-  //       password: 'gU37Hs0zV7ti',
-  //       url: "https://gateway.watsonplatform.net/conversation/api/v1/workspaces/6b52eac7-5172-4546-8d84-cf5a0adf659c/message?version=2017-02-03",
-  //       data: { "input": {"text": message } }
-  //   }).done(function(data) {
-  //         debugger;
-  //         });
-    
-  // });
   
   const openLargeChatBox = ()=>{
     $(document).on('click',"#openChatBoxModal", (ev)=>{
@@ -714,18 +625,16 @@ const ibmBlueMixSendMesssage = ()=>{
         url: "/users/add_points",
         data: numPoints
     }).done(function(data) {
-      debugger;
         console.log('worked');
-        window.reload();
+        location.reload();
        });
        
   }
   
   const addPoint_finishGuide = ()=>{
-    $(document).on('click','a#closeModel', (ev)=>{
+    $(document).on('click','button#closeModel', (ev)=>{
       console.log('closed');
       addPoint(1);
-
   });
 }
 
@@ -749,9 +658,36 @@ const etfLocked = ()=>{
 
 }
 
+const mainWalkThrough = ()=>{
+  let signInCount = $('#userSignInCount').val();
+  let points = $('#onboarding').val();
+  if (signInCount <=1 && points == '1'){
+  		var tour = introJs()
+			tour.setOption('tooltipPosition', 'auto');
+			tour.start()
+			localStorage.dashboardWalkThrough = '1';
+  }
+}
+
+const specificWalkThrough = (element)=>{
+  let signInCount = $('#userSignInCount').val();
+  let points = $('#onboarding').val();
+  // && localStorage.specificWalkThrough != 2
+  if (signInCount <=1 && points == '1'){
+      var tour = introJs(element);
+			tour.setOption('tooltipPosition', 'auto');
+			tour.start()
+			if (!localStorage.specificWalkThrough){
+			  localStorage.specificWalkThrough = 0;
+			}else{
+			  localStorage.specificWalkThrough += 1;
+			}
+  }
+};
+
 $(document).ready(function(){
     clickSocial();
-    clickDashBoard();
+    // clickDashBoard();
     friendsBtn();
     scoreBoardBtn();
     everyoneBtn();
@@ -771,5 +707,6 @@ $(document).ready(function(){
      ibmBlueMixSendMesssage();
      openLargeChatBox();
      addPoint_finishGuide();
+     mainWalkThrough();
 })
 
