@@ -58,7 +58,10 @@ var socialContent = `  <div class="main-dashboard">
 		</div>
 		</div>
 		<script>
+		if(!localStorage.walkThroughOne){
 			specificWalkThrough(".social-content");
+			localStorage.walkThroughOne = true;
+		}
 		</script>
 		`
 
@@ -191,9 +194,10 @@ var knowledgeContent = `
   </div>
   </div>
   		<script>
-
-			specificWalkThrough(".knowledge-content");
-		
+      if(!localStorage.specificWalkThroughTwo){
+        specificWalkThrough(".knowledge-content");
+          localStorage.specificWalkThroughTwo = true;
+      }
 		</script>`
   
   
@@ -294,7 +298,10 @@ const etfList = (data)=>{
   etf_list += 
   `
   <script>
+    if(!localStorage.specificWalkThroughThree){
       specificWalkThrough(".etf-listing");
+      localStorage.specificWalkThroughThree = true;
+    }
   </script>
   `
   return etf_list  
@@ -661,12 +668,13 @@ const etfLocked = ()=>{
 const mainWalkThrough = ()=>{
   let signInCount = $('#userSignInCount').val();
   let points = $('#onboarding').val();
-  if (signInCount <=1 && points == '1'){
+  if (signInCount <=1 && points == '1' && localStorage.dashboardWalkThrough!= '1'){
   		var tour = introJs()
 			tour.setOption('tooltipPosition', 'auto');
 			tour.start()
 			localStorage.dashboardWalkThrough = '1';
   }
+  
 }
 
 const specificWalkThrough = (element)=>{
@@ -676,13 +684,9 @@ const specificWalkThrough = (element)=>{
   if (signInCount <=1 && points == '1'){
       var tour = introJs(element);
 			tour.setOption('tooltipPosition', 'auto');
-			tour.start()
-			if (!localStorage.specificWalkThrough){
-			  localStorage.specificWalkThrough = 0;
-			}else{
-			  localStorage.specificWalkThrough += 1;
-			}
+			tour.start();
   }
+  
 };
 
 $(document).ready(function(){
