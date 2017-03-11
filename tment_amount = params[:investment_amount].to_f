@@ -1,0 +1,18 @@
+
+[1mFrom:[0m /home/ubuntu/workspace/app/controllers/user_portfolios_controller.rb @ line 6 UserPortfoliosController#create:
+
+     [1;34m5[0m: [32mdef[0m [1;34mcreate[0m
+ =>  [1;34m6[0m:   require [31m[1;31m'[0m[31mpry[1;31m'[0m[31m[0m; binding.pry
+     [1;34m7[0m:   investment_amount = params[[33m:investment_amount[0m].to_f
+     [1;34m8[0m:   current_user.subtract_from_funds(investment_amount)
+     [1;34m9[0m:   @portfolio = [1;34;4mPortfolio[0m.find(params[[33m:portfolio_id[0m].to_i)
+    [1;34m10[0m:   [1;34m# YahooApi.update_ytd(@portfolio)[0m
+    [1;34m11[0m:   [1;34;4mYahooApi[0m.fetch_recent_price(@portfolio)
+    [1;34m12[0m:   weight = investment_amount / @portfolio.price
+    [1;34m13[0m:   [1;34m# UserPortfolio.create(portfolio: @portfolio, trad_price: @portfolio.price, weight: weight, ytd: @portfolio.ytd_raw, inital_investment: investment_amount, user: current_user, investment_date: Time.now)[0m
+    [1;34m14[0m:   current_user.user_portfolios.create([35mportfolio[0m: @portfolio, [35mtrad_price[0m: @portfolio.price, [35mweight[0m: weight, [35mytd[0m: @portfolio.ytd_raw, [35minital_investment[0m: investment_amount, [35minvestment_date[0m: [1;34;4mTime[0m.now)
+    [1;34m15[0m:   respond_to [32mdo[0m |format|
+    [1;34m16[0m:       format.json {render [35mjson[0m: current_user.portfolios}
+    [1;34m17[0m:   [32mend[0m
+    [1;34m18[0m: [32mend[0m
+

@@ -157,7 +157,7 @@ end
   end
 
   def subtract_from_funds(amt)
-    amount = amt
+    amount = amt * 100
     self.funds = self.funds - amount 
     self.save
   end
