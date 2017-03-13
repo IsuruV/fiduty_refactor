@@ -1,5 +1,7 @@
 
-var socialContent = `  <div class="main-dashboard">
+const socialContent = (users)=>{ 
+
+let socialFeed = `  <div class="main-dashboard">
 		  <div class="social-content">
 		<div class="content-mid">
 				<div class="middle-content" style="margin-top:5px; margin-bottom:15px; margin-left:20px; margin-right:20px;border-style:none; box-shadow:none " >
@@ -13,43 +15,31 @@ var socialContent = `  <div class="main-dashboard">
         </div>
         <br>
         
-        
  <!----------------Social Feed
 					---------------------->
        
-       
-        
 <div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
-  <a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
-    <div class="row">
-      <div class="col-sm-3"><div style="height:140;border:0px solid #000">
-      <img src="/assets/Isuruprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-      </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Bob chipped in SPYDR POOP index</h3><small class="text-muted">3 days ago</small> </div>
-      </div><!----><div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
-      </div>
-     </a>
-  <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
-<div class="row">
-  <div class="col-sm-3"><div style="height:140;border:0px solid #000"><img src="/assets/Rashidprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-  </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Trump chipped in The Wall Fund</h3><small class="text-muted">3 days ago</small> </div></div>
-  <div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
-  </div>
-</a>
-  <a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
-    <div class="row">
-      <div class="col-sm-3"><div style="height:140;border:0px solid #000">
-      <img src="/assets/Isuruprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-      </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Bob chipped in SPYDR POOP index</h3><small class="text-muted">3 days ago</small> </div>
-      </div><!----><div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
-      </div>
-     </a>
-  <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
-<div class="row">
-  <div class="col-sm-3"><div style="height:140;border:0px solid #000"><img src="/assets/Rashidprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-  </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Trump chipped in The Wall Fund</h3><small class="text-muted">3 days ago</small> </div></div>
-  <div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
-  </div>
-</a>
+     `
+     
+     if (users.length >0){
+      
+       for(let i=0; i<users.length; i++){
+          socialFeed +=  `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+            <div class="row">
+             <div class="col-sm-3"><div style="height:140;border:0px solid #000">
+              <img src="${users[i].image}?type=large" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
+             </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${users[i].name} chipped in ${users[i].last_portfolio_name} index</h3><small class="text-muted">3 days ago</small> </div>
+             </div><!----><div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
+             </div>
+           </a>`
+       }
+     }else{
+       socialFeed+= `<div>Invite Some Friends!</div>`
+     }
+
+      
+      
+  socialFeed+=    `
   </div>
 			</div>
 			<div class="clearfix"> </div>
@@ -64,6 +54,8 @@ var socialContent = `  <div class="main-dashboard">
 		}
 		</script>
 		`
+		return socialFeed;
+}
 
 var mainDashBoardContent =`  <div class="main-dashboard">
     	
@@ -116,6 +108,16 @@ var mainDashBoardContent =`  <div class="main-dashboard">
 			</div>
 			</div>
 `
+const getPeopleInvestments = (endPoint)=>{
+  $.ajax({
+    type:'get',
+    url:`/users/${endPoint}.json`,
+    dataType:'json'
+  }).done((data)=>{
+    let friendsInvestments = socialContent(data);
+    fader(socialContent(data),'.main-dashboard');
+  });
+}
 
 var knowledgeContent = `
 <div class="knowledge-content">
@@ -307,6 +309,7 @@ const etfList = (data)=>{
   return etf_list  
 
 }
+
   
  const getTenPortflios = ()=>{
                 $.ajax({
@@ -331,11 +334,23 @@ function fader(content, location){
 function clickSocial(){
     $(document).on('click',"#social-tab",function(ev){
         ev.preventDefault();
-        fader(socialContent, '.main-dashboard');
+        getPeopleInvestments(`recent_everyone_investment`);
+        socialChoiceTabs();
     $('.box p').replaceWith(`<p>This is the coolest thing in our app. We believe that you will get far when surrounded by your friends</p>`)
  
     })
     
+}
+
+const socialChoiceTabs = ()=>{
+   $(document).on('click',"#everyonebtn",(ev)=>{
+    ev.preventDefault();
+    getPeopleInvestments(`recent_everyone_investment`);
+  })
+  
+  $(document).on('click','#friendsbtn',(ev)=>{
+    getPeopleInvestments('recent_friend_investment');
+  })
 }
 
 function clickAmount(){
@@ -386,23 +401,7 @@ const everyone = (data, d)=>{
   `
 }
 
-function everyoneBtn(){
-    var d = new Date();
-    var n = d.getTime();
-    $(document).on('click',"#everyonebtn",function(ev){
-        ev.preventDefault();
-              $.ajax({
-            type: 'post',
-            url: `/users/social.json`,
-            dataType: 'json',
-            data: {"choice": "everyone"}
-          }).done(function(data) {
-             var result = data.slice(data.length-20,data.length)
-             fader(everyone(result, d),"#people");
-          });
-          
-    })
-}
+
 
 function friendsBtn(){
   var friends= `<div id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
@@ -694,7 +693,6 @@ $(document).ready(function(){
     // clickDashBoard();
     friendsBtn();
     scoreBoardBtn();
-    everyoneBtn();
     clickKnowledge();
     clickExperience();
     onClickETF();

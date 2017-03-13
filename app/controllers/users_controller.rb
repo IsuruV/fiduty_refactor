@@ -96,10 +96,9 @@ end
     end
 
     def recent_friend_investment
-      fb_ids = params[:fb_ids]
-      @users = User.recent_friend_investment(fb_ids)
+      friend_investments = current_user.get_friends
       respond_to do |format|
-        format.json {render json: @users}
+        format.json {render json: friend_investments}
       end
     end
     

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/users/social' => 'users#social'
   post '/users/social' => 'users#social'
   get '/portfolios/etf_return' => 'portfolios#etf_return'
+  get '/users/recent_friend_investment' => 'users#recent_friend_investment'
   get '/users/recent_everyone_investment' => 'users#recent_everyone_investment'
   get '/users/sign_out' => "users#log_out"
   post '/users/update' => "users#update"

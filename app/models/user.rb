@@ -121,13 +121,13 @@ end
 
 
   def self.recent_friend_investment(fb_ids)
-      friends = User.where(fb_id: [fb_ids])
+      friends = User.where(uid: [fb_ids])
       transactions = []
       friends.each do |friend|
         if friend
           friend.user_portfolios.each do |transaction|
             portfolio = Portfolio.find(transaction.portfolio_id)
-            transactions.push({'fb_id': friend.fb_id, 'user_id': friend.id, 'name': friend.name, 'last_portfolio_id': portfolio.id, 'last_portfolio_name': portfolio.name,
+            transactions.push({'image': friend.image, 'user_id': friend.id, 'name': friend.name, 'last_portfolio_id': portfolio.id, 'last_portfolio_name': portfolio.name,
                               'roi': transaction.gain_loss, 'investment_date': transaction.investment_date.to_datetime.to_i})
           end
 
@@ -146,7 +146,7 @@ end
         if friend
           friend.user_portfolios.each do |transaction|
             portfolio = Portfolio.find(transaction.portfolio_id)
-            transactions.push({'fb_id': friend.fb_id, 'user_id': friend.id, 'name': friend.name, 'last_portfolio_id': portfolio.id, 'last_portfolio_name': portfolio.name,
+            transactions.push({'image': friend.image, 'user_id': friend.id, 'name': friend.name, 'last_portfolio_id': portfolio.id, 'last_portfolio_name': portfolio.name,
                               'roi': transaction.gain_loss, 'investment_date': transaction.investment_date.to_datetime.to_i})
           end
 
@@ -272,7 +272,9 @@ end
   
   def get_friends
     graph = Koala::Facebook::API.new(self.fb_id)
-    graph.get_connections("me", "friends", api_version: 'v2.0')
+    friends = graph.get_connections("me", "friends", api_version: 'v2.0')
+    fb_ids = friends.map{|friend| friend['id']}
+    User.recent_friend_investment(fb_ids)
   end
   
   def add_points(points = 1)
