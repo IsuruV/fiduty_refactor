@@ -117,6 +117,12 @@ end
       end
     end
     
+    def scoreboard
+      respond_to do |format|
+        format.json {render json: current_user.get_top_roi }
+      end
+    end
+    
 
     def add_funds
       amount = params[:funds].to_i

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/users/sign_out' => "users#log_out"
   post '/users/update' => "users#update"
   post '/users/add_points' => "users#add_points"
+  get '/users/scoreboard' => "users#scoreboard"
   
   get '/portfolios/ten_portfolios' => "portfolios#ten_portfolios"
   resources :user_portfolios

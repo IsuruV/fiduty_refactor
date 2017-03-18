@@ -1,4 +1,4 @@
-<!----->
+<!-- Header --->
 <header class="navbar-default navbar-static-top" role="navigation">
 
     <div class="navbar-header" style="background-color:white;text-align:center">
@@ -13,7 +13,7 @@
 
 	<div class="border-bottom" style="border-bottom-style:solid; border-bottom-color:#dcdcdc;border-bottom-width:thin">
     <div class="full-left" style="margin-top:2em">
-       	<h4>Total investment: <span style="color:green">$<%=current_user.calculate_total_investment%></span> | Cash: <span id="amount" style="color:green">$<%=current_user.funds/100%></span></h4>
+       	<h4>Total Value: <span style="color:<%= current_user.user_total_value > current_user.calculate_total_investment ? 'green' : 'red'  %> ">$<%=current_user.user_total_value.round(2)%> (<%= (current_user.user_total_value - current_user.calculate_total_investment).round(2) %>) </span> | Cash: <span id="amount" style="color:green">$<%=current_user.funds/100%></span></h4>
         <div class="clearfix"></div>
     </div>
             <!-- Brand and toggle get grouped for better mobile display -->

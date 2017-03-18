@@ -1,28 +1,16 @@
-/*
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
-*/
 h4, h5, h6,
 h1, h2, h3 {margin: 0;}
 ul, ol {margin: 0;padding: 0;}
 p {margin: 0;}
 
 html, body{
-  	font-family:'Montserrat-Regular';
-    font-size: 100%;
-  	background:#F3F3F4;
-  	overflow-x: hidden;
+    font-family:'Roboto'; 
+    font-size: 20px; 
+    color:#666666;
+    background:#ffffff;
+    
 }
-@font-face{
-	font-family:'Montserrat-Regular';
-	src:url(../fonts/Montserrat-Regular.ttf) format('truetype');
-}
-@font-face{
-	font-family: 'Muli-Regular';
-	src:url(../fonts/Muli-Regular.ttf) format('truetype');
-}
+
 body a{
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
@@ -30,9 +18,62 @@ body a{
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
 }
-div#wrapper {
+div.wrapper {
     background-color: #fff;
+    min-height: 100%;
 }
+.grayout {
+    opacity: 0.3; /* Real browsers */
+    filter: alpha(opacity = 40); /* MSIE */
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+/**** Slider ****/
+.slider-container{
+    background-color: #dceefa;
+    text-align: center;
+}
+.slider-container img{
+    padding: 5% 0;
+    width: 100%;
+    max-width: 900px;
+    display: inline-block;
+}
+.slider-next {
+    position: absolute;
+    bottom: 9%;
+    left: 50%;
+    min-width: 80px;
+    margin-left: -50px;
+    color:#01247F;
+    text-align: center;
+    background-color:transparent; 
+    border: 2px solid #01247F;
+    text-transform: uppercase;
+}
+
+/* Intro js  */
+.introjs-button {
+    background-color: #fff;
+    border-radius: 0;
+    border: 1px solid #01247F;
+    padding: 5px 10px;
+    font-size: 13px;
+}
+.chat-box {
+    min-height:310px;
+    width:240px; 
+    margin-top:260px;
+    margin-left:0px; 
+    margin-bottom:40px; 
+    position:fixed; 
+    font-size:16px; 
+    border-style:solid; 
+    border-color:black;
+    border-width:thin;
+}
+
+
 /*-- header --*/
 .navbar .navbar-nav li a {
   padding: 0 10px;

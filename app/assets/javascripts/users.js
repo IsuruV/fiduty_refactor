@@ -1,5 +1,5 @@
-
-const socialContent = (users)=>{ 
+console.log("users js");
+const socialContent =(users)=>{ 
 
 let socialFeed = `  <div class="main-dashboard">
 		  <div class="social-content">
@@ -57,6 +57,27 @@ let socialFeed = `  <div class="main-dashboard">
 		return socialFeed;
 }
 
+const socialContentFriendList=(users)=>{
+  let socialFeed = `<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`
+       if (users.length >0){
+      
+       for(let i=0; i<users.length; i++){
+          socialFeed +=  `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+            <div class="row">
+             <div class="col-sm-3"><div style="height:140;border:0px solid #000">
+              <img src="${users[i].image}?type=large" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
+             </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${users[i].name} chipped in ${users[i].last_portfolio_name} index</h3><small class="text-muted">3 days ago</small> </div>
+             </div><!----><div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
+             </div>
+           </a>`
+       }
+     }else{
+       socialFeed+= `<div>Invite Some Friends!</div>`
+     }
+     socialFeed += `<div>`
+     return socialFeed;
+}
+
 var mainDashBoardContent =`  <div class="main-dashboard">
     	
     	
@@ -108,16 +129,18 @@ var mainDashBoardContent =`  <div class="main-dashboard">
 			</div>
 			</div>
 `
-const getPeopleInvestments = (endPoint)=>{
+
+const getPeopleInvestments = (endPoint, render = socialContent, place='.main-dashboard')=>{
   $.ajax({
     type:'get',
     url:`/users/${endPoint}.json`,
     dataType:'json'
   }).done((data)=>{
-    let friendsInvestments = socialContent(data);
-    fader(socialContent(data),'.main-dashboard');
+    // let friendsInvestments = renderFunction(data);
+    
+    fader(render(data),place);
   });
-}
+};
 
 var knowledgeContent = `
 <div class="knowledge-content">
@@ -224,10 +247,10 @@ const etfList = (data)=>{
 		<div class="row" style="padding-top:0px;">
 		  <div data-intro="OMG there are only three portfolios to invest, but its just for now. As you progress and achieve new levels more portfolios will be available for you. Just keep swimming." class="col-md-10 col-md-offset-1" style="padding-top:0px;">
 		      <br>
-		      <p><h2 class="featurette-heading">Total Investment: <span style="color:green">$${userData.total_investments}</span></h2></p><br>
-		      <p><h2 class="featurette-heading">Total Value: <span style="color:green">$${Math.round(userData.total_value * 100) / 100}</span></h2></p><br>
-		      <p><h2 class="featurette-heading">Total Gain/Loss: <span style="color:green">$${Math.round((userData.total_value - userData.total_investments )* 100) / 100}</span></h2></p><br>
-		      <p><h2 class="featurette-heading">ROI: <span style="color:green">${Math.round(userData.roi * 100) / 100}%</span></h2></p><br>
+		      <p><h2 class="featurette-heading">Total Investment: <span style="color:${userData.total_investments >=0 ? 'green' : 'red'}">$${userData.total_investments}</span></h2></p><br>
+		      <p><h2 class="featurette-heading">Total Value: <span style="color:${userData.total_value >= userData.total_investments ? 'green' : 'red'}">$${Math.round(userData.total_value * 100) / 100}</span></h2></p><br>
+		      <p><h2 class="featurette-heading">Total Gain/Loss: <span style="color:${(userData.total_value - userData.total_investments) >= 0 ? 'green': 'red'}">$${Math.round((userData.total_value - userData.total_investments )* 100) / 100}</span></h2></p><br>
+		      <p><h2 class="featurette-heading">ROI: <span style="color:${userData.roi >= 0 ? 'green' : 'red'}">${Math.round(userData.roi * 100)}%</span></h2></p><br>
 		  </div>
 		</div>
 		
@@ -249,20 +272,21 @@ const etfList = (data)=>{
            for(var z=0; z<etfs[i].portfolios.length; z++){
              let lvlEtf = etfs[i].portfolios[z];
       if(etfLvl == userLvl ){
-              etf_list += ` <a href="#" class="list-group-item clearfix list-group-item-action align-items-start"  style="border-radius:0px">
-        <div class="row">
+        
+              etf_list += ` <a href="#" id=${lvlEtf.symbol} class="list-group-item clearfix list-group-item-action align-items-start etf_detail_listing"  style="border-radius:0px">
+        <div id=${lvlEtf.fiduty_name} class="row">
           <div class="col-md-3">
           <div style="height:140;border:0px solid #000">
           <img src="/assets/SPDR.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:30px;margin-bottom:10px">
           </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${lvlEtf.fiduty_name}</h3><small class="text-muted">Underlying Asset: ${lvlEtf.name} (${lvlEtf.symbol})</small>
           </div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:green">${lvlEtf.ytd}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn" class="btn btn-success btn-lg">Invest</button></div>
+          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:${!!lvlEtf.ytd.match(/-/g)? 'red': 'green'}">${lvlEtf.ytd}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn" class="btn btn-success btn-lg">Invest</button></div>
         </div>
-        <div id="etf_detail" class="row" style="display:none;">
+        <div id="etf_detail${lvlEtf.symbol}" class="row" style="display:none;">
           <div class="col-md-3">
-          </div><!----><div class="col-md-7 vcenter"><div style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>${lvlEtf.simple_description}.
+          </div><!----><div class="col-md-7 vcenter"><div id="thisdiv" style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>${lvlEtf.simple_description}.
           <br><br><span style="color:grey">
-          ----> Here --- how many friends have invested or smth</span></div>
+          </span></div>
           </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"></div>
         </div>
       </a>`
@@ -276,11 +300,11 @@ const etfList = (data)=>{
           </div>
           </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:green">${lvlEtf.ytd}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn_grey" class="btn btn-success btn-lg">Invest</button></div>
         </div>
-        <div id="etf_detail" class="row" style="display:none;">
+        <div id="etf_detail${lvlEtf.symbol}" class="row etf_list_item" style="display:none;">
           <div class="col-md-3">
           </div><!----><div class="col-md-7 vcenter"><div style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>${lvlEtf.simple_description}.
           <br><br><span style="color:grey">
-          ----> Here --- how many friends have invested or smth</span></div>
+          </span></div>
           </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"></div>
         </div>
       </a>`
@@ -345,12 +369,19 @@ function clickSocial(){
 const socialChoiceTabs = ()=>{
    $(document).on('click',"#everyonebtn",(ev)=>{
     ev.preventDefault();
-    getPeopleInvestments(`recent_everyone_investment`);
-  })
+    
+    getPeopleInvestments(`recent_everyone_investment`, socialContent);
+  });
   
   $(document).on('click','#friendsbtn',(ev)=>{
-    getPeopleInvestments('recent_friend_investment');
-  })
+    ev.preventDefault();
+    getPeopleInvestments('recent_friend_investment', socialContentFriendList, '#friendsList');
+  });
+  
+  $(document).on('click','#scoreboardbtn', (ev)=>{
+      ev.preventDefault();
+      getPeopleInvestments('scoreboard', scoreboardContent, '#friendsList');
+  });
 }
 
 function clickAmount(){
@@ -384,22 +415,7 @@ function clickExperience(){
   })
 }
 
-const everyone = (data, d)=>{
-  return `<div id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
-  ${data.map( person=> 
-    `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
-    <div class="row">
-      <div class="col-sm-3"><div style="height:140;border:0px solid #000">
-      <img src="/assets/Rashidprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-      </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${person.name} chipped in ${person.last_portfolio_name}</h3><small class="text-muted">${new Date().getDay(person.investment_date)} days ago</small> </div>
-      </div><!----><div class="col-md-2" style="margin-top:90px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
-      </div>
-     </a>`
-    )
-  }
-   </div>
-  `
-}
+
 
 
 
@@ -421,33 +437,96 @@ function friendsBtn(){
     })
 }
 
-function scoreBoardBtn(){
-  var scoreboard = `<div id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
- <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
-<div class="row">
-  <div class="col-sm-3"><div style="height:140;border:0px solid #000"><img src="/assets/Rashidprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-  </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Trump chipped in The Wall Fund</h3><small class="text-muted">3 days ago</small> </div></div>
-  <div class="col-md-2" style="margin-top:90px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
+const  scoreboardContent= (people)=>{
+  let scoreboard = `<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`;
+  scoreboard += `<div class="col-sm-6">
+        <h1 style="text-align:center">Top 3 World<br>
+        My place:<span style="color:green">134</span>
+        </h1><br>
+        <div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
+          `;
+          people.everyone.map((person)=>{
+          scoreboard += `
+      <a href="#" id="etf" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+        <div class="row">
+          <div class="col-md-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="${person.image}?type=large" class="img img-fluid img-circle" alt="Cinque Terre" width="100" height-max="100" style="margin-top:10px;margin-bottom:10px">
+          </div></div><!----><div class="col-md-6 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${person.name}</h3><small class="text-muted">Current Level: ${person.level.level}</small>
+          </div>
+          </div><!----><div class="col-md-3" style="margin-top:20px;text-align:right"><h2 style="color:${person.total_roi >= 0 ? 'green' : 'red'}">${person.total_roi*100}%</h2><br><button type="button" class="btn btn-success btn-lg">More</button></div>
+        </div>
+      </a>`
+          })
+          scoreboard+= `</div>`
+          scoreboard+= `</div>`
+        
+        scoreboard += `<div id="friends" class="col-sm-6">
+        <h1 style="text-align:center">Top 3 Friends<br>
+        My place:<span style="color:green">14</span></h1><br>
+        <div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`
+        
+        people.friends.map((person)=>{
+          scoreboard += `
+      <a href="#" id="etf" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+        <div class="row">
+          <div class="col-md-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="${person.image}?type=large" class="img img-fluid img-circle" alt="Cinque Terre" width="100" height-max="100" style="margin-top:10px;margin-bottom:10px">
+          </div></div><!----><div class="col-md-6 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${person.name}</h3><small class="text-muted">Current Level: ${person.level.level}</small>
+          </div>
+          </div><!----><div class="col-md-3" style="margin-top:20px;text-align:right"><h2 style="color:${person.total_roi >= 0 ? 'green' : 'red'}">${person.total_roi*100}%</h2><br><button type="button" class="btn btn-success btn-lg">More</button></div>
+        </div>
+      </a>`
+        });
+        scoreboard += `</div>`;
+        scoreboard += `</div>`;
+        scoreboard+= `</div>`;
+        
+  
+  debugger;
+
+  scoreboard +=`<div>`
+  return scoreboard; 
+}
+
+const everyone = (data, d)=>{
+  return `<div id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
+  ${data.map( person=> 
+    `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+    <div class="row">
+      <div class="col-sm-3"><div style="height:140;border:0px solid #000">
+      <img src="/assets/Rashidprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
+      </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${person.name} chipped in ${person.last_portfolio_name}</h3><small class="text-muted">${new Date().getDay(person.investment_date)} days ago</small> </div>
+      </div><!----><div class="col-md-2" style="margin-top:90px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
+      </div>
+    </a>`
+    )
+  }
   </div>
-</a>
-  </div>`
-      $(document).on('click',"#scoreboardbtn",function(ev){
-        ev.preventDefault();
-        fader(scoreboard,"#people");
-    })
+  `
 }
 
 const onClickETF = ()=>{
   $(document).on('click','#etf', (ev)=>{
     ev.preventDefault();
     const childDiv = $(ev.currentTarget).context.lastElementChild;
-    // debugger;
+   
     if ($(childDiv).is(':visible')){
       $(childDiv).slideUp();
     }else{
       $(childDiv).slideDown();
     }
   })
+}
+
+const etfDetails = ()=>{
+  $(document).on('click','.etf_detail_listing', (ev)=>{
+    ev.preventDefault();
+    // etf_detail${lvlEtf.name}
+    debugger;
+    $(`#etf_detail${ev.currentTarget.id}`).toggle('slow');
+  });
 }
 
 const openModal = ()=>{
@@ -499,30 +578,26 @@ const clickNext = () =>{
   })
 }
 
-const defaultBox = () =>{
-      if(window.localStorage.box == 0){
-       $('.box p').replaceWith(`<p>We think starting is already a big step forward, so we give you 3% in each skill. Hooray! </p>`)
-    }else if(window.localStorage.box == 1){
-      $('.box p').replaceWith(`<p>Check the app and see where everything is located (each of the tasks is linked to a particular skill, you can see it by pointing on the feature it will show you what skill that feature increases)</p>`)
-    }else if(window.localStorage.box ==2){
-       $('.box p').replaceWith(`<p>So lets just kick it. Ive created few tasks for you, as you finish them you will get to the second level and get more perks opened for you</p>`)
-    }
+
+const showOnboardingSlider = ()=>{
+  // Onboarding slider
+  $('#onboarding-slider').slick({
+      adaptiveHeight: false,
+      arrows: true,
+      nextArrow: '<button class="slider-next">next</button>',
+      prevArrow: '',
+      infinite: false,
+  });
+  
+  $('#onboarding-slider').on('beforeChange', function(slick, currentSlide, nextSlide){
+      // action for last slide only
+      
+      if(currentSlide.currentSlide == (currentSlide.slideCount-2)){
+          
+          $('.slider-next').text('start').attr('id', 'closeModel');
+      }
+  });
 }
-
-const sliderIntro = ()=>{
-		jQuery(document).ready(function($) {
-			$('.my-slider').unslider();
-		});
-}
-
-const sliderNext = ()=>{
-  $(document).on('click','#nextBtnSlider',(ev)=>{
-    ev.preventDefault();
-      $('.my-slider').unslider('next');
-  })
-}
-
-
 
 const clickInvest = ()=>{
   $(document).on('click','#investbtn',(ev)=>{
@@ -531,7 +606,7 @@ const clickInvest = ()=>{
     let etfName = $($(ev.target.parentElement).context.childNodes[3]).val();
     $("#modalETFName").append(etfName);
     $("#etfID").val(etfId);
-    // debugger;
+  
     $('#investModal').modal('toggle');
   })
 }
@@ -623,7 +698,7 @@ const ibmBlueMixSendMesssage = ()=>{
   }
   
   const addPoint = (numPoints)=>{
-    debugger;
+  
         $.ajax
     ({
        type: "POST",
@@ -689,27 +764,24 @@ const specificWalkThrough = (element)=>{
 };
 
 $(document).ready(function(){
-    clickSocial();
-    // clickDashBoard();
-    friendsBtn();
-    scoreBoardBtn();
-    clickKnowledge();
-    clickExperience();
-    onClickETF();
-    etfLocked();
-    updateInfo();
-    openModal();
-    clickAmount();
-    clickNext();
-    // defaultBox();
-     sliderIntro();
-     sliderNext();
-     clickInvest();
-     submitInvest();
-     ibmBlueMixSendMesssage();
-     openLargeChatBox();
-     addPoint_finishGuide();
-     mainWalkThrough();
+  clickSocial();
+  showOnboardingSlider();
+  friendsBtn();
+  clickKnowledge();
+  clickExperience();
+  onClickETF();
+  etfLocked();
+  etfDetails();
+  updateInfo();
+  openModal();
+  clickAmount();
+  clickNext();
+  clickInvest();
+  submitInvest();
+  ibmBlueMixSendMesssage();
+  openLargeChatBox();
+  addPoint_finishGuide();
+  mainWalkThrough();
 })
 
 // git push git@github.com:isuruv/Fiduty.git  cloud9_2:cloud9_2

@@ -68,14 +68,23 @@ end
   
   def self.top_friends_roi(fb_ids)
     array = []
-    friends = User.where(fb_id: [fb_ids])
-    friends.each do |friend|
-      total_investments = friend.calculate_total_investment
-      total_value = friend.user_total_value
-      total_roi = friend.roi(total_value, total_investments)
-      array.push({"name":friend.name, "fb_id": friend.fb_id, "total_roi": total_roi })
+    fb_ids ? friends = User.where(uid: [fb_ids]) : friends = User.all 
+      friends.each do |friend|
+       total_investments = friend.calculate_total_investment
+       total_value = friend.user_total_value
+       total_roi = friend.roi(total_value, total_investments)
+       array.push({"level": friend.level, name:friend.name, "image": friend.image, "total_roi": total_roi.round(3) })
     end
-   array.sort_by{|friend| friend["total_roi"]}[0,5]
+   
+    arr = array.sort_by{|friend| friend[:total_roi]}.reverse![0,5]
+  # array[0,5]
+    arr
+  end
+  
+  def get_top_roi
+    friends_roi = User.top_friends_roi(self.get_friends_fb_ids)
+    everyone_roi = User.top_friends_roi(nil)
+    {"friends": friends_roi, "everyone": everyone_roi}
   end
 
   def self.portfolios_with_vals
@@ -127,7 +136,7 @@ end
         if friend
           friend.user_portfolios.each do |transaction|
             portfolio = Portfolio.find(transaction.portfolio_id)
-            transactions.push({'image': friend.image, 'user_id': friend.id, 'name': friend.name, 'last_portfolio_id': portfolio.id, 'last_portfolio_name': portfolio.name,
+            transactions.push({'image': friend.image, 'user_id': friend.id, 'name': friend.name, 'last_portfolio_id': portfolio.id, 'last_portfolio_name': portfolio.fiduty_name,
                               'roi': transaction.gain_loss, 'investment_date': transaction.investment_date.to_datetime.to_i})
           end
 
@@ -146,7 +155,7 @@ end
         if friend
           friend.user_portfolios.each do |transaction|
             portfolio = Portfolio.find(transaction.portfolio_id)
-            transactions.push({'image': friend.image, 'user_id': friend.id, 'name': friend.name, 'last_portfolio_id': portfolio.id, 'last_portfolio_name': portfolio.name,
+            transactions.push({'image': friend.image, 'user_id': friend.id, 'name': friend.name, 'last_portfolio_id': portfolio.id, 'last_portfolio_name': portfolio.fiduty_name,
                               'roi': transaction.gain_loss, 'investment_date': transaction.investment_date.to_datetime.to_i})
           end
 
@@ -270,12 +279,18 @@ end
   end
   end
   
-  def get_friends
+  def get_friends_fb_ids
     graph = Koala::Facebook::API.new(self.fb_id)
     friends = graph.get_connections("me", "friends", api_version: 'v2.0')
     fb_ids = friends.map{|friend| friend['id']}
+    fb_ids
+  end
+  def get_friends
+    fb_ids = self.get_friends_fb_ids
     User.recent_friend_investment(fb_ids)
   end
+  
+  
   
   def add_points(points = 1)
     self.points += points
