@@ -9,7 +9,7 @@ gem 'bootstrap-sass', '3.2.0.2'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 gem 'pry'
-gem 'therubyracer'
+# gem 'therubyracer'
 gem 'coffee-script-source'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

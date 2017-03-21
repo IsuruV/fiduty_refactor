@@ -1,5 +1,5 @@
 console.log("users js");
-const socialContent =(users)=>{ 
+function socialContent(users){ 
 
 let socialFeed = `  <div class="main-dashboard">
 		  <div class="social-content">
@@ -57,11 +57,11 @@ let socialFeed = `  <div class="main-dashboard">
 		return socialFeed;
 }
 
-const socialContentFriendList=(users)=>{
+function socialContentFriendList(users){
   let socialFeed = `<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`
        if (users.length >0){
       
-       for(let i=0; i<users.length; i++){
+       for(let i=0; i< users.length; i++){
           socialFeed +=  `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
             <div class="row">
              <div class="col-sm-3"><div style="height:140;border:0px solid #000">
@@ -130,7 +130,7 @@ var mainDashBoardContent =`  <div class="main-dashboard">
 			</div>
 `
 
-const getPeopleInvestments = (endPoint, render = socialContent, place='.main-dashboard')=>{
+function getPeopleInvestments(endPoint, render = socialContent, place='.main-dashboard'){
   $.ajax({
     type:'get',
     url:`/users/${endPoint}.json`,
@@ -229,7 +229,7 @@ var knowledgeContent = `
 
 
 // Imagine all the tech companies in the United States. This portfolio represents little portion of each of them. Apple, Amazon and Google and all of them
-const etfList = (data)=>{
+function etfList(data){
   let etfs = data['portfolios'];
   let userData = data['user'];
   let userLvl = $('#userLvl').val();
@@ -335,7 +335,7 @@ const etfList = (data)=>{
 }
 
   
- const getTenPortflios = ()=>{
+function getTenPortflios(){
                 $.ajax({
             type: 'get',
             url: `/portfolios/ten_portfolios.json`,
@@ -366,7 +366,7 @@ function clickSocial(){
     
 }
 
-const socialChoiceTabs = ()=>{
+function socialChoiceTabs(){
    $(document).on('click',"#everyonebtn",(ev)=>{
     ev.preventDefault();
     
@@ -437,7 +437,7 @@ function friendsBtn(){
     })
 }
 
-const  scoreboardContent= (people)=>{
+function scoreboardContent(people){
   let scoreboard = `<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`;
   scoreboard += `<div class="col-sm-6">
         <h1 style="text-align:center">Top 3 World<br>
@@ -484,13 +484,13 @@ const  scoreboardContent= (people)=>{
         scoreboard+= `</div>`;
         
   
-  debugger;
+ 
 
   scoreboard +=`<div>`
   return scoreboard; 
 }
 
-const everyone = (data, d)=>{
+function everyone(data, d){
   return `<div id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
   ${data.map( person=> 
     `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
@@ -507,7 +507,7 @@ const everyone = (data, d)=>{
   `
 }
 
-const onClickETF = ()=>{
+function onClickETF(){
   $(document).on('click','#etf', (ev)=>{
     ev.preventDefault();
     const childDiv = $(ev.currentTarget).context.lastElementChild;
@@ -520,7 +520,7 @@ const onClickETF = ()=>{
   })
 }
 
-const etfDetails = ()=>{
+function etfDetails(){
   $(document).on('click','.etf_detail_listing', (ev)=>{
     ev.preventDefault();
     // etf_detail${lvlEtf.name}
@@ -529,14 +529,14 @@ const etfDetails = ()=>{
   });
 }
 
-const openModal = ()=>{
+function openModal(){
   let signInCount = parseInt($('#sign_in_count').val());
   if (signInCount <= 1 && window.localStorage.count !="1"){
     $('#myModal').modal('toggle');
     window.localStorage.count="1";
   }
 }
-const updateInfo = ()=>{
+function updateInfo(){
         $(document).on('click','#update_user_info',(ev)=>{
         let name = $('#myModal #recipient-name').val();
         let email = $('#myModal #recipient-email').val();
@@ -561,7 +561,7 @@ const updateInfo = ()=>{
   })
 }
 var counter = 0;
-const clickNext = () =>{
+function clickNext(){
   $(document).on('click', '#next', (ev)=>{
     ev.preventDefault(); 
     if(counter == 0){
@@ -579,7 +579,7 @@ const clickNext = () =>{
 }
 
 
-const showOnboardingSlider = ()=>{
+function showOnboardingSlider(){
   // Onboarding slider
   $('#onboarding-slider').slick({
       adaptiveHeight: false,
@@ -599,7 +599,7 @@ const showOnboardingSlider = ()=>{
   });
 }
 
-const clickInvest = ()=>{
+function clickInvest(){
   $(document).on('click','#investbtn',(ev)=>{
     ev.preventDefault();
     let etfId = $($(ev.target.parentElement).context.childNodes[2]).val();
@@ -611,7 +611,7 @@ const clickInvest = ()=>{
   })
 }
 
-const submitInvest = ()=>{
+function submitInvest(){
   $(document).on('click', "#makeInvestment", (ev)=>{
     ev.preventDefault();
     let investmentAmount = $("#amountInvested").val()
@@ -630,7 +630,7 @@ const submitInvest = ()=>{
           });
   })
 }
-const messageFormat = (input)=>{
+function messageFormat(input){
   return `                <li class="left clearfix" style="padding:0px">
                 <div class="chat-body clearfix" style="padding:0px">
                 <div class="header">
@@ -644,7 +644,7 @@ const messageFormat = (input)=>{
                 </li>`
 }
 
-const userMessageFormat = (input, name)=>{
+function userMessageFormat(input, name){
   return `                <li class="right clearfix" style="padding:0px">
                 <div class="chat-body clearfix" style="padding:0px">
                 <div class="header">
@@ -658,7 +658,7 @@ const userMessageFormat = (input, name)=>{
                 </li>`
 }
 
-const ibmBlueMixSendMesssage = ()=>{
+function ibmBlueMixSendMesssage(){
   $(document).on('submit','#watson',(ev)=>{
       ev.preventDefault();
       // $('ul.chat').append('<img id="typing" src="https://cdn.codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif"></img>')
@@ -690,14 +690,14 @@ const ibmBlueMixSendMesssage = ()=>{
 }
 
   
-  const openLargeChatBox = ()=>{
+function openLargeChatBox(){
     $(document).on('click',"#openChatBoxModal", (ev)=>{
       ev.preventDefault();
       $('#chatbotModal').modal('toggle');
     })
   }
   
-  const addPoint = (numPoints)=>{
+function addPoint(numPoints){
   
         $.ajax
     ({
@@ -712,7 +712,7 @@ const ibmBlueMixSendMesssage = ()=>{
        
   }
   
-  const addPoint_finishGuide = ()=>{
+function addPoint_finishGuide(){
     $(document).on('click','button#closeModel', (ev)=>{
       console.log('closed');
       addPoint(1);
@@ -720,18 +720,18 @@ const ibmBlueMixSendMesssage = ()=>{
 }
 
 // moves character and increments progress bar
-const moveCharacter = ()=>{
+function moveCharacter(){
   $('#userChar').animate({left: "+=8px"}, 100);
    $('#userPic').animate({left: "+=8px"}, 100);
    incrementProgess();
 }
 
-const incrementProgess = ()=>{
+function incrementProgess(){
   let current_width = $('#myProgress').width();
   $('#myProgress').width( current_width += 8 );
 }
 
-const etfLocked = ()=>{
+function etfLocked(){
   $(document).on('click','a#etf_grey',(ev)=>{
     ev.preventDefault();
     alert("Sorry! You don't have access to this one yet, keep doing those tasks!")
@@ -739,7 +739,7 @@ const etfLocked = ()=>{
 
 }
 
-const mainWalkThrough = ()=>{
+function mainWalkThrough(){
   let signInCount = $('#userSignInCount').val();
   let points = $('#onboarding').val();
   if (signInCount <=1 && points == '1' && localStorage.dashboardWalkThrough!= '1'){
@@ -751,7 +751,7 @@ const mainWalkThrough = ()=>{
   
 }
 
-const specificWalkThrough = (element)=>{
+function specificWalkThrough(element){
   let signInCount = $('#userSignInCount').val();
   let points = $('#onboarding').val();
   // && localStorage.specificWalkThrough != 2
@@ -763,7 +763,7 @@ const specificWalkThrough = (element)=>{
   
 };
 
-const mobileMenu = ()=> {
+function mobileMenu(){
   let menu = $('#mobile-menu'),
       menuStart = $('#menu-start'),
       overlay = $('.menu-overlay'),
