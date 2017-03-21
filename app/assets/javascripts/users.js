@@ -21,7 +21,7 @@ let socialFeed = `  <div class="main-dashboard">
 <div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
      `
      
-     if (users.length >0){
+     if (users.length > 0){
       
        for(let i=0; i<users.length; i++){
           socialFeed +=  `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
