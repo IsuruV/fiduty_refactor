@@ -8,8 +8,8 @@ Bundler.require(*Rails.groups)
 
 module Fid
   class Application < Rails::Application
-    config.assets.initialize_on_precompile = false
-    config.assets.enabled = false
+    # config.assets.initialize_on_precompile = false
+    # config.assets.enabled = false
     config.middleware.use Rack::Cors do
       allow do
         origins '*'
