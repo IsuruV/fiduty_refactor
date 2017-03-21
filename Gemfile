@@ -10,13 +10,13 @@ gem 'bootstrap-sass', '3.2.0.2'
 gem 'puma', '~> 3.0'
 gem 'pry'
 gem 'therubyracer'
-gem 'coffee-script-source'
+# gem 'coffee-script-source'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
-# gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 4.2'
 gem 'rb-readline', '~> 0.5.3'
 gem 'active_model_serializers'
 gem 'faker', '~> 1.6', '>= 1.6.6'
