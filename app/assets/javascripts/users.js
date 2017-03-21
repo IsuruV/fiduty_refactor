@@ -763,6 +763,32 @@ const specificWalkThrough = (element)=>{
   
 };
 
+const mobileMenu = ()=> {
+  let menu = $('#mobile-menu'),
+      menuStart = $('#menu-start'),
+      overlay = $('.menu-overlay'),
+      profileToggle = $('.menu_user'),
+      menuProfile = $('.menu_profile'),
+      body = $('body');
+      
+  menuStart.click(function(e){
+    e.preventDefault();
+    menu.addClass('active');
+    body.addClass('no-scroll');
+    overlay.show();
+  });
+  
+  overlay.click(function(e){
+    menu.removeClass('active');
+    body.removeClass('no-scroll');
+    overlay.hide();
+  });
+  
+  profileToggle.click(function(){
+    menuProfile.slideToggle();
+  });
+};
+
 $(document).ready(function(){
   clickSocial();
   showOnboardingSlider();
@@ -774,6 +800,7 @@ $(document).ready(function(){
   etfDetails();
   updateInfo();
   openModal();
+  mobileMenu();
   clickAmount();
   clickNext();
   clickInvest();
