@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 
 gem 'pg'
+gem 'bootstrap-sass', '3.2.0.2'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 gem 'pry'
@@ -21,10 +22,9 @@ gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'yahoo-finance'
 
 
-gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'thin'
-gem 'bootswatch-rails'
+# gem 'bootswatch-rails'
 
 gem 'market_beat'
 gem 'nas-yahoo_stock', '~> 1.0', '>= 1.0.8'
@@ -75,11 +75,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'pg'
+  # gem 'pg'
 end
 
 group :production do
-gem 'pg'
+# gem 'pg'
 gem 'rails_12factor', '0.0.2' #Heroku static assets for image and css
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
