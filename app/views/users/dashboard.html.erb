@@ -242,45 +242,59 @@ div.panel
 			
 <!------------Chatbot Modal------------->
 
-    
-    
-    <div id="chatbotModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:50%; height:60%; margin-left:25%;margin-top:5%;margin-rigt:auto; position:fixed; overflow:hidden">
-        
-    <div class="modal-content">
-        <h4 style="position-fixed; color:rgba(51, 153, 204, 1); text-align:center;padding-top:5px"><i class="fa fa-comments-o" aria-hidden="true"></i>
-        Richie the Bot</h4>
-        
-        <div class="modal-body" style="overflow-x:hidden;overflow:hidden;">
-        
-        <div class="box" style="max-height:200px; min-height:200px;overflow:auto;border-style:solid; border-color:#dcdcdc;border-width:thin;border-bottom-style:none">
-            <ul class="chat">
-            </ul>
+    <div id="chatbotModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="chatBotModal" aria-hidden="true" >
+        <div class="chat-box chat-box-modal">
+    	    <div data-step="1" data-intro="Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime.">
+                <h4 class="chat-title clearfix">
+                    <i class="fa fa-comments-o" aria-hidden="true"></i>
+                    Richie the Bot
+                    <span class="pull-right" >
+                        <span class="chat-control">
+                            <i class="fa fa-close" data-dismiss="modal" aria-hidden="true"></i>
+                        </span>
+                    </span>
+                </h4>
+            </div>
+            <div class="chat-content">
+                <ul class="chat">
+                    <!-- Should probably be empty, content is just for example -->
+                    <li class="msg msg-richie">
+                        <div class="msg-header clearfix">
+                            <strong class="msg-author">Richie</strong> 
+                            <small class="msg-time text-muted">
+                                <span class="glyphicon glyphicon-time"></span>
+                                14 mins ago
+                            </small>
+                        </div>
+                        <div class="msg-body">
+                            <p>Hi Im here to help</p>
+                        </div>
+                    </li>
+                    <li class="msg msg-user" >
+                        <div class="msg-header clearfix">
+                            <strong class="msg-author" >User</strong> 
+                            <small class="msg-time text-muted">
+                                <span class="glyphicon glyphicon-time"></span>
+                                14 mins ago
+                            </small>
+                        </div>
+                        <div class="msg-body">
+                            <p>Hello, could you please tell me, where should I start?</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="chat-footer">
+                <form id="watson">
+                    <div class="chat-form">
+                        <input id="user-input" type="text" class="chat-input" placeholder="Type your message here" />
+                        <input id="btn-chat" type="submit" class="chat-btn btn btn-info" value="Go">
+                    </div>
+                </form>
+            </div>
         </div>
-
-      	<div class="modal-footer" style="position-fixed">
-      		    <div class="input-group">
-      		<form id="watson">
-                <input id="user-input" type="text" class="user-input2 form-control input-sm" placeholder="Type your message here..." />
-                <button class="btn btn-primary" id="btn-chat" style="width:80px;">
-                Send</button>
-                <button id="btn-chat" type="button" class="btn btn-default" data-dismiss="modal" style="width:80px;">Close</button>
-            </form>
-      	</div></div>
-
     </div>
-    </div>
-    </div>
-        
-        
 
-
-<!------------------------->
-			
-			
-			
-	<script>
-	    $('a.unslider-arrow').hide()
-	</script>			
 </body>
 </html>
 

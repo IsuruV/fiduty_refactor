@@ -689,14 +689,32 @@ function ibmBlueMixSendMesssage(){
 
 }
 
-  
 function openLargeChatBox(){
-    $(document).on('click',"#openChatBoxModal", (ev)=>{
-      ev.preventDefault();
-      $('#chatbotModal').modal('toggle');
-    })
-  }
+  $(document).on('click',"#openChatBoxModal", (ev)=>{
+    ev.preventDefault();
+    $('#chatbotModal').modal('toggle');
+  })
+}
+function minimizeChatBox(){
   
+  $(document).on('click',"#minimizeChatBox", (ev)=>{
+    ev.preventDefault();
+    $('.chat-box-fixed').addClass('minimized');
+  });
+  
+  $(window).on('resize', function(){
+    if($(window).width()<600){
+      $('.chat-box-fixed').addClass('minimized');
+    }
+  });
+}
+function restoreChatBox(){
+  $(document).on('click',"#restoreChatBox", (ev)=>{
+    ev.preventDefault();
+    $('.chat-box-fixed').removeClass('minimized');
+  })
+}
+
 function addPoint(numPoints){
   
         $.ajax
@@ -721,15 +739,13 @@ function addPoint_finishGuide(){
 
 // moves character and increments progress bar
 function moveCharacter(){
-  $('#userChar').animate({left: "+=8px"}, 100);
-   $('#userPic').animate({left: "+=8px"}, 100);
-   incrementProgess();
+  var lvl = $('#userLvl').val();
+  if(lvl) {
+      $('#progressUserChar').css('margin-left', lvl+'%');
+      $('#progressUserBar').css('width', lvl+'%');
+  }
 }
 
-function incrementProgess(){
-  let current_width = $('#myProgress').width();
-  $('#myProgress').width( current_width += 8 );
-}
 
 function etfLocked(){
   $(document).on('click','a#etf_grey',(ev)=>{
@@ -795,6 +811,7 @@ $(document).ready(function(){
   friendsBtn();
   clickKnowledge();
   clickExperience();
+  moveCharacter();
   onClickETF();
   etfLocked();
   etfDetails();
@@ -807,6 +824,8 @@ $(document).ready(function(){
   submitInvest();
   ibmBlueMixSendMesssage();
   openLargeChatBox();
+  minimizeChatBox();
+  restoreChatBox();
   addPoint_finishGuide();
   mainWalkThrough();
 })

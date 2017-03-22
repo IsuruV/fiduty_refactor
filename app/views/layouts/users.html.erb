@@ -10,6 +10,7 @@
     <link href="css/font-awesome.css" rel="stylesheet">
 
     <!-- Vendor styles -->
+    <link href="https://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/introjs.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel='stylesheet'>
@@ -22,7 +23,8 @@
     <!-- JS libraries -->
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
-    <script src="js/jquery.min.js"> </script>
+    <script src="js/jquery.min.js"></script>
+    <script src="https://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -38,32 +40,15 @@
     <script src="js/custom.js"></script>
     <script>
     	$(function () {
-    	   // // Onboarding slider
-    	   // $('#onboarding-slider').slick({
-    	   //     adaptiveHeight: false,
-    	   //     arrows: true,
-    	   //     nextArrow: '<button class="slider-next">next</button>',
-    	   //     prevArrow: '',
-    	   //     infinite: false,
-    	   // });
-    	    
-    	   // $('#onboarding-slider').on('beforeChange', function(slick, currentSlide, nextSlide){
-    	   //     // action for last slide only
-    	        
-    	   //     if(currentSlide.currentSlide == (currentSlide.slideCount-2)){
-    	            
-    	   //         $('.slider-next').text('start').attr('id', 'closeModel');
-    	   //     }
-    	   // });
+
     		$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
     
     		if (!screenfull.enabled) {
     			return false;
     		}
-    
-    // 		$('#toggle').click(function () {
-    // 			screenfull.toggle($('#container')[0]);
-    // 		});
+    		$(window).on("load",function(){
+                $(".chat-content").mCustomScrollbar();
+            });
     	});
     </script>
 </head>
@@ -80,75 +65,82 @@
 <%= render partial: '/layouts/nav' %>
 
 
-	<div id="wrapper" style="min-height:100%">
-		<input id="userSignInCount" type="hidden" value=<%=current_user.sign_in_count if current_user%>></input>
+<div id="wrapper" style="min-height:100%">
+	<input id="userSignInCount" type="hidden" value=<%=current_user.sign_in_count if current_user%>>
 		
-		
-	
-<!------------Chatbot Button------------->
-
-		<!--<div class="box" style="height:250px;width:220px; border-style:solid; border-color:black;border-width:thin; margin-top:260px; margin-left:20px; margin-bottom:40px; position:fixed;overflow:scroll;">-->
-		<!--<p id ="writing" style="font-size:1em; color:rgba(51, 153, 204, 1);">Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime, I'm powered by Artificial Intelligence.</p>-->
-	<div class="col-md-3">
-	   <div data-step="1" data-intro="Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime." class="box" style="min-height:310px;width:240px; margin-top:260px; margin-left:0px; margin-bottom:40px; position:fixed; font-size:16px; border-style:solid; border-color:black;border-width:thin;">
-	       <div class="row"><div class="col-xs-9 col-xs-offset-0"><h4 style="color:rgba(51, 153, 204, 1); text-align:left;padding-top:5px;padding-left:12px"><i class="fa fa-comments-o" aria-hidden="true"></i>
-Richie the Bot</div><div class="col-xs-3" style="text-align:right;padding-right:20px;padding-top:5px"><a id="openChatBoxModal" href="#"><i class="fa fa-plus-square-o" aria-hidden="true" style="color:rgba(51, 153, 204, 1);"></i></a></h4></div></div>
-
-	       <div class="panel-body" style="overflow-y: scroll; padding:5px; height:180px">
+    <!------------Chatbot Window------------->
+	<div class="chat-box chat-box-fixed">
+	    <div data-step="1" data-intro="Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime.">
+            <h4 class="chat-title clearfix">
+                <i class="fa fa-comments-o" aria-hidden="true"></i>
+                Richie the Bot
+                <span class="pull-right" >
+                    <span id="minimizeChatBox" class="chat-control minimized-hidden">
+                        <i class="fa fa-window-minimize" aria-hidden="true"></i>
+                    </span>
+                    <span id="restoreChatBox" class="chat-control maximized-hidden">
+                        <i class="fa fa-window-maximize" aria-hidden="true"></i>
+                    </span>
+                    <span id="openChatBoxModal" class="chat-control">
+                        <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+                    </span>
+                </span>
+            </h4>
+        </div>
+        <div class="chat-content">
             <ul class="chat">
-                <li class="left clearfix" style="padding:0px">
-                <div class="chat-body clearfix" style="padding:0px">
-                <div class="header">
-                <strong class="primary-font" style="color:rgba(51, 153, 204, 1)">Richie</strong> <small class="pull-right text-muted">
-                <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
-                </div>
-                        <p>
-                            Hi Im here to help
-                        </p>
-                </div>
+                <li class="msg msg-richie">
+                    <div class="msg-header clearfix">
+                        <strong class="msg-author">Richie</strong> 
+                        <small class="msg-time text-muted">
+                            <span class="glyphicon glyphicon-time"></span>
+                            14 mins ago
+                        </small>
+                    </div>
+                    <div class="msg-body">
+                        <p>Hi Im here to help</p>
+                    </div>
+                </li>
+                <li class="msg msg-user" >
+                    <div class="msg-header clearfix">
+                        <strong class="msg-author" >User</strong> 
+                        <small class="msg-time text-muted">
+                            <span class="glyphicon glyphicon-time"></span>
+                            14 mins ago
+                        </small>
+                    </div>
+                    <div class="msg-body">
+                        <p>Hello, could you please tell me, where should I start?</p>
+                    </div>
                 </li>
             </ul>
-            </div>
-            
-            <div class="panel-footer">
-                <div class="input-group">
-                     <form id="watson">
-                        <input id="user-input" type="text" class="user-input form-control input-sm" placeholder="Type your message here..." />
-                        <span class="input-group-btn">
-                           <input type="submit" class="btn btn-primary btn-sm" id="btn-chat"value="Send"></input>
-                       </span>
-                     </form>
-                     
+        </div>
+        <div class="chat-footer">
+            <form id="watson">
+                <div class="chat-form">
+                    <input id="user-input" type="text" class="chat-input" placeholder="Type your message here" />
+                    <input id="btn-chat" type="submit" class="chat-btn btn btn-info" value="Go">
                 </div>
-            </div>
-        </div></div>
+            </form>
+        </div>
+    </div>
 
-		<!--<a id="next" class="btn btn-default btn-lg" style="white-space: normal; margin-top:520px; margin-left:170px; margin-bottom:40px; position:fixed;"><h4>Next</h4></a>-->
-
-	
 	<div id="page-wrapper" >
-	<div class="content-main" style="background:white">
-
-     <input id="userLvl" type="hidden" value=<%=current_user.level_id if @user%>></input>
-  <%= render partial: '/layouts/progressboxes' %>
-  <%= yield %>
-
-	 
-<!---->
-
-<!------------Footer------------->
-
-
-<!------------------------->
-	
-</div>
-</div>
+	    <div class="content-main" >
+            <!-------------------Progress bar----->
+            <input id="userLvl" type="hidden" value=<%=current_user.level_id if @user%>>
+            <%= render partial: '/layouts/progressboxes' %>
+            <!-------------------Progress bar end----->
+            
+            <%= yield %>
+        </div>
+    </div>
+    <!------------Footer------------->
 	<footer class="copy" style="text-align:right; padding-right:45px;">
-    <p>2017 Fiduty - all rights reserved</p>
-	<div class="clearfix"> </footer>
+        <p>2017 Fiduty - all rights reserved</p>
+	    <div class="clearfix"> 
+	</footer>
 </div>
-<!---->
-
 </body>
 </html>
 
