@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
     user.name = auth.info.name   # assuming the user model has a name
     user.image = auth.info.image # assuming the user model has an image
     user.points = 0
+    user.set_public_info
     # user.fb_id = auth.uid
     # If you are using confirmable and the provider(s) you use validate emails, 
     # uncomment the line below to skip the confirmation emails.
@@ -285,6 +286,16 @@ end
     fb_ids = friends.map{|friend| friend['id']}
     fb_ids
   end
+  
+  def set_public_info
+    graph = Koala::Facebook::API.new(self.fb_id)
+    self.age_range = graph.get_object("me?fields=age_range")['age_range']['min']
+    self.gender = graph.get_object("me?fields=gender")['gender']
+    self.locale = graph.get_object("me?fields=locale")['locale']
+    self.birthday = graph.get_object("me?fields=birthday")['birthday']
+    self.save
+  end
+  
   def get_friends
     fb_ids = self.get_friends_fb_ids
     User.recent_friend_investment(fb_ids)

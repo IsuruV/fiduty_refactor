@@ -1,37 +1,35 @@
-<div class="clearfix">
-    <div class="progress-box pull-right"> 
-    	<div>	
-    	    <!-- Main landscape -->
-    	    <div class="progress-landscape">
-    	        <div class="progress-path clearfix">
-    	            <div class="progress-statistics pull-right">
-    	                <div>
-    	                    Goal: <span style="color:green">Level 100</span>
-    	                </div>
-    	                <div>
-    	                    Current: <span style="color:green">Level <%=@user.level.level if @user%></span>
-                        </div>
+
+<div class="progress-box"> 
+	    <!-- Main landscape -->
+	    <div class="progress-landscape">
+	        <div class="progress-path clearfix">
+	            <div class="progress-statistics pull-right">
+	                <div>
+	                    Goal: <span style="color:green">Level 100</span>
+	                </div>
+	                <div>
+	                    Current: <span style="color:green">Level <%=@user.level.level if @user%></span>
+                    </div>
+	            </div>
+    	        <div id="progressUserChar" class="progress-user">
+    	            <div class="avatar">
+    	                <img src=<%=@user.image+"?type=large" if @user%>>
     	            </div>
-        	        <div id="progressUserChar" class="progress-user">
-        	            <div class="avatar">
-        	                <img src=<%=@user.image+"?type=large" if @user%>>
-        	            </div>
-        	            <div class="char">
-        	                <img src="/assets/character2.svg">
-        	            </div>
-        	        </div>
+    	            <div class="char">
+    	                <img src="/assets/character2.svg">
+    	            </div>
     	        </div>
-    	    </div>
-    	    <div class="progress-bar">
-    	        <div id="progressUserBar" class="progress-status" data-step="2" data-intro="We think starting is already a big step forward, so we give you 3% in each skill. Hooray!"></div>
-    	    </div>
-    	    <div class="progress-landmarks clearfix">
-    	        <small>Learn</small>
-    	        <small>Invest real</small>
-    	        <small>Co-invest</small>
-    	        <small>Finish line</small>
-    	    </div>
-        </div>
-        <br>
-    </div>
+	        </div>
+	    </div>
+	    <div class="progress-bar">
+	        <div id="progressUserBar" class="progress-status" data-step="2" data-intro="We think starting is already a big step forward, so we give you 3% in each skill. Hooray!"></div>
+	    </div>
+	    <div class="progress-landmarks clearfix">
+	        <small>Learn</small>
+	        <small>Invest real</small>
+	        <small>Co-invest</small>
+	        <small>Finish line</small>
+	    </div>
+    <br>
 </div>
+

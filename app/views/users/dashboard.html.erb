@@ -54,51 +54,42 @@ div.panel
  
 
 </style>
-
- <!----------------Content Mid
-					---------------------->				
-  <div class="main-dashboard">
-		<div class="middle-content" style="padding-bottom:2em; border-style:none; margin-top: 0px;margin-right: 5px; margin-left: 5px;  box-shadow:none;padding-top:0px; padding-left:20px; padding-right:20px">
-		 <div class="row">
-		 <div class="col-sm-4" style="padding-top:25px;padding-right:20px; padding-left:30px;text-align:center">
-		    <h3 style="color:grey">Complete these tasks to get to: <br><span style="color:green">Level <%=@user.level.level+1 if @user%></span></h3>
-		 </div><!---><div class="col-sm-8" style="padding-left:0px;padding-right:30px">   
-		    <!--<h2 style="text-align:center;">Tasks</h2><br>-->
-	     <!--   <div class="row-fluid">-->
-      <!--      <div class="btn-group btn-group-justified" style="height:80px;">-->
-      <!--        <a href="#" class="btn btn-warning btn-lg" style="white-space: normal">Completed</a>-->
-      <!--        <a href="#" class="btn btn-success btn-lg" style="white-space: normal;">Current tasks</a>-->
-      <!--        <a href="#" class="btn btn-primary btn-lg" style="white-space: normal;">Upcoming tasks</a>-->
-      <!--      </div>-->
-      <!--      </div>-->
-        
- <!----------------Cards---------------------->
-        
-      <div data-step="3" data-intro="Check the app and see where everything is located  Ive created few tasks for you, as you finish them you will get to the second level and get more perks opened for you. My primary job is to guide you, but I can definitely other things too. Feel free to ask me questions about your tasks, friends, rules, investments etc. " class="list-group" style="font-family:'Roboto'; font-size:16px; color:#666666; padding:0px; "><% @user.user_tasks.each do |user_task| %>
-
-                <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
-                <div class="row">
-                    
-                    <div class="col-md-2">
-                         <% if user_task.completed %>
-                        <h4 style="color:green">
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                        </h4>
-                        <%end%>
-                    </div><div class="col-md-6 vcenter" style="height:80;border:0px solid #F00; padding-left:10px;"><h4><%=user_task.task.task%></h4>
-                </div>
-                 <div class="col-md-3 vcenter" style="height:80;border:0px solid #F00; padding-left:10px;color:green"><h4>+1 <%=user_task.task.table_skill.skill_name%></h4></div>
-   
-                </div>
-                </a>
-                <% end %>
+<!----------------Content Mid ---------------------->	
+<div class="main-dashboard">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                 <h2 class="user-task-title grey">Complete these tasks to get to: <br><span class="green">Level <%=@user.level.level+1 if @user%></span></h2>
             </div>
-</div></div>
-			</div>
+            <div class="col-md-8 no-padding">
+                <div data-step="3" data-intro="Check the app and see where everything is located  Ive created few tasks for you, as you finish them you will get to the second level and get more perks opened for you. My primary job is to guide you, but I can definitely other things too. Feel free to ask me questions about your tasks, friends, rules, investments etc. " class="list-group">
+                    <% @user.user_tasks.each do |user_task| %>
+                        <a id=knowledge-tab href="#" class="list-group-item user-task">
+                           <div class="row">
+                               <div class="col-md-2">
+                                    <% if user_task.completed %>
+                                        <span class="green">
+                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                        </span>
+                                    <%end%>
+                                </div>
+                                <div class="col-md-6">
+                                    <span><%=user_task.task.task%></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="green">+1 <%=user_task.task.table_skill.skill_name%></span>
+                                </div>
+                           </div>
+                        </a>
+                    <%end%>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-		    </div>
- <!----------------End Content Mid
-					---------------------->	
+			
+ 
+ <!----------------End Content Mid ---------------------->	
 
 
 <!---->
@@ -168,7 +159,7 @@ div.panel
       			
       		<div class="modal-footer">
       	    	<input type="hidden" id="etfID" value=""></input>
-      			<button id="makeInvestment" type="button" class="btn btn-success" style="width:80px;">Invest</button>
+      			<button id="makeInvestment" type="button" class="btn btn-success" style="margin-bottom:0px; width:80px;">Invest</button>
         		<button type="button" class="btn btn-default" data-dismiss="modal" style="width:80px;">Close</button>
       		</div>
       	
@@ -183,7 +174,7 @@ div.panel
 
 
 <!-----------Cash Modal End---->
-    <div id="cashModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:50%; margin-left:25%;margin-top:5%;margin-rigt:auto; position:fixed">
+    <div id="cashModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:50%; margin-left:25%;margin-top:5%;margin-right:auto; position:fixed">
   	<div class="modal-content">
     <div>
             
@@ -257,7 +248,7 @@ div.panel
             </div>
             <div class="chat-content">
                 <ul class="chat">
-                    <!-- Should probably be empty, content is just for example -->
+                    <!-- Should probbly be empty, content is just for example -->
                     <li class="msg msg-richie">
                         <div class="msg-header clearfix">
                             <strong class="msg-author">Richie</strong> 
@@ -267,21 +258,21 @@ div.panel
                             </small>
                         </div>
                         <div class="msg-body">
-                            <p>Hi Im here to help</p>
+                            <p>Feel free to ask me questions anytime.</p>
                         </div>
                     </li>
-                    <li class="msg msg-user" >
-                        <div class="msg-header clearfix">
-                            <strong class="msg-author" >User</strong> 
-                            <small class="msg-time text-muted">
-                                <span class="glyphicon glyphicon-time"></span>
-                                14 mins ago
-                            </small>
-                        </div>
-                        <div class="msg-body">
-                            <p>Hello, could you please tell me, where should I start?</p>
-                        </div>
-                    </li>
+                    <!--<li class="msg msg-user" >-->
+                    <!--    <div class="msg-header clearfix">-->
+                    <!--        <strong class="msg-author" >User</strong> -->
+                    <!--        <small class="msg-time text-muted">-->
+                    <!--            <span class="glyphicon glyphicon-time"></span>-->
+                    <!--            14 mins ago-->
+                    <!--        </small>-->
+                    <!--    </div>-->
+                    <!--    <div class="msg-body">-->
+                    <!--        <p>Hello, could you please tell me, where should I start?</p>-->
+                    <!--    </div>-->
+                    <!--</li>-->
                 </ul>
             </div>
             <div class="chat-footer">
@@ -294,7 +285,67 @@ div.panel
             </div>
         </div>
     </div>
+        
+        
 
+
+<!------------------------->
+
+<!-----------Understand Lesson Modal---->
+
+
+    <div id="LessonModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:70%; margin-left:15%;margin-top:5%;margin-right:auto; position:fixed">
+  	<div class="modal-content">
+    <div>
+            
+            <ul class="nav nav-tabs nav-justified" style="font-size:2em">
+  		    <li class="active" style="color:green"><a data-toggle="tab" href="#Understand" >What is Investment?</a></li>
+		    </ul>
+        		
+    <div class="modal-body">
+     
+    <h2>Slideshow here</h2> 
+     
+    </div>
+      			
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal" style="width:80px;">Close</button>
+      		</div>
+    </div>
+    </div>
+    </div>
+
+<!-----------Understand Lesson Modal End---->
+
+<!-----------Understand Quiz Modal---->
+
+
+    <div id="QuizModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:70%; margin-left:15%;margin-top:5%;margin-right:auto; position:fixed">
+  	<div class="modal-content">
+    <div>
+            
+            <ul class="nav nav-tabs nav-justified" style="font-size:2em">
+  		    <li class="active" style="color:green"><a data-toggle="tab" href="#Understand" >Game: Which one is an investment?</a></li>
+		    </ul>
+        		
+    <div class="modal-body">
+     
+    <h2>Javascript game here</h2> 
+     
+    </div>
+      			
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal" style="width:80px;">Close</button>
+      		</div>
+    </div>
+    </div>
+    </div>
+
+<!-----------Understand Quiz Modal End---->
+
+
+
+			
 </body>
 </html>
 

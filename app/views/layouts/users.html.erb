@@ -62,14 +62,30 @@
 <!----End Onboarding---->
 
 <%= render partial: '/layouts/header' %>
-<%= render partial: '/layouts/nav' %>
+<!-- Main Grid -->
+<div class="clearfix page-content">
+    <div class="aside visible-lg">
+        <%= render partial: '/layouts/nav' %>
+    </div>
+    <div class="main">
+        <input id="userSignInCount" type="hidden" value=<%=current_user.sign_in_count if current_user%>>
+        <input id="userLvl" type="hidden" value=<%=current_user.level_id if @user%>>
+        <%= render partial: '/layouts/progressboxes' %>
+        <!-------------------Progress bar end----->
+        
+        <%= yield %>
+    </div>
+</div>
+<!------------Footer------------->
+<footer class="copy" style="text-align:right; padding-right:45px;">
+    <p>2017 Fiduty - all rights reserved</p>
+    <div class="clearfix"> 
+</footer>
 
 
-<div id="wrapper" style="min-height:100%">
-	<input id="userSignInCount" type="hidden" value=<%=current_user.sign_in_count if current_user%>>
-		
+
     <!------------Chatbot Window------------->
-	<div class="chat-box chat-box-fixed">
+	<div class="chat-box chat-box-fixed minimized">
 	    <div data-step="1" data-intro="Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime.">
             <h4 class="chat-title clearfix">
                 <i class="fa fa-comments-o" aria-hidden="true"></i>
@@ -98,49 +114,82 @@
                         </small>
                     </div>
                     <div class="msg-body">
-                        <p>Hi Im here to help</p>
+                        <p>Feel free to ask me questions anytime.</p>
                     </div>
                 </li>
-                <li class="msg msg-user" >
-                    <div class="msg-header clearfix">
-                        <strong class="msg-author" >User</strong> 
-                        <small class="msg-time text-muted">
-                            <span class="glyphicon glyphicon-time"></span>
-                            14 mins ago
-                        </small>
-                    </div>
-                    <div class="msg-body">
-                        <p>Hello, could you please tell me, where should I start?</p>
-                    </div>
-                </li>
+                <!--<li class="msg msg-user" >-->
+                <!--    <div class="msg-header clearfix">-->
+                <!--        <strong class="msg-author" >User</strong> -->
+                <!--        <small class="msg-time text-muted">-->
+                <!--            <span class="glyphicon glyphicon-time"></span>-->
+                <!--            14 mins ago-->
+                <!--        </small>-->
+                <!--    </div>-->
+                <!--    <div class="msg-body">-->
+                <!--        <p>Hello, could you please tell me, where should I start?</p>-->
+                <!--    </div>-->
+                <!--</li>-->
             </ul>
         </div>
         <div class="chat-footer">
             <form id="watson">
                 <div class="chat-form">
-                    <input id="user-input" type="text" class="chat-input" placeholder="Type your message here" />
+                    <input id="user-input2" type="text" class="chat-input" placeholder="Type your message here" />
                     <input id="btn-chat" type="submit" class="chat-btn btn btn-info" value="Go">
                 </div>
             </form>
         </div>
     </div>
+    
+    
+<!-----Chatbot End------>
 
-	<div id="page-wrapper" >
-	    <div class="content-main" >
-            <!-------------------Progress bar----->
-            <input id="userLvl" type="hidden" value=<%=current_user.level_id if @user%>>
-            <%= render partial: '/layouts/progressboxes' %>
-            <!-------------------Progress bar end----->
-            
-            <%= yield %>
+<!--Facebook info modal-->
+<div id="facebookModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">This is what we got from facebook.</h4>
+        <h4 class="modal-title">Make sure everything is correct!</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="user_name" value="<%=current_user.name%>" required>
         </div>
+        <div class="form-group">
+          <label for="email">email:</label>
+          <input type="email" class="form-control" id="user_email" value="<%=current_user.email%>" required>
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="age" class="form-control" id="user_age" value="<%=current_user.age_range%>" required>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <input type="gender" class="form-control" id="user_gender" value="<%=current_user.gender%>" required>
+        </div>
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <input type="location" class="form-control" id="user_location" value="<%=current_user.locale%>" required>
+        </div>
+        <div class="form-group">
+          <label for="birthday">Birthday:</label>
+          <input type="birthday" class="form-control" id="user_birthday"value="<%=current_user.birthday%>" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="update_user_info" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+      </div>
     </div>
-    <!------------Footer------------->
-	<footer class="copy" style="text-align:right; padding-right:45px;">
-        <p>2017 Fiduty - all rights reserved</p>
-	    <div class="clearfix"> 
-	</footer>
+
+  </div>
 </div>
+    <!---->
+
 </body>
 </html>
 
