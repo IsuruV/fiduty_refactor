@@ -136,7 +136,7 @@ function getPeopleInvestments(endPoint, render = socialContent, place='.main-das
     type:'get',
     url:`/users/${endPoint}.json`,
     dataType:'json'
-  }).done((data)=>{
+  }).done(function(data){
     // let friendsInvestments = renderFunction(data);
     
     fader(render(data),place);
@@ -145,8 +145,8 @@ function getPeopleInvestments(endPoint, render = socialContent, place='.main-das
 
 function quizList(){
   return `
-  <div id="knowlegeContent" data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
-        <a id=" href="#" style="border-radius:0px">
+  <div id="knowlegeContent" data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="margin-left:14px;margin-right:14px;font-family:'Roboto'; font-size:14px; color:#666666;">
+        <a id="" data-toggle="modal" data-target="#QuizModal" href="#" style="border-radius:0px">
         <div class="row list-group-item clearfix list-group-item-action align-items-start">
           <div class="col-sm-3">
           <div style="height:140;border:0px solid #000">
@@ -174,8 +174,9 @@ function quizList(){
 function understandList(){
 
   return `
-  <div id="knowlegeContent" data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
-    <a id=" href="#" style="border-radius:0px">
+  <div id="knowlegeContent" data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="margin-left:14px;margin-right:14px;font-family:'Roboto'; font-size:14px; color:#666666;">
+    
+    <a id="" data-toggle="modal" data-target="#LessonModal" href="#" style="border-radius:0px">
         <div class="row list-group-item clearfix list-group-item-action align-items-start">
           <div class="col-sm-3">
           <div style="height:140;border:0px solid #000">
@@ -586,18 +587,18 @@ function clickSocial(){
 }
 
 function socialChoiceTabs(){
-   $(document).on('click',"#everyonebtn",(ev)=>{
+   $(document).on('click',"#everyonebtn",function(ev){
     ev.preventDefault();
     
     getPeopleInvestments(`recent_everyone_investment`, socialContent);
   });
   
-  $(document).on('click','#friendsbtn',(ev)=>{
+  $(document).on('click','#friendsbtn',function(ev){
     ev.preventDefault();
     getPeopleInvestments('recent_friend_investment', socialContentFriendList, '#friendsList');
   });
   
-  $(document).on('click','#scoreboardbtn', (ev)=>{
+  $(document).on('click','#scoreboardbtn', function(ev){
       ev.preventDefault();
       getPeopleInvestments('scoreboard', scoreboardContent, '#friendsList');
   });
@@ -672,7 +673,7 @@ function scoreboardContent(people){
         </h1><br>
         <div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
           `;
-          people.everyone.map((person)=>{
+          people.everyone.map(function(person){
           scoreboard += `
       <a href="#" id="etf" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
         <div class="row">
@@ -693,7 +694,7 @@ function scoreboardContent(people){
         My place:<span style="color:green">14</span></h1><br>
         <div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`
         
-        people.friends.map((person)=>{
+        people.friends.map(function(person){
           scoreboard += `
       <a href="#" id="etf" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
         <div class="row">
@@ -702,7 +703,7 @@ function scoreboardContent(people){
           <img src="${person.image}?type=large" class="img img-fluid img-circle" alt="Cinque Terre" width="100" height-max="100" style="margin-top:10px;margin-bottom:10px">
           </div></div><!----><div class="col-md-6 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${person.name}</h3><small class="text-muted">Current Level: ${person.level.level}</small>
           </div>
-          </div><!----><div class="col-md-3" style="margin-top:20px;text-align:right"><h2 style="color:${person.total_roi >= 0 ? 'green' : 'red'}">${person.total_roi*100}%</h2><br><button type="button" class="btn btn-success btn-lg">More</button></div>
+          </div><!----><div class="col-md-3" style="margin-top:20px;text-align:right"><h2 style="color:${person.total_roi >= 0 ? 'green' : 'red'}">${(person.total_roi*100).toFixed(2)}%</h2><br><button type="button" class="btn btn-success btn-lg">More</button></div>
         </div>
       </a>`
         });
@@ -719,7 +720,7 @@ function scoreboardContent(people){
 
 function everyone(data, d){
   return `<div id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
-  ${data.map( person=> 
+  ${data.map( function(person){
     `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
     <div class="row">
       <div class="col-sm-3"><div style="height:140;border:0px solid #000">
@@ -728,6 +729,7 @@ function everyone(data, d){
       </div><!----><div class="col-md-2" style="margin-top:90px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
       </div>
     </a>`
+  }
     )
   }
   </div>
@@ -736,7 +738,7 @@ function everyone(data, d){
 
 
 function etfDetails(){
-  $(document).on('click','.etf', (ev)=>{
+  $(document).on('click','.etf', function(ev){
     ev.preventDefault();
     // etf_detail${lvlEtf.name}
     $(`#etf_detail${ev.currentTarget.id}`).toggle('slow');
@@ -753,7 +755,7 @@ function openModal(){
 
 var counter = 0;
 function clickNext(){
-  $(document).on('click', '#next', (ev)=>{
+  $(document).on('click', '#next', function(ev){
     ev.preventDefault(); 
     if(counter == 0){
        $('.box p').replaceWith(`<p>We think starting is already a big step forward, so we give you 3% in each skill. Hooray! </p>`)
@@ -791,7 +793,7 @@ function showOnboardingSlider(){
 }
 
 function clickInvest(){
-  $(document).on('click','#investbtn',(ev)=>{
+  $(document).on('click','#investbtn',function(ev){
     ev.preventDefault();
     let etfId = $($(ev.target.parentElement).context.childNodes[2]).val();
     let etfName = $($(ev.target.parentElement).context.childNodes[3]).val();
@@ -803,7 +805,7 @@ function clickInvest(){
 }
 
 function submitInvest(){
-  $(document).on('click', "#makeInvestment", (ev)=>{
+  $(document).on('click', "#makeInvestment", function(ev){
     ev.preventDefault();
     let investmentAmount = $("#amountInvested").val()
     let portfolioId = $('#etfID').val();
@@ -852,7 +854,7 @@ function userMessageFormat(input, name){
 }
 
 function ibmBlueMixSendMesssage(){
-  $(document).on('submit','#watson',(ev)=>{
+  $(document).on('submit','#watson',function(ev){
       ev.preventDefault();
       // $('ul.chat').append('<img id="typing" src="https://cdn.codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif"></img>')
     var message = '';
@@ -886,14 +888,14 @@ function ibmBlueMixSendMesssage(){
 }
 
 function openLargeChatBox(){
-  $(document).on('click',"#openChatBoxModal", (ev)=>{
+  $(document).on('click',"#openChatBoxModal", function(ev){
     ev.preventDefault();
     $('#chatbotModal').modal('toggle');
   })
 }
 function minimizeChatBox(){
   
-  $(document).on('click',"#minimizeChatBox", (ev)=>{
+  $(document).on('click',"#minimizeChatBox", function(ev){
     ev.preventDefault();
     $('.chat-box-fixed').addClass('minimized');
   });
@@ -908,7 +910,7 @@ function restoreChatBox(){
   if($(window).width()>600){
     $('.chat-box-fixed').removeClass('minimized');
   }
-  $(document).on('click',"#restoreChatBox", (ev)=>{
+  $(document).on('click',"#restoreChatBox", function(ev){
     ev.preventDefault();
     $('.chat-box-fixed').removeClass('minimized');
   })
@@ -930,7 +932,7 @@ function addPoint(numPoints){
   }
   
 function addPoint_finishGuide(){
-    $(document).on('click','button#closeModel', (ev)=>{
+    $(document).on('click','button#closeModel', function(ev){
       console.log('closed');
       addPoint(1);
   });
@@ -947,7 +949,7 @@ function moveCharacter(){
 
 
 function etfLocked(){
-  $(document).on('click','a#etf_grey',(ev)=>{
+  $(document).on('click','a#etf_grey',function(ev){
     ev.preventDefault();
     alert("Sorry! You don't have access to this one yet, keep doing those tasks!")
   })
@@ -1005,7 +1007,7 @@ function mobileMenu(){
 };
 
 function updateInfo(){
-        $(document).on('click','#update_user_info',(ev)=>{
+        $(document).on('click','#update_user_info',function(ev){
         let name = $('#facebookModal #user_name').val();
         let email = $('#facebookModal #user_email').val();
         let age = $('#facebookModal #user_age').val();
@@ -1034,6 +1036,27 @@ function updateInfo(){
   })
 }
 
+function correctAnswer(){
+  $(document).on('click', 'button#choice1',function(ev){
+    ev.preventDefault();
+    $(this).toggleClass('btn btn-success');
+    $('#choice2').toggleClass('btn btn-default');
+    // $( '#choice1' ).trigger( "click" );
+    $('#choiceDesc').text('Hell yeah! If you get from your 2.1 GPA to the wished 3.0 because of the Mac')
+    $('#choiceAmount').text('$1');
+  });
+  
+  $(document).on('click', 'button#choice2', function(ev){
+    ev.preventDefault();
+    $('#choice1').toggleClass('btn btn-default');
+    // $( '#choice2' ).trigger( "click" );
+    $(this).toggleClass('btn btn-danger');
+    $('#choiceDesc').text('I know you feel the Bern but bro it is not an investment');
+    $('#choiceAmount').text('$0');
+  })
+  
+}
+
 $(document).ready(function(){
   clickSocial();
   showOnboardingSlider();
@@ -1056,6 +1079,7 @@ $(document).ready(function(){
   restoreChatBox();
   addPoint_finishGuide();
   mainWalkThrough();
+  correctAnswer();
 })
 
 // git push git@github.com:isuruv/Fiduty.git  cloud9_2:cloud9_2

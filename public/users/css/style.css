@@ -236,7 +236,7 @@ div.wrapper {
 .progress-box {
     width: 100%;
     margin-bottom: 30px;
-    border: 1px solid #ccc;
+    border: none;
     padding: 10px 40px;
 }
 .progress-landscape {
@@ -482,7 +482,35 @@ div.wrapper {
 .but_list, .tab-content{
 	margin:1.5em 0 0 0;
 }
-
+.modal-centered {
+    width:90%; 
+    max-width:600px; 
+    margin: 30px auto;
+}
+.modal-content {
+    border-radius: 0;
+}
+.modal-header {
+    position: relative;
+}
+.modal-header .close {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+.carousel-control.right,
+.carousel-control.left {
+    background: transparent;
+    width: 10%;
+}
+.carousel-control .fa{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 45px;
+    transform: translate(-50%, -50%);
+}
 .navbar .navbar-nav li .dropdown-toggle.avatar img {
   height: 40px;
   -webkit-border-radius: 50em;
