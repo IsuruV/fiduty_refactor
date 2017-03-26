@@ -615,13 +615,6 @@ function clickAmount(){
   })
 }
 
-// function clickDashBoard(){
-//     $(document).on('click',"#dashboard-tab",function(ev){
-//         ev.preventDefault();
-//           fader(mainDashBoardContent, '.main-dashboard');
-//     });
-// }
-
 function clickKnowledge(){
   $(document).on('click',"#knowledge-tab",function(ev){
     ev.preventDefault();
