@@ -328,9 +328,9 @@ div.panel
                 <div class="item">
                     <img class="img-responsive" src="/assets/Presentation 1/Presentation1-8.svg" alt="Some alternative text her">
                 </div>
-                <div class="item">
+                <div class="item item-fixed-height">
                     <img class="img-responsive" src="/assets/Presentation 1/Presentation1-9.svg" alt="Some alternative text her" style="position:absolute">
-                    <center><button style="position:relative">Finish</button></center>
+                    <button class="btn-styled centered" data-dismiss="modal">Finish</button>
                 </div>
             </div>
      
@@ -382,18 +382,19 @@ div.panel
         <div id="carousel-quiz" class="carousel slide" data-ride="carousel" data-interval="false">
             <div class="carousel-inner">
                 <!-- Insert any images inside divs -->
-                <div class="item active" style="background:#DCF0FB"><center>
-                    <br><h1 id="choiceAmount" style="color:green">$0</h1>
-                    <br>
-                    <div class="btn-group btn-group-lg" >
-  <button id="choice1" type="button" class="btn btn-default" style="white-space: normal;width:250px;height:150px">Your fancy Mac if you are in school</button>
-  <button id="choice2" type="button" class="btn btn-default" style="white-space: normal;width:250px;height:150px">Your morning latte at the "Bernie Sanders Coffee House"</button>
-</div>
-                                   <br>
-                    <br>
-                <h2 id="choiceDesc" style="padding-left:2em;padding-right:2em"></h2>
+                <div class="item active" style="background:#DCF0FB">
+                    <div class="quiz-box text-center">
+                        <div class="h1 green" id="choiceAmount" >$0</div>
+                        <div class="btn-group btn-group-lg">
+                            <div class="quiz-choice">
+                                <button id="choice1" class="btn btn-default">Your fancy Mac if you are in school</button>
+                                <button id="choice2" class="btn btn-default">Your morning latte at the "Bernie Sanders Coffee House"</button>
+                            </div>
+                        </div>
+                        <div id="choiceDesc" class="h2 quiz-answer"></div>
+                    </div>
                 <br>
-                </center>
+                
                 </div>
                 <div class="item">
                     <img class="img-responsive" src="/assets/Presentation 1/Presentation1-9.svg" alt="Some alternative text her">

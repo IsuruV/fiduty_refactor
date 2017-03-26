@@ -73,6 +73,14 @@ div.wrapper {
     max-width: 900px;
     display: inline-block;
 }
+.btn-styled {
+    color:#01247F;
+    text-align: center;
+    background-color:transparent; 
+    border: 2px solid #01247F;
+    text-transform: uppercase;
+    min-width: 80px;
+}
 .slider-next {
     position: absolute;
     bottom: 9%;
@@ -466,7 +474,9 @@ div.wrapper {
     width: 100%;
     color: #000;
 }
-.menu_label:hover {
+.menu_label:hover,
+.menu_label:focus,
+.menu_label:active{
     text-decoration: none;
     color: #000;
 }
@@ -478,9 +488,38 @@ div.wrapper {
   border: none;
   text-shadow: none;
 }
-
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .but_list, .tab-content{
 	margin:1.5em 0 0 0;
+}
+.quiz-box {
+    padding: 10px;
+}
+.quiz-choice {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    min-height: 150px;
+    align-items: stretch;
+    justify-content: space-between;
+}
+.quiz-choice > * {
+    white-space: normal;
+    width: 50%;
+    font-size: 16px;
+}
+.quiz-answer {
+    padding-right: 10%;
+    padding-left: 10%;
+}
+.carousel .item-fixed-height {
+    min-height: 300px;
 }
 .modal-centered {
     width:90%; 
@@ -3023,9 +3062,7 @@ figure.icons canvas {
 .navbar-default .navbar-toggle {
     margin-right: 12px;
 }
-.hvr-bounce-to-right:before {
-    right: 86%;
-}
+
 /*--graph--*/
 canvas#bar1, canvas#line1 {
     width: 256px !important;
