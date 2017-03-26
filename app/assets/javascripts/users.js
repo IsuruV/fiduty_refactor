@@ -1,8 +1,7 @@
 console.log("users js");
 function socialContent(users){ 
 
-let socialFeed = `
-<div class="main-dashboard">
+var socialFeed = `<div class="main-dashboard">
   <div class="social-content">
 		<div class="content-mid">
 				<div>
@@ -24,7 +23,7 @@ let socialFeed = `
      
      if (users.length > 0){
       
-       for(let i=0; i<users.length; i++){
+       for(var i=0; i<users.length; i++){
           socialFeed +=  `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
             <div class="row">
              <div class="col-sm-3"><div style="height:140;border:0px solid #000">
@@ -59,11 +58,11 @@ let socialFeed = `
 }
 
 function socialContentFriendList(users){
-  let socialFeed = `<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`
+  var socialfeed = `<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`
        if (users.length >0){
       
-       for(let i=0; i< users.length; i++){
-          socialFeed +=  `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+       for(var i=0; i< users.length; i++){
+          socialfeed +=  `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
             <div class="row">
              <div class="col-sm-3"><div style="border:0px solid #000">
               <img src="${users[i].image}?type=large" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
@@ -73,10 +72,10 @@ function socialContentFriendList(users){
            </a>`
        }
      }else{
-       socialFeed+= `<div>Invite Some Friends!</div>`
+       socialfeed+= `<div>Invite Some Friends!</div>`
      }
-     socialFeed += `<div>`
-     return socialFeed;
+     socialfeed += `<div>`
+     return socialfeed;
 }
 
 var mainDashBoardContent =`  <div class="main-dashboard">
@@ -137,7 +136,7 @@ function getPeopleInvestments(endPoint, render = socialContent, place='.main-das
     url:`/users/${endPoint}.json`,
     dataType:'json'
   }).done(function(data){
-    // let friendsInvestments = renderFunction(data);
+   
     
     fader(render(data),place);
   });
@@ -451,9 +450,9 @@ return `
 
 // Imagine all the tech companies in the United States. This portfolio represents little portion of each of them. Apple, Amazon and Google and all of them
 function etfList(data){
-  let etfs = data['portfolios'];
-  let userData = data['user'];
-  let userLvl = $('#userLvl').val();
+  var etfs = data['portfolios'];
+  var userData = data['user'];
+  var userLvl = $('#userLvl').val();
   var etf_list = `<div class=main-dashboard>`
   etf_list +=`<div class="etf-listing">`
   etf_list += `<div class="content-mid">`
@@ -491,9 +490,9 @@ function etfList(data){
 	<!------------Portfolio Listings------------->`
   etf_list += `<div>`
   for(var i=0; i<etfs.length; i++){
-    let etfLvl = etfs[i].level;
+    var etfLvl = etfs[i].level;
            for(var z=0; z<etfs[i].portfolios.length; z++){
-             let lvlEtf = etfs[i].portfolios[z];
+             var lvlEtf = etfs[i].portfolios[z];
       if(etfLvl == userLvl ){
         
               etf_list += ` <a href="#" id=${lvlEtf.symbol} class="list-group-item clearfix list-group-item-action align-items-start etf" style="border-radius:0px">
@@ -662,7 +661,7 @@ function friendsBtn(){
 }
 
 function scoreboardContent(people){
-  let scoreboard = `<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`;
+  var scoreboard = `<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`;
   scoreboard += `<div class="col-sm-6">
         <h1 style="text-align:center">Top 3 World<br>
         My place:<span style="color:green">134</span>
@@ -736,13 +735,13 @@ function everyone(data, d){
 function etfDetails(){
   $(document).on('click','.etf', function(ev){
     ev.preventDefault();
-    // etf_detail${lvlEtf.name}
+  
     $(`#etf_detail${ev.currentTarget.id}`).toggle('slow');
   });
 }
 
 function openModal(){
-  let signInCount = parseInt($('#userSignInCount').val())
+  var signInCount = parseInt($('#userSignInCount').val())
   if (signInCount <= 1 && !window.localStorage.opened){
     $('#facebookModal').modal('toggle');
     window.localStorage.opened=true;
@@ -791,8 +790,8 @@ function showOnboardingSlider(){
 function clickInvest(){
   $(document).on('click','#investbtn',function(ev){
     ev.preventDefault();
-    let etfId = $($(ev.target.parentElement).context.childNodes[2]).val();
-    let etfName = $($(ev.target.parentElement).context.childNodes[3]).val();
+    var etfId = $($(ev.target.parentElement).context.childNodes[2]).val();
+    var etfName = $($(ev.target.parentElement).context.childNodes[3]).val();
     $("#modalETFName").append(etfName);
     $("#etfID").val(etfId);
   
@@ -803,8 +802,8 @@ function clickInvest(){
 function submitInvest(){
   $(document).on('click', "#makeInvestment", function(ev){
     ev.preventDefault();
-    let investmentAmount = $("#amountInvested").val()
-    let portfolioId = $('#etfID').val();
+    var investmentAmount = $("#amountInvested").val()
+    var portfolioId = $('#etfID').val();
              $.ajax({
             type: 'post',
             url: `/user_portfolios`,
@@ -953,8 +952,8 @@ function etfLocked(){
 }
 
 function mainWalkThrough(){
-  let signInCount = parseInt($('#userSignInCount').val());
-  let points = $('#onboarding').val();
+  var signInCount = parseInt($('#userSignInCount').val());
+  var points = $('#onboarding').val();
   if (signInCount <=1 && points == '1' && localStorage.dashboardWalkThrough!= '1'){
   		var tour = introJs()
 			tour.setOption('tooltipPosition', 'auto');
@@ -965,8 +964,8 @@ function mainWalkThrough(){
 }
 
 function specificWalkThrough(element){
-  let signInCount = parseInt($('#userSignInCount').val());
-  let points = $('#onboarding').val();
+  var signInCount = parseInt($('#userSignInCount').val());
+  var points = $('#onboarding').val();
   // && localStorage.specificWalkThrough != 2
   if (signInCount <=1 && points == '1'){
       var tour = introJs(element);
@@ -977,7 +976,7 @@ function specificWalkThrough(element){
 };
 
 function mobileMenu(){
-  let menu = $('#mobile-menu'),
+  var menu = $('#mobile-menu'),
       menuStart = $('#menu-start'),
       overlay = $('.menu-overlay'),
       profileToggle = $('.menu_user'),
@@ -1011,12 +1010,12 @@ function mobileMenu(){
 
 function updateInfo(){
         $(document).on('click','#update_user_info',function(ev){
-        let name = $('#facebookModal #user_name').val();
-        let email = $('#facebookModal #user_email').val();
-        let age = $('#facebookModal #user_age').val();
-        let gender = $('#facebookModal #user_gender').val();
-        let location = $('#facebookModal #user_location').val();
-        let birthday = $('#facebookModal #user_birthday').val();
+        var name = $('#facebookModal #user_name').val();
+        var email = $('#facebookModal #user_email').val();
+        var age = $('#facebookModal #user_age').val();
+        var gender = $('#facebookModal #user_gender').val();
+        var location = $('#facebookModal #user_location').val();
+        var birthday = $('#facebookModal #user_birthday').val();
          $.ajax({
             type: 'post',
             url: `/users/update`,

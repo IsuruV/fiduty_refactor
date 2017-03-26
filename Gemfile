@@ -15,6 +15,7 @@ gem 'coffee-script-source'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
+gem "browserify-rails"
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 gem 'rb-readline', '~> 0.5.3'
