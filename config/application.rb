@@ -10,6 +10,7 @@ module Fid
   class Application < Rails::Application
     config.browserify_rails.commandline_options = "-t [ babelify --presets [ es2015 ] --extensions .es6 ]"
     config.assets.enabled = false
+    config.assets.initialize_on_precompile = false
     # config.assets.enabled = false
     config.middleware.use Rack::Cors do
       allow do
