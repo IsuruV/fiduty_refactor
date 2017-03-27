@@ -39,7 +39,7 @@ gem 'whenever', :require => false
 gem 'sms-easy'
 gem 'gmail'
 gem 'mail'
-gem 'sprockets'
+
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -57,6 +57,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'koala'
 gem "fbgraph"
 gem 'rack-cors', :require => 'rack/cors'
+gem 'rails_12factor'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -83,7 +84,7 @@ end
 
 group :production do
 # gem 'pg'
-gem 'rails_12factor', '0.0.2' #Heroku static assets for image and css
+gem 'rails_12factor'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

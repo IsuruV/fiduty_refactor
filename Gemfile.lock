@@ -295,13 +295,12 @@ DEPENDENCIES
   puma (~> 3.0)
   rack-cors
   rails (~> 5.0.0, >= 5.0.0.1)
-  rails_12factor (= 0.0.2)
+  rails_12factor
   rb-readline (~> 0.5.3)
   sass-rails (~> 5.0)
   sms-easy
   spring
   spring-watcher-listen (~> 2.0.0)
-  sprockets
   thin
   turbolinks (~> 5)
   tzinfo-data
