@@ -10,10 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require babel
+//= require_self
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= typed
-//= require users
+//= require users.js.jsx
 //= require_tree .
 //= require_tree ./js
