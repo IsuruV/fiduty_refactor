@@ -615,19 +615,20 @@ function clickAmount(){
 }
 
 function clickKnowledge(){
-  $(document).on('click',"#knowledge-tab",function(ev){
+  $(document).on('click',"#Understand",function(ev){
     ev.preventDefault();
     fader(knowledgeContent(),'.main-dashboard');
     
   })
-  $(document).on('click',"#quiz-selection", function(ev){
+  $(document).on('click',"#Co-Invest", function(ev){
     ev.preventDefault();
-    fader(quizList(),'#knowlegeContent');
+     clickSocial();
   })
-    $(document).on('click',"#understand-selection", function(ev){
+    $(document).on('click',"#Invest", function(ev){
     ev.preventDefault();
-    fader(understandList(),'#knowlegeContent');
+    getTenPortflios();
   })
+  
 }
 
 

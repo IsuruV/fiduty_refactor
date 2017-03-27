@@ -64,7 +64,7 @@ div.panel
             <div class="col-md-8 no-padding">
                 <div data-step="3" data-intro="Check the app and see where everything is located  Ive created few tasks for you, as you finish them you will get to the second level and get more perks opened for you. My primary job is to guide you, but I can definitely other things too. Feel free to ask me questions about your tasks, friends, rules, investments etc. " class="list-group">
                     <% @user.user_tasks.each do |user_task| %>
-                        <a id=knowledge-tab href="#" class="list-group-item user-task">
+                        <a id="<%=user_task.task.table_skill.skill_name%>" href="#" class="list-group-item user-task">
                            <div class="row">
                                <div class="col-md-2">
                                     <% if user_task.completed %>
@@ -380,6 +380,8 @@ div.panel
             <h2 class="modal-title text-center">Game: Which one is an investment?</h2>
         </div>
         <div id="carousel-quiz" class="carousel slide" data-ride="carousel" data-interval="false">
+            
+            
             <div class="carousel-inner">
                 <!-- Insert any images inside divs -->
                 <div class="item active" style="background:#DCF0FB">
@@ -394,15 +396,66 @@ div.panel
                         <div id="choiceDesc" class="h2 quiz-answer"></div>
                     </div>
                 <br>
+                </div>
                 
+                <div class="item" style="background:#DCF0FB">
+                    <div class="quiz-box text-center">
+                        <div class="h1 green" id="choiceAmount" >$0</div>
+                        <div class="btn-group btn-group-lg">
+                            <div class="quiz-choice">
+                                <button id="choice1" class="btn btn-default">A rented mustang to get to Syracuse</button>
+                                <button id="choice2" class="btn btn-default">A backpack trip around New England colleges</button>
+                            </div>
+                        </div>
+                        <div id="choiceDesc" class="h2 quiz-answer"></div>
+                    </div>
+                <br>
                 </div>
-                <div class="item">
-                    <img class="img-responsive" src="/assets/Presentation 1/Presentation1-9.svg" alt="Some alternative text her">
+                
+                
+                <div class="item" style="background:#DCF0FB">
+                    <div class="quiz-box text-center">
+                        <div class="h1 green" id="choiceAmount" >$0</div>
+                        <div class="btn-group btn-group-lg">
+                            <div class="quiz-choice">
+                                <button id="choice1" class="btn btn-default">$200 in my piggie bank</button>
+                                <button id="choice2" class="btn btn-default">20 shares of Apple stock</button>
+                            </div>
+                        </div>
+                        <div id="choiceDesc" class="h2 quiz-answer"></div>
+                    </div>
+                <br>
                 </div>
-                <div class="item">
-                    <img class="img-responsive" src="/assets/Presentation 1/Presentation1-9.svg" alt="Some alternative text her">
+                
+                <div class="item" style="background:#DCF0FB">
+                    <div class="quiz-box text-center">
+                        <div class="h1 green" id="choiceAmount" >$0</div>
+                        <div class="btn-group btn-group-lg">
+                            <div class="quiz-choice">
+                                <button id="choice1" class="btn btn-default">$40 in Google adwords for your Yoga blog</button>
+                                <button id="choice2" class="btn btn-default">$36 Feng Shui Frog</button>
+                            </div>
+                        </div>
+                        <div id="choiceDesc" class="h2 quiz-answer"></div>
+                    </div>
+                <br>
                 </div>
-            </div>
+                
+                <div class="item" style="background:#DCF0FB">
+                    <div class="quiz-box text-center">
+                        <div class="h1 green" id="choiceAmount" >$0</div>
+                        <div class="btn-group btn-group-lg">
+                            <div class="quiz-choice">
+                                <button id="choice1" class="btn btn-default">Yeezy boots for a grand</button>
+                                <button id="choice2" class="btn btn-default">$40000 to open an instant ice cream shop in BedStuy with a friend</button>
+                            </div>
+                        </div>
+                        <div id="choiceDesc" class="h2 quiz-answer"></div>
+                    </div>
+                <br>
+                </div>
+
+    </div>
      
             <a class="left carousel-control" href="#carousel-quiz" role="button" data-slide="prev">
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
