@@ -15,7 +15,6 @@ gem 'coffee-script-source'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
-gem "browserify-rails"
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 gem 'rb-readline', '~> 0.5.3'
@@ -59,7 +58,7 @@ gem "fbgraph"
 gem 'rack-cors', :require => 'rack/cors'
 gem 'rails_12factor'
 gem "sprockets", "~> 4.x"
-gem "babel-schmooze-sprockets"
+# gem "babel-schmooze-sprockets"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
