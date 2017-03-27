@@ -488,7 +488,7 @@ function etfList(data){
         </div>
 		    
 	<!------------Portfolio Listings------------->`
-  etf_list += `<div>`
+  etf_list += `<div class="row">`
   for(var i=0; i<etfs.length; i++){
     var etfLvl = etfs[i].level;
            for(var z=0; z<etfs[i].portfolios.length; z++){
