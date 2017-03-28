@@ -615,6 +615,24 @@ function clickAmount(){
 }
 
 function clickKnowledge(){
+  $(document).on('click',"#knowledge-tab",function(ev){
+    ev.preventDefault();
+    fader(knowledgeContent(),'.main-dashboard');
+    
+  })
+  $(document).on('click',"#quiz-selection", function(ev){
+    ev.preventDefault();
+     fader(quizList(), '#knowlegeContent');
+  })
+    $(document).on('click',"#understand-selection", function(ev){
+    ev.preventDefault();
+    // fader(understandList(),'#knowledgeContent');
+    fader(knowledgeContent(),'.main-dashboard');
+  })
+  
+}
+
+function clickTasks(){
   $(document).on('click',"#Understand",function(ev){
     ev.preventDefault();
     fader(knowledgeContent(),'.main-dashboard');
@@ -622,7 +640,7 @@ function clickKnowledge(){
   })
   $(document).on('click',"#Co-Invest", function(ev){
     ev.preventDefault();
-     clickSocial();
+    clickSocial();
   })
     $(document).on('click',"#Invest", function(ev){
     ev.preventDefault();
@@ -741,8 +759,8 @@ function etfDetails(){
   });
 }
 
-function openModal(){
-  var signInCount = parseInt($('#userSignInCount').val())
+function openFacebookModal(){
+  var signInCount = parseInt($('#userSignInCount').val());
   if (signInCount <= 1 && !window.localStorage.opened){
     $('#facebookModal').modal('toggle');
     window.localStorage.opened=true;
@@ -784,6 +802,7 @@ function showOnboardingSlider(){
       if(currentSlide.currentSlide == (currentSlide.slideCount-2)){
           
           $('.slider-next').text('start').attr('id', 'closeModel');
+          // $('.slider-next').text('start').attr('id','closeModal');
       }
   });
 }
@@ -922,7 +941,7 @@ function addPoint(numPoints){
         data: numPoints
     }).done(function(data) {
         console.log('worked');
-        location.reload();
+        // location.reload();
        });
        
   }
@@ -930,7 +949,10 @@ function addPoint(numPoints){
 function addPoint_finishGuide(){
     $(document).on('click','button#closeModel', function(ev){
       console.log('closed');
+      $('#onboardingdiv').attr('style','display: none');
+      // mainWalkThrough();
       addPoint(1);
+      openFacebookModal();
   });
 }
 
@@ -953,15 +975,18 @@ function etfLocked(){
 }
 
 function mainWalkThrough(){
-  var signInCount = parseInt($('#userSignInCount').val());
-  var points = $('#onboarding').val();
-  if (signInCount <=1 && points == '1' && localStorage.dashboardWalkThrough!= '1'){
+    debugger;
+    // ev.preventDefault();
+      var signInCount = parseInt($('#userSignInCount').val());
+      var points = $('#onboarding').val();
+    if (signInCount <=1 && localStorage.dashboardWalkThrough!= '1'){
   		var tour = introJs()
 			tour.setOption('tooltipPosition', 'auto');
 			tour.start()
 			localStorage.dashboardWalkThrough = '1';
   }
-  
+// points == '1' 
+
 }
 
 function specificWalkThrough(element){
@@ -1011,6 +1036,7 @@ function mobileMenu(){
 
 function updateInfo(){
         $(document).on('click','#update_user_info',function(ev){
+          mainWalkThrough();
         var name = $('#facebookModal #user_name').val();
         var email = $('#facebookModal #user_email').val();
         var age = $('#facebookModal #user_age').val();
@@ -1070,7 +1096,6 @@ $(document).ready(function(){
   etfDetails();
   etfLocked();
   updateInfo();
-  openModal();
   mobileMenu();
   clickAmount();
   clickNext();
@@ -1081,8 +1106,8 @@ $(document).ready(function(){
   minimizeChatBox();
   restoreChatBox();
   addPoint_finishGuide();
-  mainWalkThrough();
   correctAnswer();
+  clickTasks();
 })
 
 // git push git@github.com:isuruv/Fiduty.git  cloud9_2:cloud9_2

@@ -56,7 +56,7 @@
 <input id="onboarding" type="hidden" value=<%=current_user.points if current_user%>>
 	
 <!----Onboarding render a Partial _onboarding.html.erb---->
-<div <%= 'style=display:none' if current_user.points > 0 %> >
+<div id="onboardingdiv" <%= 'style=display:none' if current_user.points > 0 %> >
     <%= render partial: '/layouts/onboarding' %>
 </div>
 <!----End Onboarding---->
