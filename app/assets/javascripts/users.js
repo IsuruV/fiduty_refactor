@@ -66,8 +66,11 @@ function socialContentFriendList(users){
             <div class="row">
              <div class="col-sm-3"><div style="border:0px solid #000">
               <img src="${users[i].image}?type=large" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-             </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${users[i].name} chipped in ${users[i].last_portfolio_name} index</h3><small class="text-muted">3 days ago</small> </div>
-             </div><!----><div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
+             </div>
+             </div>
+             <div class="col-sm-7" style="margin-top:30px"><div style="border:0px solid #F00"><h3>${users[i].name} chipped in ${users[i].last_portfolio_name} index</h3><small class="text-muted">3 days ago</small> </div>
+             </div>
+             <div class="col-md-9 text-right" ><button type="button" class="btn btn-success btn-lg">Chip in</button></div>
              </div>
            </a>`
        }
@@ -801,7 +804,7 @@ function showOnboardingSlider(){
       
       if(currentSlide.currentSlide == (currentSlide.slideCount-2)){
           
-          $('.slider-next').text('start').attr('id', 'closeModel');
+          $('.slider-next').text('start').attr('id', 'closeModal');
           // $('.slider-next').text('start').attr('id','closeModal');
       }
   });
@@ -925,9 +928,13 @@ function restoreChatBox(){
   if($(window).width()>600){
     $('.chat-box-fixed').removeClass('minimized');
   }
-  $(document).on('click',"#restoreChatBox", function(ev){
+  $(document).on('click', "#restoreChatBox", function(ev){
     ev.preventDefault();
     $('.chat-box-fixed').removeClass('minimized');
+  });
+  $(document).on('click', ".title-text", function(ev){
+    ev.preventDefault();
+    $('.chat-box-fixed').toggleClass('minimized');
   })
 }
 

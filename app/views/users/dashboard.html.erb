@@ -19,16 +19,6 @@ div.panel
     position:absolute;
 }
 
-.container {
-   text-align: center;
- }
- 
- .container div {
-   display: inline-block;
-   padding: 20px;
-   width: 150px;
- }
- 
  .rbc-label-start {
    font-family: fontawesome;
    font-weight: bold;
@@ -237,8 +227,10 @@ div.panel
         <div class="chat-box chat-box-modal">
     	    <div data-step="1" data-intro="Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime.">
                 <h4 class="chat-title clearfix">
-                    <i class="fa fa-comments-o" aria-hidden="true"></i>
-                    Richie the Bot
+                    
+                        <i class="fa fa-comments-o" aria-hidden="true"></i>
+                        Richie the Bot
+                    
                     <span class="pull-right" >
                         <span class="chat-control">
                             <i class="fa fa-close" data-dismiss="modal" aria-hidden="true"></i>
@@ -253,7 +245,7 @@ div.panel
                         <div class="msg-header clearfix">
                             <strong class="msg-author">Richie</strong> 
                             <small class="msg-time text-muted">
-                                <span class="glyphicon glyphicon-time"></span>
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
                                 14 mins ago
                             </small>
                         </div>
@@ -265,7 +257,7 @@ div.panel
                     <!--    <div class="msg-header clearfix">-->
                     <!--        <strong class="msg-author" >User</strong> -->
                     <!--        <small class="msg-time text-muted">-->
-                    <!--            <span class="glyphicon glyphicon-time"></span>-->
+                    <!--            <i class="fa fa-clock-o" aria-hidden="true"></i>-->
                     <!--            14 mins ago-->
                     <!--        </small>-->
                     <!--    </div>-->
@@ -279,7 +271,7 @@ div.panel
                 <form id="watson">
                     <div class="chat-form">
                         <input id="user-input" type="text" class="chat-input" placeholder="Type your message here" />
-                        <input id="btn-chat" type="submit" class="chat-btn btn btn-info" value="Go">
+                        <!--<input id="btn-chat" type="submit" class="chat-btn btn btn-info" value="Go">-->
                     </div>
                 </form>
             </div>

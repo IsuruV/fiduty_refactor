@@ -74,13 +74,16 @@
         <!-------------------Progress bar end----->
         
         <%= yield %>
+        
     </div>
+    <footer class="copy footer clearfix" >
+        <div class="text-right">
+            <p>2017 Fiduty - all rights reserved</p>
+        </div>
+    </footer>
 </div>
 <!------------Footer------------->
-<footer class="copy" style="text-align:right; padding-right:45px;">
-    <p>2017 Fiduty - all rights reserved</p>
-    <div class="clearfix"> 
-</footer>
+
 
 
 
@@ -88,8 +91,10 @@
 	<div class="chat-box chat-box-fixed minimized">
 	    <div data-step="1" data-intro="Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime.">
             <h4 class="chat-title clearfix">
-                <i class="fa fa-comments-o" aria-hidden="true"></i>
-                Richie the Bot
+                <span class="title-text">
+                    <i class="fa fa-comments-o" aria-hidden="true"></i>
+                    Richie the Bot
+                </span>
                 <span class="pull-right" >
                     <span id="minimizeChatBox" class="chat-control minimized-hidden">
                         <i class="fa fa-window-minimize" aria-hidden="true"></i>
@@ -109,7 +114,7 @@
                     <div class="msg-header clearfix">
                         <strong class="msg-author">Richie</strong> 
                         <small class="msg-time text-muted">
-                            <span class="glyphicon glyphicon-time"></span>
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
                             14 mins ago
                         </small>
                     </div>
@@ -121,7 +126,7 @@
                 <!--    <div class="msg-header clearfix">-->
                 <!--        <strong class="msg-author" >User</strong> -->
                 <!--        <small class="msg-time text-muted">-->
-                <!--            <span class="glyphicon glyphicon-time"></span>-->
+                <!--            <i class="fa fa-clock-o" aria-hidden="true"></i>-->
                 <!--            14 mins ago-->
                 <!--        </small>-->
                 <!--    </div>-->
@@ -135,7 +140,7 @@
             <form id="watson">
                 <div class="chat-form">
                     <input id="user-input2" type="text" class="chat-input" placeholder="Type your message here" />
-                    <input id="btn-chat" type="submit" class="chat-btn btn btn-info" value="Go">
+                    <!--<input id="btn-chat" type="submit" class="chat-btn btn btn-info" value="Go">-->
                 </div>
             </form>
         </div>
