@@ -18,13 +18,12 @@ var socialFeed = `<div class="main-dashboard">
  <!----------------Social Feed 
 					---------------------->
        
-<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
-     `
+<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`
      
      if (users.length > 0){
       
        for(var i=0; i<users.length; i++){
-          socialFeed +=  `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+          socialFeed += `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
             <div class="row">
              <div class="col-sm-3"><div style="height:140;border:0px solid #000">
               <img src="${users[i].image}?type=large" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
@@ -39,8 +38,7 @@ var socialFeed = `<div class="main-dashboard">
 
       
       
-  socialFeed+=    `
-  </div>
+  socialFeed+=`</div>
 			</div>
 			<div class="clearfix"> </div>
 		</div>
@@ -52,8 +50,7 @@ var socialFeed = `<div class="main-dashboard">
 			specificWalkThrough(".social-content");
 			localStorage.walkThroughOne = true;
 		}
-		</script>
-		`
+		</script>`
 		return socialFeed;
 }
 
@@ -130,8 +127,7 @@ var mainDashBoardContent =`  <div class="main-dashboard">
 		      
 		    </div>
 			</div>
-			</div>
-`
+			</div>`
 
 function getPeopleInvestments(endPoint, render = socialContent, place='.main-dashboard'){
   $.ajax({
@@ -146,8 +142,7 @@ function getPeopleInvestments(endPoint, render = socialContent, place='.main-das
 };
 
 function quizList(){
-  return `
-  <div id="knowlegeContent" data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="margin-left:14px;margin-right:14px;font-family:'Roboto'; font-size:14px; color:#666666;">
+  return `<div id="knowlegeContent" data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="margin-left:14px;margin-right:14px;font-family:'Roboto'; font-size:14px; color:#666666;">
         <a id="" data-toggle="modal" data-target="#QuizModal" href="#" style="border-radius:0px">
         <div class="row list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -170,13 +165,11 @@ function quizList(){
           </div>
         </div>
       </a>
-  </div>
-  `
+  </div>`
 }
 function understandList(){
 
-  return `
-  <div id="knowlegeContent" data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="margin-left:14px;margin-right:14px;font-family:'Roboto'; font-size:14px; color:#666666;">
+  return `<div id="knowlegeContent" data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="margin-left:14px;margin-right:14px;font-family:'Roboto'; font-size:14px; color:#666666;">
     
     <a id="" data-toggle="modal" data-target="#LessonModal" href="#" style="border-radius:0px">
         <div class="row list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
@@ -404,13 +397,11 @@ function understandList(){
           </div>
         </div>
       </a>
-   </div>
-  `
+   </div>`
 }
 
 function knowledgeContent(renderList = understandList ){
-return `
-<div class="knowledge-content">
+return `<div class="knowledge-content">
 <div class="main-dashboard">
 	<div  >
 		
@@ -460,8 +451,8 @@ function etfList(data){
   etf_list +=`<div class="etf-listing">`
   etf_list += `<div class="content-mid">`
   etf_list += `<div class="middle-content" style="padding-top:0px; margin-top:0px; margin-bottom:0px; margin-left:10px; margin-right:10px;border-style:none; box-shadow:none " >`
-  etf_list += `<div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;" >`;
-  etf_list += `		<div class="row-fluid" style="margin-bottom: 2%; padding-top:0px">
+  etf_list += `<div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;" >`
+  etf_list += `<div class="row-fluid" style="margin-bottom: 2%; padding-top:0px">
 		  <div class="text-center"><h1>Here you invest and get experience</h1>
       </div>
     </div>
@@ -489,8 +480,8 @@ function etfList(data){
         </div>
         <br>
         </div>
-		    
-	<!------------Portfolio Listings------------->`
+	<!------------Portfolio Listings------------->`;
+	
   etf_list += `<div class="row">`
   for(var i=0; i<etfs.length; i++){
     var etfLvl = etfs[i].level;
@@ -546,15 +537,12 @@ function etfList(data){
   etf_list += `</div>`
   etf_list += `</div>`
   etf_list += `</div>`
-  etf_list += 
-  `
-  <script>
+  etf_list += `<script>
     if(!localStorage.specificWalkThroughThree){
       specificWalkThrough(".etf-listing");
       localStorage.specificWalkThroughThree = true;
     }
-  </script>
-  `
+  </script>`
   return etf_list  
 
 }
@@ -688,11 +676,10 @@ function scoreboardContent(people){
         <h1 style="text-align:center">Top 3 World<br>
         My place:<span style="color:green">134</span>
         </h1><br>
-        <div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
-          `;
+        <div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`;
+        
           people.everyone.map(function(person){
-          scoreboard += `
-      <a href="#" id="etf" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+          scoreboard += `<a href="#" id="etf" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
         <div class="row">
           <div class="col-md-3">
           <div style="height:140;border:0px solid #000">
@@ -842,7 +829,7 @@ function submitInvest(){
   })
 }
 function richieMessageFormat(input){
-  return `                    <li class="msg msg-richie">
+  return `<li class="msg msg-richie">
                         <div class="msg-header clearfix">
                             <strong class="msg-author">Richie</strong> 
                             <small class="msg-time text-muted">
@@ -857,7 +844,7 @@ function richieMessageFormat(input){
 }
 
 function userMessageFormat(input, name){
-  return `                    <li class="msg msg-user" >
+  return `<li class="msg msg-user" >
                         <div class="msg-header clearfix">
                             <strong class="msg-author" >${name}</strong> 
                             <small class="msg-time text-muted">
