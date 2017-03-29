@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   get '/portfolios/ten_portfolios' => "portfolios#ten_portfolios"
   resources :user_portfolios
   post '/user_portfolios/watson_proxy' => "user_portfolios#watson_proxy"
+  
+  post '/progress_tracker/complete_task' => "progress_trackers#complete_task"
+  post '/progress_tracker/first_investment' => "progress_trackers#first_investment"
   # devise_scope :user do
   #   get '/signout', to: 'devise/sessions#destroy', as: :signout
   # end

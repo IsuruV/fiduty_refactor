@@ -776,26 +776,6 @@ function clickNext(){
 }
 
 
-function showOnboardingSlider(){
-  // Onboarding slider
-  $('#onboarding-slider').slick({
-      adaptiveHeight: false,
-      arrows: true,
-      nextArrow: '<button class="slider-next">next</button>',
-      prevArrow: '',
-      infinite: false,
-  });
-  
-  $('#onboarding-slider').on('beforeChange', function(slick, currentSlide, nextSlide){
-      // action for last slide only
-      
-      if(currentSlide.currentSlide == (currentSlide.slideCount-2)){
-          
-          $('.slider-next').text('start').attr('id', 'closeModal');
-          // $('.slider-next').text('start').attr('id','closeModal');
-      }
-  });
-}
 
 function clickInvest(){
   $(document).on('click','#investbtn',function(ev){
@@ -823,9 +803,10 @@ function submitInvest(){
               "portfolio_id": portfolioId
             }
           }).done(function(data) {
-            alert("Investment Made!")
+            alert("Investment Made!");
              location.reload();
           });
+    completeTask('none', 'first_investment');
   })
 }
 function richieMessageFormat(input){
@@ -941,12 +922,30 @@ function addPoint(numPoints){
   }
   
 function addPoint_finishGuide(){
-    $(document).on('click','button#closeModel', function(ev){
-      console.log('closed');
-      $('#onboardingdiv').attr('style','display: none');
-      // mainWalkThrough();
-      addPoint(1);
-      openFacebookModal();
+  $(document).on('click','button#closeModel', function(ev){
+    console.log('closed');
+    $('#onboardingdiv').attr('style','display: none');
+    // mainWalkThrough();
+    addPoint(1);
+    openFacebookModal();
+  });
+}
+function showOnboardingSlider(){
+  // Onboarding slider
+  $('#onboarding-slider').slick({
+      adaptiveHeight: false,
+      arrows: true,
+      nextArrow: '<button class="slider-next">next</button>',
+      prevArrow: '',
+      infinite: false,
+  });
+  
+  $('#onboarding-slider').on('afterChange', function(slick, currentSlide, nextSlide){
+      // action for last slide only
+      
+      if(currentSlide.currentSlide == (currentSlide.slideCount-1)){
+          $('.slider-next').text('start').attr('id', 'closeModel');
+      }
   });
 }
 
@@ -954,7 +953,7 @@ function addPoint_finishGuide(){
 function moveCharacter(){
   var lvl = $('#userLvl').val();
   if(lvl) {
-      $('#progressUserChar').css('margin-left', lvl+'%');
+      $('#progressUserChar').css('left', lvl+'%');
       $('#progressUserBar').css('width', lvl+'%');
   }
 }
@@ -1080,6 +1079,31 @@ function correctAnswer(){
   
 }
 
+function completeTask(task_name, route){
+      $.ajax({
+            type: 'post',
+            url: `/progress_tracker/${route}`,
+            dataType: 'json',
+            data: {
+              "task_name": task_name
+            }
+       }).done(function(data) {
+         if (data){
+           alert("Task Complete");
+         }
+      });
+}
+
+function finishTask(){
+  $(document).on("click","button#finishtask_btn",function(ev){
+    ev.preventDefault();
+    var task_name = ev.target.title
+    completeTask(task_name, 'complete_task');
+    addPoint(1);
+  });
+}
+
+
 $(document).ready(function(){
   clickSocial();
   showOnboardingSlider();
@@ -1102,6 +1126,7 @@ $(document).ready(function(){
   addPoint_finishGuide();
   correctAnswer();
   clickTasks();
+  finishTask();
 })
 
 // git push git@github.com:isuruv/Fiduty.git  cloud9_2:cloud9_2

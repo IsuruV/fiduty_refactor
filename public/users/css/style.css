@@ -261,10 +261,11 @@ div.wrapper {
 .progress-box {
     width: 100%;
     margin-bottom: 30px;
-    border: none;
     padding: 10px 40px;
 }
 .progress-landscape {
+    position: relative;
+    padding: 13% 0;
     background: url(/assets/backgroundfinal.svg) 0 100%/100% auto no-repeat;
 }
 .progress-statistics {
@@ -272,19 +273,30 @@ div.wrapper {
 }
 .progress-user {
     transform: translateX(-50%);
-    display: inline-block;
-    padding-top: 20px;
+    /*display: inline-block;*/
+    /*padding-top: 20px;*/
+    position: absolute;
+    bottom: 0;
+}
+.progress-path{
+    
 }
 .progress-user .avatar {
     border-radius: 50%;
     width: 50px;
     height: 50px;
     overflow: hidden;
+    margin: 0 auto;
 }
-.progress-user .avatar.girl{
+.progress-user.friend .avatar {
+    
+    width: 40px;
+    height: 40px;
+}
+.progress-user.girl .avatar{
     border: 3px solid #E75C9E;
 }
-.progress-user .avatar.boy{
+.progress-user.boy .avatar{
     border: 3px solid #3399cc;
 }
 .progress-user .avatar img {
@@ -292,7 +304,39 @@ div.wrapper {
     width: 100%;
 }
 .progress-user .char {
+    padding-top: 40px;
     width: 50px;
+    position: relative;
+}
+.progress-user.friend .char{
+    padding-top: 30px;
+}
+.progress-user .char::before{
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    height: 30px;
+    border: 1px solid #ccc;
+}
+.progress-user.friend .char::before{
+    height: 20px;
+}
+.progress-user.boy .char::before{
+    border: 1px solid #3399cc;
+}
+.progress-user.girl .char::before{
+    border: 1px solid #E75C9E;
+}
+.progress-user.main-user .char img{
+    animation: char 2.5s infinite linear reverse;
+    transform-origin: bottom center;
+}
+@keyframes char {
+  0% {transform: scaleX(1)}
+  50% {transform: scaleX(1)}
+  50.1% {transform: scaleX(-1)}
+  100% {transform: scaleX(-1)}
 }
 .progress-bar {
     background: url('/assets/greybar2-01.svg');

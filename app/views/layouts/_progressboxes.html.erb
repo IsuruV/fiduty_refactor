@@ -11,12 +11,29 @@
 	                    Current: <span style="color:green">Level <%=@user.level.level if @user%></span>
                     </div>
 	            </div>
-    	        <div id="progressUserChar" class="progress-user">
-    	            <div class="avatar boy">
-    	                <img src=<%=@user.image+"?type=large" if @user%>>
+    	        
+    	        <div class="progress-user girl friend" style="left: 10%">
+    	            <div class="avatar">
+    	                <img src=<%=@user.image+"?type=large" if @user%> alt="User avatar">
     	            </div>
     	            <div class="char">
-    	                <img src="/assets/Characters/character2man.svg">
+    	                <img src="/assets/Characters/Character1girl.svg" alt="User">
+    	            </div>
+    	        </div>
+    	        <div class="progress-user boy friend" style="left: 40%">
+    	            <div class="avatar">
+    	                <img src=<%=@user.image+"?type=large" if @user%> alt="User avatar">
+    	            </div>
+    	            <div class="char">
+    	                <img src="/assets/Characters/Character2man.svg" alt="User">
+    	            </div>
+    	        </div>
+    	        <div id="progressUserChar" class="progress-user main-user boy">
+    	            <div class="avatar ">
+    	                <img src=<%=@user.image+"?type=large" if @user%> alt="User avatar">
+    	            </div>
+    	            <div class="char">
+    	                <img src="/assets/Characters/Character1.svg" alt="User">
     	            </div>
     	        </div>
 	        </div>

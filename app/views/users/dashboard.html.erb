@@ -81,39 +81,6 @@ div.panel
  
  <!----------------End Content Mid ---------------------->	
 
-
-<!---->
-
-<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--  <div class="modal-dialog" role="document">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h5 class="modal-title" id="exampleModalLabel">New message</h5>-->
-<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--          <span aria-hidden="true">&times;</span>-->
-<!--        </button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-<!--        <form>-->
-<!--          <div class="form-group">-->
-<!--            <label for="recipient-name" class="form-control-label">Recipient:</label>-->
-<!--            <input type="text" class="form-control" id="recipient-name">-->
-<!--          </div>-->
-<!--          <div class="form-group">-->
-<!--            <label for="message-text" class="form-control-label">Message:</label>-->
-<!--            <textarea class="form-control" id="message-text"></textarea>-->
-<!--          </div>-->
-<!--        </form>-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-<!--        <button type="button" class="btn btn-primary">Send message</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
-
     <div class="clearfix"></div>
   	     
   	     
@@ -287,7 +254,7 @@ div.panel
 
 <div id="LessonModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="lessonModal" aria-hidden="true" >
   	<div class="modal-content modal-centered">
-        <div class="modal-header">
+        <div id="What is investing?" class="modal-header">
             <button type="button" class="close" data-dismiss="modal">
                 <i class="fa fa-close"></i>
             </button>
@@ -322,7 +289,7 @@ div.panel
                 </div>
                 <div class="item item-fixed-height">
                     <img class="img-responsive" src="/assets/Presentation 1/Presentation1-9.svg" alt="Some alternative text her" style="position:absolute">
-                    <button class="btn-styled centered" data-dismiss="modal">Finish</button>
+                    <button id="finishtask_btn" class="btn-styled centered" data-dismiss="modal" title="What is investing?">Finish</button>
                 </div>
             </div>
      
@@ -341,28 +308,6 @@ div.panel
 <!-----------Understand Quiz Modal---->
 
 
-<!--<div id="QuizModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--  	<div class="modal-content">-->
-<!--    <div>-->
-            
-<!--            <ul class="nav nav-tabs nav-justified" style="font-size:2em">-->
-<!--  		    <li class="active" style="color:green"><a data-toggle="tab" href="#Understand" >Game: Which one is an investment?</a></li>-->
-<!--		    </ul>-->
-        		
-<!--    <div class="modal-body">-->
-     
-<!--    <h2>Javascript game here</h2> -->
-     
-<!--    </div>-->
-      			
-<!--      		<div class="modal-footer">-->
-<!--        		<button type="button" class="btn btn-default" data-dismiss="modal" style="width:80px;">Close</button>-->
-<!--      		</div>-->
-<!--    </div>-->
-<!--    </div>-->
-<!--    </div>-->
-
-
 <div id="QuizModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="QuizModal" aria-hidden="true" >
   	<div class="modal-content modal-centered">
         <div class="modal-header">
@@ -370,6 +315,7 @@ div.panel
                 <i class="fa fa-close"></i>
             </button>
             <h2 class="modal-title text-center">Game: Which one is an investment?</h2>
+            <br><center><div class="h1 green" id="choiceAmount" >$0</div></center>
         </div>
         <div id="carousel-quiz" class="carousel slide" data-ride="carousel" data-interval="false">
             
@@ -378,7 +324,6 @@ div.panel
                 <!-- Insert any images inside divs -->
                 <div class="item active" style="background:#DCF0FB">
                     <div class="quiz-box text-center">
-                        <div class="h1 green" id="choiceAmount" >$0</div>
                         <div class="btn-group btn-group-lg">
                             <div class="quiz-choice">
                                 <button id="choice1" class="btn btn-default">Your fancy Mac if you are in school</button>
@@ -392,7 +337,6 @@ div.panel
                 
                 <div class="item" style="background:#DCF0FB">
                     <div class="quiz-box text-center">
-                        <div class="h1 green" id="choiceAmount" >$0</div>
                         <div class="btn-group btn-group-lg">
                             <div class="quiz-choice">
                                 <button id="choice1" class="btn btn-default">A rented mustang to get to Syracuse</button>
@@ -407,7 +351,6 @@ div.panel
                 
                 <div class="item" style="background:#DCF0FB">
                     <div class="quiz-box text-center">
-                        <div class="h1 green" id="choiceAmount" >$0</div>
                         <div class="btn-group btn-group-lg">
                             <div class="quiz-choice">
                                 <button id="choice1" class="btn btn-default">$200 in my piggie bank</button>
@@ -421,7 +364,6 @@ div.panel
                 
                 <div class="item" style="background:#DCF0FB">
                     <div class="quiz-box text-center">
-                        <div class="h1 green" id="choiceAmount" >$0</div>
                         <div class="btn-group btn-group-lg">
                             <div class="quiz-choice">
                                 <button id="choice1" class="btn btn-default">$40 in Google adwords for your Yoga blog</button>
@@ -435,7 +377,6 @@ div.panel
                 
                 <div class="item" style="background:#DCF0FB">
                     <div class="quiz-box text-center">
-                        <div class="h1 green" id="choiceAmount" >$0</div>
                         <div class="btn-group btn-group-lg">
                             <div class="quiz-choice">
                                 <button id="choice1" class="btn btn-default">Yeezy boots for a grand</button>
@@ -445,6 +386,10 @@ div.panel
                         <div id="choiceDesc" class="h2 quiz-answer"></div>
                     </div>
                     <br>
+                </div>
+                <div class="item item-fixed-height">
+                    <img class="img-responsive" src="/assets/Presentation 1/Presentation1-9.svg" alt="Some alternative text her" style="position:absolute">
+                    <button id="finishtask_btn" class="btn-styled centered" data-dismiss="modal" title="Which One is an Investment?">Finish</button>
                 </div>
             </div>
      
@@ -464,9 +409,3 @@ div.panel
 			
 </body>
 </html>
-
-
-
-
-
-      
