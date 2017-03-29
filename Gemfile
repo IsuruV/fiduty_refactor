@@ -57,7 +57,7 @@ gem 'koala'
 gem "fbgraph"
 gem 'rack-cors', :require => 'rack/cors'
 gem 'rails_12factor'
-gem "sprockets", "~> 4.x"
+# gem "sprockets"
 # gem "babel-schmooze-sprockets"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'

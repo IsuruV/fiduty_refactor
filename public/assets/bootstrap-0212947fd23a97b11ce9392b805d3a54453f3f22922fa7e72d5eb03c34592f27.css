@@ -102,8 +102,8 @@ figure {
 }
 hr {
   -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
   height: 0;
 }
 pre {
@@ -266,7 +266,7 @@ th {
   .table-bordered td {
     border: 1px solid #ddd !important;
   }
-
+}
 
 .glyphicon {
   position: relative;

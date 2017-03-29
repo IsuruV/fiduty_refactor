@@ -296,7 +296,6 @@ DEPENDENCIES
   sms-easy
   spring
   spring-watcher-listen (~> 2.0.0)
-  sprockets (~> 4.x)
   thin
   turbolinks (~> 5)
   tzinfo-data
