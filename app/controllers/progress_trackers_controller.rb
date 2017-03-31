@@ -16,8 +16,16 @@ class ProgressTrackersController < ApplicationController
         render json:{task:"completed task "}
     end
     
+    def add_money
+        current_user.add_to_funds(fund_params)
+        render json: current_user.funds
+    end
+    
     private
     def task_params
         params.require(:task_name)
+    end
+    def fund_params
+        params.require(:funds)
     end
 end

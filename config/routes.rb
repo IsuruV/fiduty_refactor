@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   
   post '/progress_tracker/complete_task' => "progress_trackers#complete_task"
   post '/progress_tracker/first_investment' => "progress_trackers#first_investment"
+  post '/progress_tracker/add_money' => "progress_trackers#add_money"
   # devise_scope :user do
   #   get '/signout', to: 'devise/sessions#destroy', as: :signout
   # end

@@ -814,7 +814,7 @@ function richieMessageFormat(input){
                         <div class="msg-header clearfix">
                             <strong class="msg-author">Richie</strong> 
                             <small class="msg-time text-muted">
-                                <span class="glyphicon glyphicon-time"></span>
+                                <span class="fa fa-clock-o"></span>
                                 14 mins ago
                             </small>
                         </div>
@@ -829,7 +829,7 @@ function userMessageFormat(input, name){
                         <div class="msg-header clearfix">
                             <strong class="msg-author" >${name}</strong> 
                             <small class="msg-time text-muted">
-                                <span class="glyphicon glyphicon-time"></span>
+                                <span class="fa fa-clock-o"></span>
                                 14 mins ago
                             </small>
                         </div>
@@ -1059,24 +1059,86 @@ function updateInfo(){
 }
 
 function correctAnswer(){
-  $(document).on('click', 'button#choice1',function(ev){
+  var clickedChoices = [];
+  $(document).on('click', 'button.correctChoice',function(ev){
     ev.preventDefault();
-    $(this).toggleClass('btn btn-success');
-    $('#choice2').toggleClass('btn btn-default');
-    // $( '#choice1' ).trigger( "click" );
-    $('#choiceDesc').text('Hell yeah! If you get from your 2.1 GPA to the wished 3.0 because of the Mac')
-    $('#choiceAmount').text('$1');
+      var contains = $.inArray(ev.target.id, clickedChoices);
+      
+        if(contains == -1){
+          clickedChoices.push(ev.target.id);
+          clickedChoices.push(ev.target.title);
+            quizOneChoiceDescriptions(ev);
+           $(this).toggleClass('btn btn-success');
+             $('#choice2').toggleClass('btn btn-default');
+           var points = parseInt($('#choiceAmount').text().split('$').join(""));
+            // debugger;
+            points +=2;
+           $('#choiceAmount').text(`$${points}`);
+        }
+
   });
   
-  $(document).on('click', 'button#choice2', function(ev){
+  $(document).on('click', 'button.incorrectChoice', function(ev){
     ev.preventDefault();
-    $('#choice1').toggleClass('btn btn-default');
-    // $( '#choice2' ).trigger( "click" );
-    $(this).toggleClass('btn btn-danger');
-    $('#choiceDesc').text('I know you feel the Bern but bro it is not an investment');
-    $('#choiceAmount').text('$0');
+    var contains = $.inArray(ev.target.id, clickedChoices);
+    if(contains == -1){
+    clickedChoices.push(ev.target.id);
+    clickedChoices.push(ev.target.title);
+      quizOneChoiceDescriptions(ev);
+      $('#choice1').toggleClass('btn btn-default');
+      $(this).toggleClass('btn btn-danger');
+      var points = parseInt($('#choiceAmount').text().split('$').join(""));
+      // if (points != 0){
+      //   points -=1; 
+      // }
+     $('#choiceAmount').text(`$${points}`);
+    }
+  });
+  $(document).on('click','#finishtask_btn',function(ev){
+    var finalScore =  parseInt($('#choiceAmount').text().split('$').join(""));
+    var currentAmount = parseInt($('#amount').text().split('$').join(""));
+    var total = finalScore + currentAmount;
+    $('#amount').text(`$${total}`);
+    addMoney(finalScore);
   })
-  
+}
+
+function quizOneChoiceDescriptions(ev){
+  var choice = ev.target.id;
+  switch(choice) {
+    case "q1correctChoice":
+        $('#choiceDesc1').text('Hell yeah! If you get from your 2.1 GPA to the wished 3.0 because of the Mac');
+        break;
+    case "q1incorrectChoice":
+        $('#choiceDesc1').text('I know you feel the Bern but bro it is not an investment');
+        break;
+    case "q2correctChoice":
+      $('#choiceDesc1').text('Even with a backpack you can be such a snob');
+      break;
+    case "q2incorrectChoice":
+      $('#choiceDesc1').text('Ohh its not an investment, unless it is a date');
+      break;
+    case "q3correctChoice":
+      $('#choiceDesc1').text('Well, this was kind of easy ');
+      break;
+    case "q3incorrectChoice":
+      $('#choiceDesc1').text('Its good to have $200 in a piggie bank so you can rent a Mustang but money put aside is not an investment.');
+      break;
+    case "q4correctChoice":
+      $('#choiceDesc1').text('We hope you will make money from it though');
+      break;
+    case "q4incorrectChoice":
+      $('#choiceDesc1').text("Ohh someone's mom would love it, but no income guaranteed");
+      break;
+    case "q5correctChoice":
+      $('#choiceDesc1').text('Idk how that taste but seems kinda cool');
+      break;
+    case "q5incorrectChoice":
+      $('#choiceDesc1').text('Really? 12 hundreds for a pair of shoes?');
+      break;
+    default:
+        "";
+}
 }
 
 function completeTask(task_name, route){
@@ -1091,6 +1153,19 @@ function completeTask(task_name, route){
          if (data){
            alert("Task Complete");
          }
+      });
+}
+
+function addMoney(amount){
+        $.ajax({
+            type: 'post',
+            url: `/progress_tracker/add_money`,
+            dataType: 'json',
+            data: {
+              "funds": amount
+            }
+       }).done(function(data) {
+         console.log(data);
       });
 }
 

@@ -8,6 +8,7 @@ class UsersController < ApplicationController
      if current_user.tasks.empty?
        current_user.add_inital_tasks
      end
+      current_user.level_up
       @user = current_user
     end
     

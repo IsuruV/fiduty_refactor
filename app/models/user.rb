@@ -173,7 +173,7 @@ end
   end
   
   def add_to_funds(amt)
-    amount = amt
+    amount = amt.to_i * 100
     self.funds = self.funds + amount 
     self.save
   end
@@ -217,7 +217,7 @@ end
     if tasks
       "User has #{tasks.count} tasks remaning to reach next level"
     else
-      "All tasks complete for #{self.level.level - 1}, User is now at level #{self.level.leve}"
+      "All tasks complete for #{self.level.level - 1}, User is now at level #{self.level.level}"
     end
     end 
   end

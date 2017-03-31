@@ -326,8 +326,8 @@ div.panel
                     <div class="quiz-box text-center">
                         <div class="btn-group btn-group-lg">
                             <div class="quiz-choice">
-                                <button id="choice1" class="btn btn-default">Your fancy Mac if you are in school</button>
-                                <button id="choice2" class="btn btn-default">Your morning latte at the "Bernie Sanders Coffee House"</button>
+                                <button title="q1incorrectChoice" id="q1correctChoice" class="btn btn-default correctChoice">Your fancy Mac if you are in school</button>
+                                <button title="q1correctChoice" id="q1incorrectChoice" class="btn btn-default incorrectChoice">Your morning latte at the "Bernie Sanders Coffee House"</button>
                             </div>
                         </div>
                         <div id="choiceDesc" class="h2 quiz-answer"></div>
@@ -339,8 +339,8 @@ div.panel
                     <div class="quiz-box text-center">
                         <div class="btn-group btn-group-lg">
                             <div class="quiz-choice">
-                                <button id="choice1" class="btn btn-default">A rented mustang to get to Syracuse</button>
-                                <button id="choice2" class="btn btn-default">A backpack trip around New England colleges</button>
+                                <button title="q2incorrectChoice" id="q2correctChoice" class="btn btn-default correctChoice">A rented mustang to get to Syracuse</button>
+                                <button title="q2correctChoice" id="q2incorrectChoice" class="btn btn-default incorrectChoice">A backpack trip around New England colleges</button>
                             </div>
                         </div>
                         <div id="choiceDesc" class="h2 quiz-answer"></div>
@@ -353,8 +353,8 @@ div.panel
                     <div class="quiz-box text-center">
                         <div class="btn-group btn-group-lg">
                             <div class="quiz-choice">
-                                <button id="choice1" class="btn btn-default">$200 in my piggie bank</button>
-                                <button id="choice2" class="btn btn-default">20 shares of Apple stock</button>
+                                <button title="q3correctChoice" id="q3incorrectChoice" class="btn btn-default incorrectChoice">$200 in my piggie bank</button>
+                                <button title="q3incorrectChoice" id="q3correctChoice" class="btn btn-default correctChoice">20 shares of Apple stock</button>
                             </div>
                         </div>
                         <div id="choiceDesc" class="h2 quiz-answer"></div>
@@ -366,8 +366,8 @@ div.panel
                     <div class="quiz-box text-center">
                         <div class="btn-group btn-group-lg">
                             <div class="quiz-choice">
-                                <button id="choice1" class="btn btn-default">$40 in Google adwords for your Yoga blog</button>
-                                <button id="choice2" class="btn btn-default">$36 Feng Shui Frog</button>
+                                <button title="q4incorrectChoice" id="q4correctChoice" class="btn btn-default correctChoice">$40 in Google adwords for your Yoga blog</button>
+                                <button title="q4correctChoice" id="q4incorrectChoice" class="btn btn-default incorrectChoice">$36 Feng Shui Frog</button>
                             </div>
                         </div>
                         <div id="choiceDesc" class="h2 quiz-answer"></div>
@@ -379,8 +379,8 @@ div.panel
                     <div class="quiz-box text-center">
                         <div class="btn-group btn-group-lg">
                             <div class="quiz-choice">
-                                <button id="choice1" class="btn btn-default">Yeezy boots for a grand</button>
-                                <button id="choice2" class="btn btn-default">$40000 to open an instant ice cream shop in BedStuy with a friend</button>
+                                <button title="q5correctChoice" id="q5incorrectChoice" class="btn btn-default incorrectChoice">Yeezy boots for a grand</button>
+                                <button title="q5incorrectChoice" id="q5correctChoice" class="btn btn-default correctChoice">$40000 to open an instant ice cream shop in BedStuy with a friend</button>
                             </div>
                         </div>
                         <div id="choiceDesc" class="h2 quiz-answer"></div>
@@ -399,6 +399,9 @@ div.panel
             <a class="right carousel-control" href="#carousel-quiz" role="button" data-slide="next">
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
+        </div>
+        <div class="modal-footer">
+            <br><center><div id="choiceDesc1" class="h2 quiz-answer"></div></center>
         </div>
     </div>
 </div>
