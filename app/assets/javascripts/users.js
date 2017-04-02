@@ -144,7 +144,7 @@ function getPeopleInvestments(endPoint, render = socialContent, place='.main-das
 function quizList(){
   return `<div id="knowlegeContent" data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="margin-left:14px;margin-right:14px;font-family:'Roboto'; font-size:14px; color:#666666;">
         <a id="" data-toggle="modal" data-target="#QuizModal" href="#" style="border-radius:0px">
-        <div class="row list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+        <div id="firstquiz" class="row list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
           <div style="height:140;border:0px solid #000">
           <img src="/assets/Presentation 1/Presentation1icon2.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
@@ -171,8 +171,8 @@ function understandList(){
 
   return `<div id="knowlegeContent" data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="margin-left:14px;margin-right:14px;font-family:'Roboto'; font-size:14px; color:#666666;">
     
-    <a id="" data-toggle="modal" data-target="#LessonModal" href="#" style="border-radius:0px">
-        <div class="row list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+    <a data-toggle="modal" data-target="#LessonModal" href="#" style="border-radius:0px">
+        <div id="investing" class="row list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
           <div style="height:140;border:0px solid #000">
           <img src="/assets/Presentation 1/Presentation1icon2.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
@@ -457,7 +457,7 @@ function etfList(data){
       </div>
     </div>
   <!------------------------->
-
+  
 		<div class="row" style="padding-top:10px;">
 		  <div class="col-md-10 col-md-offset-1" style="padding-top:10px;">
 		      <br>
@@ -626,9 +626,14 @@ function clickKnowledge(){
 function clickTasks(){
   $(document).on('click',"#Understand",function(ev){
     ev.preventDefault();
-    fader(knowledgeContent(),'.main-dashboard');
+    var title = ev.target.textContent.replace(/^\s+|\s+$/g,"")
     
-  })
+    fader(knowledgeContent(),'.main-dashboard');
+    highLight(title);
+    // window.setTimeout(runHighLight, 500);
+    
+  });
+  
   $(document).on('click',"#Co-Invest", function(ev){
     ev.preventDefault();
     clickSocial();
@@ -640,6 +645,31 @@ function clickTasks(){
   
 }
 
+function highLight(name){
+ 
+  switch(name) {
+    case "What is investing":
+        // $('#LessonModal').modal('toggle');
+        // $('div#investing').effect("highlight", {}, 3000)
+        window.setTimeout(function(){
+          $('div#investing').effect("highlight", {}, 3000);
+        }, 500);
+        break;
+    case "Which One is an Investment?":
+        // $('#QuizModal').modal('toggle');
+      window.setTimeout(function(){
+         fader(quizList(), '#knowlegeContent');
+            window.setTimeout(function(){
+              $('div#firstquiz').effect("highlight",{},3000);
+            },500);
+            
+        }, 500);
+      break;
+    default:
+        "";
+  }
+  
+}
 
 function clickExperience(){
   $(document).on('click',"#experience-tab",function(ev){
@@ -932,6 +962,7 @@ function addPoint_finishGuide(){
 }
 function showOnboardingSlider(){
   // Onboarding slider
+  disableScroll();
   $('#onboarding-slider').slick({
       adaptiveHeight: false,
       arrows: true,
@@ -945,8 +976,49 @@ function showOnboardingSlider(){
       
       if(currentSlide.currentSlide == (currentSlide.slideCount-1)){
           $('.slider-next').text('start').attr('id', 'closeModel');
+          $('body').removeClass('noscroll');
+          $( "div" ).remove( "#overlay" );
       }
   });
+}
+
+function disableScroll(){
+  if($("#onboarding").val() == "0"){
+    $('body').addClass('noscroll');
+    overlay();
+  }else{
+    $('body').removeClass('noscroll');
+  }
+}
+
+function overlay(){
+   $('#onboarding-slider').css({
+  position: 'relative',
+  top     : 0,
+  left    : 0,
+  zIndex  : 100
+ });
+
+ // Add overlay and make clickable
+ var w = $(window).width();
+ var h = $(window).height();
+ var $overlay = $('<div/>', {
+  'id': 'overlay',
+  css: {
+   position   : 'absolute',
+   height     : h + 'px',
+   width      : w + 'px',
+   left       : 0,
+   top        : 0,
+   background : '#000',
+   opacity    : 0.5,
+   zIndex     : 99
+  }
+ }).appendTo('body');
+ // Click overlay to remove
+ $('#overlay').click(function(){
+  $(this).remove();
+ })
 }
 
 // moves character and increments progress bar
@@ -1138,7 +1210,7 @@ function quizOneChoiceDescriptions(ev){
       break;
     default:
         "";
-}
+  }
 }
 
 function completeTask(task_name, route){
@@ -1152,6 +1224,7 @@ function completeTask(task_name, route){
        }).done(function(data) {
          if (data){
            alert("Task Complete");
+           location.reload();
          }
       });
 }
@@ -1202,6 +1275,7 @@ $(document).ready(function(){
   correctAnswer();
   clickTasks();
   finishTask();
+
 })
 
 // git push git@github.com:isuruv/Fiduty.git  cloud9_2:cloud9_2
