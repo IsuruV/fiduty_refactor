@@ -1,161 +1,52 @@
-<!----->
-<!--pie-chart--->
 
-<script src="js/pie-chart.js" type="text/javascript"></script>
- <script type="text/javascript">
-
-        $(document).ready(function () {
-            $('#demo-pie-1').pieChart({
-                barColor: '#3bb2d0',
-                trackColor: '#eee',
-                lineCap: 'round',
-                lineWidth: 8,
-                onStep: function (from, to, percent) {
-                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
-                }
-            });
-
-            $('#demo-pie-2').pieChart({
-                barColor: '#fbb03b',
-                trackColor: '#eee',
-                lineCap: 'butt',
-                lineWidth: 8,
-                onStep: function (from, to, percent) {
-                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
-                }
-            });
-
-            $('#demo-pie-3').pieChart({
-                barColor: '#ed6498',
-                trackColor: '#eee',
-                lineCap: 'square',
-                lineWidth: 8,
-                onStep: function (from, to, percent) {
-                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
-                }
-            });
-        });
-
-    </script>
-<style>
-    #myProgress {
-    width: 100%;
-    background-color: #dcdcdc;
-}
-#myBar {
-    width: 0%;
-    height: 7px;
-    background-color: green;
-}
-</style>
-
-<script>
-    function move() {
-    var elem = document.getElementById("myBar"); 
-    var width = 1;
-    var id = setInterval(frame, 10);
-    function frame() {
-        if (width >= 100) {
-            clearInterval(id);
-        } else {
-            width++; 
-            elem.style.width = width + '%'; 
-        }
-    }
-}
-</script>
-
-
-<div class="content-top" style="max-width:1050px"> 
-		<div class="row-fluid" style="margin-left:40px; margin-right:40px; margin-bottom:5px; border-style:solid;border-color:#dcdcdc;border-width:thin;">	
-		
-		<div class="row">
-			<div class="col-xs-8 col-xs-offset-1" style="padding-top:30px;padding-left:-10px;padding-right:10px">
-            <div style="padding-left:0px;padding-bottom:0px">
-                <img id="userPic" class="img-circle" src=<%=@user.image+"?type=large" if @user%> style="position:relative;height:50px;border-width:3px; border-style:solid; border-color:rgba(51, 153, 204, 1);">
-            </div>
-            </div><div class="col-xs-2" style="text-align:right;padding-top:30px;padding-left:-10px;padding-right:10px">
-            <h4>Goal: <span style="color:green">Level 60</span><br>Current: <span style="color:green">Level <%=@user.level.level if @user%></span><br></h4>
-        </div></div>
-        
-        <div class="row" style=" ">
-			<div class="col-md-10 col-xs-offset-1" style="padding-top:7px;padding-left:10px;padding-right:10px;min-height:100px;background-position:center;background-image:url(/assets/backgroundfinal.svg);background-size:contain;background-repeat:no-repeat;">
-            <div style="padding-left:7px">
-              <img id="userChar" src="/assets/character2.svg" style="position:relative;height:100px">
-            </div>
-        </div>
-        </div>
-        
-        <div class="row">
-        <div class="col-xs-10 col-xs-offset-1" style="padding-left:5px;padding-right:5px">
-        <div style="background:url('/assets/greybar2-01.svg');margin-left:0px;margin-right:0px;border-style:none;border-width:thin;background-color:white;width:100%;height:10px;"> 
-        <div id="myProgress" data-step="2" data-intro="We think starting is already a big step forward, so we give you 3% in each skill. Hooray!" class="sub-block" style="background:url('/assets/bluebar2-01.svg');padding-left:0px;padding-right:0px;width:40px;height:10px;">
-        
-        <div id="myBar"></div>
-        </div>
-        </div> </div>
-        </div>
-        
-        
-        <div class="row">
-		<div class="col-xs-10 col-xs-offset-1" style="padding-top:0px;padding-left:10px;padding-right:5px">
-		<div class="row">
-		<div class="col-xs-3 lead" style="text-align:right;color:green;padding-left:0px;padding-right:10px">
-		<small>Learn</small>
-		
-        </div><div class="col-xs-3" style="text-align:right;color:green;padding-left:0px;padding-right:0px">
-		<small>Invest real</small>
-        </div><div class="col-xs-3" style="text-align:right;color:green;padding-left:0px;padding-right:0px">
-		<small>Co-invest</small>
-        </div><div class="col-xs-3" style="text-align:right;color:green;padding-left:0px;padding-right:15px">
-		<small>Finish line</small>
-		</div>
-        </div>
-        </div>
-        </div>
-        <br>
+<div class="progress-box"> 
+	    <!-- Main landscape -->
+	    <div class="progress-landscape">
+	        <div class="progress-path clearfix">
+	            <div class="progress-statistics pull-right">
+	                <div>
+	                    Goal: <span style="color:green">Level 100</span>
+	                </div>
+	                <div>
+	                    Current: <span style="color:green">Level <%=@user.level.level if @user%></span>
+                    </div>
+	            </div>
+    	        
+    	        <div class="progress-user girl friend" style="left: 10%">
+    	            <div class="avatar">
+    	                <img src="/assets/Aidaiprofile.jpg" alt="User avatar">
+    	            </div>
+    	            <div class="char">
+    	                <img src="/assets/Characters/Character1girl.svg" alt="User">
+    	            </div>
+    	        </div>
+    	        <div class="progress-user boy friend" style="left: 25%">
+    	            <div class="avatar">
+    	                <img src="/assets/Rashidprofile.jpg" alt="User avatar">
+    	            </div>
+    	            <div class="char">
+    	                <img src="/assets/Characters/Character2man.svg" alt="User">
+    	            </div>
+    	        </div>
+    	        <div id="progressUserChar" class="progress-user main-user boy">
+    	            <div class="avatar ">
+    	                <img src=<%=@user.image+"?type=large" if @user%> alt="User avatar">
+    	            </div>
+    	            <div class="char">
+    	                <img src="/assets/Characters/Character1.svg" alt="User">
+    	            </div>
+    	        </div>
+	        </div>
+	    </div>
+	    <div class="progress-bar">
+	        <div id="progressUserBar" class="progress-status" data-step="2" data-intro="We think starting is already a big step forward, each completed task moves you 1 step closer to financial freedom. Hooray!"></div>
+	    </div>
+	    <div class="progress-landmarks clearfix">
+	        <small>Learn</small>
+	        <small>Invest real</small>
+	        <small>Co-invest</small>
+	        <small>Finish line</small>
+	    </div>
+    <br>
 </div>
-</div>
-</div>		    
-		    
-			    
-			    
-				    
-			    
-			    
-	<!--<div id="myProgress">-->
-    <!--         <div id="myBar">-->
-    <!--         </div>-->
-    <!--         </div>-->
-			    
-			    
-			<!--	<div class="btn-group btn-group-justified" style="height:200px;">-->
-				
-			<!--	<a id="dashboard-tab" href="#" class="btn btn-default btn-lg" style="white-space: normal;">-->
-			<!--		<h4><%=@user.level.name if @user%></h4><br>-->
-			<!--		<h1 style="font-size:72px;"><%=@user.level.level if @user%></h1><br>-->
-			<!--		<div class="clearfix"></div></a>-->
-				
-			<!--	<a id="knowledge-tab" href="#" class="btn btn-default btn-lg" style="white-space: normal">	   -->
-			<!--		<h4>Understand</h4><br>-->
-			<!--	<div id="demo-pie-1" class="pie-title-center" data-percent="3"> <span class="pie-value"></span> </div>-->
-			<!--	<div class="clearfix"></div>-->
-			<!--	</a>-->
-				
-			<!--	<a id="experience-tab" href="#" class="btn btn-default btn-lg" style="white-space: normal;">	   -->
-			<!--		<h4>Try</h4><br>-->
-			<!--		<div id="demo-pie-2" class="pie-title-center" data-percent="3"> <span class="pie-value"></span> </div>-->
-			<!--		<div class="clearfix"></div>-->
-			<!--	</a>-->
-				
-			<!--	<a id="social-tab" href="#" class="btn btn-default btn-lg" style="white-space: normal;">	   -->
-			<!--		<h4>Socialize</h4><br>-->
-			<!--		<div id="demo-pie-3" class="pie-title-center" data-percent="3"> <span class="pie-value"></span> </div>-->
-			<!--		<div class="clearfix"></div>-->
-			<!--	</a>-->
-			<!--</div>-->
-       
-        
-    <!--    <div class="container">-->
-    <!--  <div class="calories"></div>-->
-    <!--</div>-->
+

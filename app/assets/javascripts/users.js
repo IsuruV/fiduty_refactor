@@ -1,9 +1,11 @@
+console.log("users js");
+function socialContent(users){ 
 
-var socialContent = `  <div class="main-dashboard">
-		  <div class="social-content">
+var socialFeed = `<div class="main-dashboard">
+  <div class="social-content">
 		<div class="content-mid">
-				<div class="middle-content" style="margin-top:5px; margin-bottom:15px; margin-left:20px; margin-right:20px;border-style:none; box-shadow:none " >
-                <div class="col-md-12">
+				<div>
+                <div >
         <div class="row-fluid">
              <div class="btn-group btn-group-justified">
   <a id="everyonebtn" href="#" class="btn btn-primary btn-lg">Everyone</a>
@@ -13,44 +15,30 @@ var socialContent = `  <div class="main-dashboard">
         </div>
         <br>
         
-        
- <!----------------Social Feed
+ <!----------------Social Feed 
 					---------------------->
        
-       
-        
-<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
-  <a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
-    <div class="row">
-      <div class="col-sm-3"><div style="height:140;border:0px solid #000">
-      <img src="/assets/Isuruprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-      </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Bob chipped in SPYDR POOP index</h3><small class="text-muted">3 days ago</small> </div>
-      </div><!----><div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
-      </div>
-     </a>
-  <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
-<div class="row">
-  <div class="col-sm-3"><div style="height:140;border:0px solid #000"><img src="/assets/Rashidprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-  </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Trump chipped in The Wall Fund</h3><small class="text-muted">3 days ago</small> </div></div>
-  <div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
-  </div>
-</a>
-  <a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
-    <div class="row">
-      <div class="col-sm-3"><div style="height:140;border:0px solid #000">
-      <img src="/assets/Isuruprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-      </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Bob chipped in SPYDR POOP index</h3><small class="text-muted">3 days ago</small> </div>
-      </div><!----><div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
-      </div>
-     </a>
-  <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
-<div class="row">
-  <div class="col-sm-3"><div style="height:140;border:0px solid #000"><img src="/assets/Rashidprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-  </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Trump chipped in The Wall Fund</h3><small class="text-muted">3 days ago</small> </div></div>
-  <div class="col-md-2" style="margin-top:70px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
-  </div>
-</a>
-  </div>
+<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`
+     
+     if (users.length > 0){
+      
+       for(var i=0; i<users.length; i++){
+          socialFeed += `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+            <div class="row">
+             <div class="col-sm-3"><div style="height:140;border:0px solid #000">
+              <img src="${users[i].image}?type=large" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
+             </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="border:0px solid #F00"><h3>${users[i].name} chipped in ${users[i].last_portfolio_name} index</h3><small class="text-muted">3 days ago</small> </div>
+             </div><!----><div class="col-md-9 text-right"><button type="button" class="btn btn-success btn-lg">Chip in</button></div>
+             </div>
+           </a>`
+       }
+     }else{
+       socialFeed+= `<div>Invite Some Friends!</div>`
+     }
+
+      
+      
+  socialFeed+=`</div>
 			</div>
 			<div class="clearfix"> </div>
 		</div>
@@ -62,8 +50,33 @@ var socialContent = `  <div class="main-dashboard">
 			specificWalkThrough(".social-content");
 			localStorage.walkThroughOne = true;
 		}
-		</script>
-		`
+		</script>`
+		return socialFeed;
+}
+
+function socialContentFriendList(users){
+  var socialfeed = `<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`
+       if (users.length >0){
+      
+       for(var i=0; i< users.length; i++){
+          socialfeed +=  `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+            <div class="row">
+             <div class="col-sm-3"><div style="border:0px solid #000">
+              <img src="${users[i].image}?type=large" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
+             </div>
+             </div>
+             <div class="col-sm-7" style="margin-top:30px"><div style="border:0px solid #F00"><h3>${users[i].name} chipped in ${users[i].last_portfolio_name} index</h3><small class="text-muted">3 days ago</small> </div>
+             </div>
+             <div class="col-md-9 text-right" ><button type="button" class="btn btn-success btn-lg">Chip in</button></div>
+             </div>
+           </a>`
+       }
+     }else{
+       socialfeed+= `<div>Invite Some Friends!</div>`
+     }
+     socialfeed += `<div>`
+     return socialfeed;
+}
 
 var mainDashBoardContent =`  <div class="main-dashboard">
     	
@@ -114,83 +127,308 @@ var mainDashBoardContent =`  <div class="main-dashboard">
 		      
 		    </div>
 			</div>
-			</div>
-`
+			</div>`
 
-var knowledgeContent = `
-<div class="knowledge-content">
+function getPeopleInvestments(endPoint, render = socialContent, place='.main-dashboard'){
+  $.ajax({
+    type:'get',
+    url:`/users/${endPoint}.json`,
+    dataType:'json'
+  }).done(function(data){
+   
+    
+    fader(render(data),place);
+  });
+};
+
+function quizList(){
+  return `<div id="knowlegeContent" data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="margin-left:14px;margin-right:14px;font-family:'Roboto'; font-size:14px; color:#666666;">
+        <a id="" data-toggle="modal" data-target="#QuizModal" href="#" style="border-radius:0px">
+        <div id="firstquiz" class="row list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentation1icon2.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Which One is an Investment?</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+    <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Pick the Stock</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+  </div>`
+}
+function understandList(){
+
+  return `<div id="knowlegeContent" data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="margin-left:14px;margin-right:14px;font-family:'Roboto'; font-size:14px; color:#666666;">
+    
+    <a data-toggle="modal" data-target="#LessonModal" href="#" style="border-radius:0px">
+        <div id="investing" class="row list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentation1icon2.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>What is investing?</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+      
+      <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Understand Stocks</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+       <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Understand Bonds</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+      
+      <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Understanding Return</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+      
+      <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Understand Interest</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+      
+      <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Understand Risk</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+      
+      <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Understand Portfolio</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+      
+      <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>What is Diversification</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+      
+      <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Know ETFs and Robots</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+      
+     <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Goals Are Important When Investing</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+      
+      <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Investment Implies Long Term</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+      
+      <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Important of General Financial Health</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+      
+      <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Trading vs. Investing</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+    
+     <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Understanding Major Financial Ratios</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+      
+    <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Understand Future Value of Money</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+      
+      <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Understand Taxation Principles</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+      
+      <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Legal Principles</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+    
+    <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Know Options</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+    
+     <a id="etf_grey" href="#" style="border-radius:0px">
+        <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
+          <div class="col-sm-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="/assets/Presentation 1/Presentationempty.svg" class="img img-fluid" alt="Cinque Terre" width-max="100" height="100" style="margin-top:5px">
+          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
+          <div style="height:80;border:0px solid #F00"><h2>Know Futures</h2><small class="text-muted">3 days ago</small>
+          </div>
+          </div>
+        </div>
+      </a>
+   </div>`
+}
+
+function knowledgeContent(renderList = understandList ){
+return `<div class="knowledge-content">
 <div class="main-dashboard">
-	<div class="middle-content" style="margin-top:0px; margin-bottom:10px; margin-left:10px; margin-right:10px;border-style:none; box-shadow:none " >
+	<div  >
 		
 	<!------------Content title------------->	
 	
-		<div class="row-fluid" style="height:100px">
-		<div class="col-sm-12" style="text-align:center"><p><h1>Here you get knowledge to understand finance</h1></p>
-    </div>
+		<div class="row-fluid" style="margin-bottom: 5%">
+		  <div class="text-center">
+		    <h1>Here you get knowledge to understand finance</h1>
+      </div>
     </div>
     
   <!------------------------->
 
     <div class="row-fluid">
-    <div class="btn-group btn-group-justified" style="height:400px;">
-      <a href="#" class="btn btn-warning btn-lg" style="white-space: normal">Learn basic finance concepts and understand them</a>
-      <a href="#" class="btn btn-success btn-lg" style="white-space: normal;">Take a quiz, check that you got the topic and earn 10 virtual $ to invest</a>
-      <a href="#" class="btn btn-primary btn-lg" style="white-space: normal;">Get some tips as you go to improve your investments</a>
+    <div class="btn-group btn-group-justified" style="height:100px;">
+      <a id="understand-selection" href="#" class="btn btn-warning btn-lg" style="white-space: normal"><h2>Learn</h2></a>
+      <a id="quiz-selection" href="#" class="btn btn-success btn-lg" style="white-space: normal;"><h2>Play</h2></a>
+      <a href="#" class="btn btn-primary btn-lg" style="white-space: normal;"><h2>Tips</h2></a>
     </div>
     </div>
     <br>
         
  <!----------------Cards---------------------->
         
-    <div data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
     
-    
-      <a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
-        <div class="row">
-          <div class="col-sm-3">
-          <div style="height:140;border:0px solid #000">
-          <img src="/assets/Isuruprofile.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
-          <div style="height:80;border:0px solid #F00"><h2>What is investment?</h2><small class="text-muted">3 days ago</small>
-          </div>
-          </div>
-        </div>
-      </a>
+      ${renderList()}
       
-      <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
-        <div class="row">
-          <div class="col-sm-3">
-          <div style="height:140;border:0px solid #000"><img src="/assets/Rashidprofile.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
-          <div style="height:80;border:0px solid #F00"><h2>Stocks explained</h2><small class="text-muted">3 days ago</small>
-          </div>
-          </div>
-        </div>
-      </a>
-      
-      <a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
-        <div class="row">
-          <div class="col-sm-3">
-          <div style="height:140;border:0px solid #000">
-          <img src="/assets/Isuruprofile.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
-          <div style="height:80;border:0px solid #F00"><h2>What is investment?</h2><small class="text-muted">3 days ago</small>
-          </div>
-          </div>
-        </div>
-      </a>
-
-      <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
-        <div class="row">
-          <div class="col-sm-3">
-          <div style="height:140;border:0px solid #000"><img src="/assets/Rashidprofile.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-          </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px">
-          <div style="height:80;border:0px solid #F00"><h2>Stocks explained</h2><small class="text-muted">3 days ago</small>
-          </div>
-          </div>
-        </div>
-      </a>
-    </div>
   </div>
   </div>
   		<script>
@@ -199,68 +437,72 @@ var knowledgeContent = `
           localStorage.specificWalkThroughTwo = true;
       }
 		</script>`
+}
   
   
 
 
 // Imagine all the tech companies in the United States. This portfolio represents little portion of each of them. Apple, Amazon and Google and all of them
-const etfList = (data)=>{
-  let etfs = data['portfolios'];
-  let userData = data['user'];
-  let userLvl = $('#userLvl').val();
+function etfList(data){
+  var etfs = data['portfolios'];
+  var userData = data['user'];
+  var userLvl = $('#userLvl').val();
   var etf_list = `<div class=main-dashboard>`
   etf_list +=`<div class="etf-listing">`
   etf_list += `<div class="content-mid">`
   etf_list += `<div class="middle-content" style="padding-top:0px; margin-top:0px; margin-bottom:0px; margin-left:10px; margin-right:10px;border-style:none; box-shadow:none " >`
-  etf_list += `<div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;" >`;
-  etf_list += `		<div class="row-fluid" style="height:80px; padding-top:0px">
-		  <div class="col-sm-12" style="text-align:center; "><p><h1>Here you invest and get experience</h1></p>
+  etf_list += `<div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;" >`
+  etf_list += `<div class="row-fluid" style="margin-bottom: 2%; padding-top:0px">
+		  <div class="text-center"><h1>Here you invest and get experience</h1>
       </div>
     </div>
   <!------------------------->
-
-		<div class="row" style="padding-top:0px;">
-		  <div data-intro="OMG there are only three portfolios to invest, but its just for now. As you progress and achieve new levels more portfolios will be available for you. Just keep swimming." class="col-md-10 col-md-offset-1" style="padding-top:0px;">
+  
+		<div class="row" style="padding-top:10px;">
+		  <div class="col-md-10 col-md-offset-1" style="padding-top:10px;">
 		      <br>
-		      <p><h2 class="featurette-heading">Total Investment: <span style="color:green">$${userData.total_investments}</span></h2></p><br>
-		      <p><h2 class="featurette-heading">Total Value: <span style="color:green">$${Math.round(userData.total_value * 100) / 100}</span></h2></p><br>
-		      <p><h2 class="featurette-heading">Total Gain/Loss: <span style="color:green">$${Math.round((userData.total_value - userData.total_investments )* 100) / 100}</span></h2></p><br>
-		      <p><h2 class="featurette-heading">ROI: <span style="color:green">${Math.round(userData.roi * 100) / 100}%</span></h2></p><br>
+		      <p><h2 class="featurette-heading">Total Investment: <span style="color:${userData.total_investments >=0 ? 'green' : 'red'}">$${userData.total_investments}</span></h2></p><br>
+		      <p><h2 class="featurette-heading">Total Value: <span style="color:${userData.total_value >= userData.total_investments ? 'green' : 'red'}">$${Math.round(userData.total_value * 100) / 100}</span></h2></p><br>
+		      <p><h2 class="featurette-heading">Total Gain/Loss: <span style="color:${(userData.total_value - userData.total_investments) >= 0 ? 'green': 'red'}">$${Math.round((userData.total_value - userData.total_investments )* 100) / 100}</span></h2></p><br>
+		      <p><h2 class="featurette-heading">ROI: <span style="color:${userData.roi >= 0 ? 'green' : 'red'}">${Math.round(userData.roi * 100)}%</span></h2></p><br>
 		  </div>
 		</div>
 		
 		
 	<!------------------------->	
-	        <div class="col-md-12">
+	     <div class="row"
+	     <div class="col-md-12">
         <div class="row-fluid">
-          <div class="btn-group btn-group-justified">
+          <div class="btn-group btn-group-justified" data-intro="OMG there are only three portfolios to invest, but its just for now. As you progress and achieve new levels more portfolios will be available for you. Just keep swimming.">
             <a href="#" class="btn btn-primary btn-lg">Robots</a>
             <a href="#" class="btn btn-primary btn-lg">My investments</a>
           </div>
         </div>
         <br>
-		    
-	<!------------Portfolio Listings------------->`
-  etf_list += `<div>`
+        </div>
+	<!------------Portfolio Listings------------->`;
+	
+  etf_list += `<div class="row">`
   for(var i=0; i<etfs.length; i++){
-    let etfLvl = etfs[i].level;
+    var etfLvl = etfs[i].level;
            for(var z=0; z<etfs[i].portfolios.length; z++){
-             let lvlEtf = etfs[i].portfolios[z];
+             var lvlEtf = etfs[i].portfolios[z];
       if(etfLvl == userLvl ){
-              etf_list += ` <a href="#" class="list-group-item clearfix list-group-item-action align-items-start"  style="border-radius:0px">
-        <div class="row">
+        
+              etf_list += ` <a href="#" id=${lvlEtf.symbol} class="list-group-item clearfix list-group-item-action align-items-start etf" style="border-radius:0px">
+        <div id=${lvlEtf.fiduty_name} class="row">
           <div class="col-md-3">
           <div style="height:140;border:0px solid #000">
           <img src="/assets/SPDR.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:30px;margin-bottom:10px">
           </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${lvlEtf.fiduty_name}</h3><small class="text-muted">Underlying Asset: ${lvlEtf.name} (${lvlEtf.symbol})</small>
           </div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:green">${lvlEtf.ytd}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn" class="btn btn-success btn-lg">Invest</button></div>
+          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:${!!lvlEtf.ytd.match(/-/g)? 'red': 'green'}">${lvlEtf.ytd}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn" class="btn btn-success btn-lg">Invest</button></div>
         </div>
-        <div id="etf_detail" class="row" style="display:none;">
+        <div id="etf_detail${lvlEtf.symbol}" class="row" style="display:none;">
           <div class="col-md-3">
-          </div><!----><div class="col-md-7 vcenter"><div style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>${lvlEtf.simple_description}.
+          </div><!----><div class="col-md-7 vcenter"><div id="thisdiv" style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>${lvlEtf.simple_description}.
           <br><br><span style="color:grey">
-          ----> Here --- how many friends have invested or smth</span></div>
+          </span></div>
           </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"></div>
         </div>
       </a>`
@@ -274,11 +516,11 @@ const etfList = (data)=>{
           </div>
           </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:green">${lvlEtf.ytd}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn_grey" class="btn btn-success btn-lg">Invest</button></div>
         </div>
-        <div id="etf_detail" class="row" style="display:none;">
+        <div id="etf_detail${lvlEtf.symbol}" class="row etf_list_item" style="display:none;">
           <div class="col-md-3">
           </div><!----><div class="col-md-7 vcenter"><div style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>${lvlEtf.simple_description}.
           <br><br><span style="color:grey">
-          ----> Here --- how many friends have invested or smth</span></div>
+          </span></div>
           </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"></div>
         </div>
       </a>`
@@ -295,20 +537,18 @@ const etfList = (data)=>{
   etf_list += `</div>`
   etf_list += `</div>`
   etf_list += `</div>`
-  etf_list += 
-  `
-  <script>
+  etf_list += `<script>
     if(!localStorage.specificWalkThroughThree){
       specificWalkThrough(".etf-listing");
       localStorage.specificWalkThroughThree = true;
     }
-  </script>
-  `
+  </script>`
   return etf_list  
 
 }
+
   
- const getTenPortflios = ()=>{
+function getTenPortflios(){
                 $.ajax({
             type: 'get',
             url: `/portfolios/ten_portfolios.json`,
@@ -331,11 +571,30 @@ function fader(content, location){
 function clickSocial(){
     $(document).on('click',"#social-tab",function(ev){
         ev.preventDefault();
-        fader(socialContent, '.main-dashboard');
+        getPeopleInvestments(`recent_everyone_investment`);
+        socialChoiceTabs();
     $('.box p').replaceWith(`<p>This is the coolest thing in our app. We believe that you will get far when surrounded by your friends</p>`)
  
     })
     
+}
+
+function socialChoiceTabs(){
+   $(document).on('click',"#everyonebtn",function(ev){
+    ev.preventDefault();
+    
+    getPeopleInvestments(`recent_everyone_investment`, socialContent);
+  });
+  
+  $(document).on('click','#friendsbtn',function(ev){
+    ev.preventDefault();
+    getPeopleInvestments('recent_friend_investment', socialContentFriendList, '#friendsList');
+  });
+  
+  $(document).on('click','#scoreboardbtn', function(ev){
+      ev.preventDefault();
+      getPeopleInvestments('scoreboard', scoreboardContent, '#friendsList');
+  });
 }
 
 function clickAmount(){
@@ -346,19 +605,69 @@ function clickAmount(){
   })
 }
 
-// function clickDashBoard(){
-//     $(document).on('click',"#dashboard-tab",function(ev){
-//         ev.preventDefault();
-//           fader(mainDashBoardContent, '.main-dashboard');
-//     });
-// }
-
 function clickKnowledge(){
   $(document).on('click',"#knowledge-tab",function(ev){
     ev.preventDefault();
-    fader(knowledgeContent,'.main-dashboard');
+    fader(knowledgeContent(),'.main-dashboard');
     
   })
+  $(document).on('click',"#quiz-selection", function(ev){
+    ev.preventDefault();
+     fader(quizList(), '#knowlegeContent');
+  })
+    $(document).on('click',"#understand-selection", function(ev){
+    ev.preventDefault();
+    // fader(understandList(),'#knowledgeContent');
+    fader(knowledgeContent(),'.main-dashboard');
+  })
+  
+}
+
+function clickTasks(){
+  $(document).on('click',"#Understand",function(ev){
+    ev.preventDefault();
+    var title = ev.target.textContent.replace(/^\s+|\s+$/g,"")
+    
+    fader(knowledgeContent(),'.main-dashboard');
+    highLight(title);
+    // window.setTimeout(runHighLight, 500);
+    
+  });
+  
+  $(document).on('click',"#Co-Invest", function(ev){
+    ev.preventDefault();
+    clickSocial();
+  })
+    $(document).on('click',"#Invest", function(ev){
+    ev.preventDefault();
+    getTenPortflios();
+  })
+  
+}
+
+function highLight(name){
+ 
+  switch(name) {
+    case "What is investing":
+        // $('#LessonModal').modal('toggle');
+        // $('div#investing').effect("highlight", {}, 3000)
+        window.setTimeout(function(){
+          $('div#investing').effect("highlight", {}, 3000);
+        }, 500);
+        break;
+    case "Which One is an Investment?":
+        // $('#QuizModal').modal('toggle');
+      window.setTimeout(function(){
+         fader(quizList(), '#knowlegeContent');
+            window.setTimeout(function(){
+              $('div#firstquiz').effect("highlight",{},3000);
+            },500);
+            
+        }, 500);
+      break;
+    default:
+        "";
+  }
   
 }
 
@@ -369,40 +678,9 @@ function clickExperience(){
   })
 }
 
-const everyone = (data, d)=>{
-  return `<div id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
-  ${data.map( person=> 
-    `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
-    <div class="row">
-      <div class="col-sm-3"><div style="height:140;border:0px solid #000">
-      <img src="/assets/Rashidprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-      </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${person.name} chipped in ${person.last_portfolio_name}</h3><small class="text-muted">${new Date().getDay(person.investment_date)} days ago</small> </div>
-      </div><!----><div class="col-md-2" style="margin-top:90px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
-      </div>
-     </a>`
-    )
-  }
-   </div>
-  `
-}
 
-function everyoneBtn(){
-    var d = new Date();
-    var n = d.getTime();
-    $(document).on('click',"#everyonebtn",function(ev){
-        ev.preventDefault();
-              $.ajax({
-            type: 'post',
-            url: `/users/social.json`,
-            dataType: 'json',
-            data: {"choice": "everyone"}
-          }).done(function(data) {
-             var result = data.slice(data.length-20,data.length)
-             fader(everyone(result, d),"#people");
-          });
-          
-    })
-}
+
+
 
 function friendsBtn(){
   var friends= `<div id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
@@ -422,69 +700,96 @@ function friendsBtn(){
     })
 }
 
-function scoreBoardBtn(){
-  var scoreboard = `<div id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
- <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
-<div class="row">
-  <div class="col-sm-3"><div style="height:140;border:0px solid #000"><img src="/assets/Rashidprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
-  </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>Trump chipped in The Wall Fund</h3><small class="text-muted">3 days ago</small> </div></div>
-  <div class="col-md-2" style="margin-top:90px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
+function scoreboardContent(people){
+  var scoreboard = `<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`;
+  scoreboard += `<div class="col-sm-6">
+        <h1 style="text-align:center">Top 3 World<br>
+        My place:<span style="color:green">134</span>
+        </h1><br>
+        <div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`;
+        
+          people.everyone.map(function(person){
+          scoreboard += `<a href="#" id="etf" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+        <div class="row">
+          <div class="col-md-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="${person.image}?type=large" class="img img-fluid img-circle" alt="Cinque Terre" width="100" height-max="100" style="margin-top:10px;margin-bottom:10px">
+          </div></div><!----><div class="col-md-6 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${person.name}</h3><small class="text-muted">Current Level: ${person.level.level}</small>
+          </div>
+          </div><!----><div class="col-md-3" style="margin-top:20px;text-align:right"><h2 style="color:${person.total_roi >= 0 ? 'green' : 'red'}">${(person.total_roi*100).toFixed(2)}%</h2><br><button type="button" class="btn btn-success btn-lg">More</button></div>
+        </div>
+      </a>`
+          })
+          scoreboard+= `</div>`
+          scoreboard+= `</div>`
+        
+        scoreboard += `<div id="friends" class="col-sm-6">
+        <h1 style="text-align:center">Top 3 Friends<br>
+        My place:<span style="color:green">14</span></h1><br>
+        <div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`
+        
+        people.friends.map(function(person){
+          scoreboard += `
+      <a href="#" id="etf" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+        <div class="row">
+          <div class="col-md-3">
+          <div style="height:140;border:0px solid #000">
+          <img src="${person.image}?type=large" class="img img-fluid img-circle" alt="Cinque Terre" width="100" height-max="100" style="margin-top:10px;margin-bottom:10px">
+          </div></div><!----><div class="col-md-6 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${person.name}</h3><small class="text-muted">Current Level: ${person.level.level}</small>
+          </div>
+          </div><!----><div class="col-md-3" style="margin-top:20px;text-align:right"><h2 style="color:${person.total_roi >= 0 ? 'green' : 'red'}">${(person.total_roi*100).toFixed(2)}%</h2><br><button type="button" class="btn btn-success btn-lg">More</button></div>
+        </div>
+      </a>`
+        });
+        scoreboard += `</div>`;
+        scoreboard += `</div>`;
+        scoreboard+= `</div>`;
+        
+  
+ 
+
+  scoreboard +=`<div>`
+  return scoreboard; 
+}
+
+function everyone(data, d){
+  return `<div id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">
+  ${data.map( function(person){
+    `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+    <div class="row">
+      <div class="col-sm-3"><div style="height:140;border:0px solid #000">
+      <img src="/assets/Rashidprofile.jpg" class="img-circle img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:20px">
+      </div></div><!----><div class="col-sm-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${person.name} chipped in ${person.last_portfolio_name}</h3><small class="text-muted">${new Date().getDay(person.investment_date)} days ago</small> </div>
+      </div><!----><div class="col-md-2" style="margin-top:90px"><button type="button" class="btn btn-success btn-lg" style="position: absolute; right: 10px;">Chip in</button></div>
+      </div>
+    </a>`
+  }
+    )
+  }
   </div>
-</a>
-  </div>`
-      $(document).on('click',"#scoreboardbtn",function(ev){
-        ev.preventDefault();
-        fader(scoreboard,"#people");
-    })
+  `
 }
 
-const onClickETF = ()=>{
-  $(document).on('click','#etf', (ev)=>{
+
+function etfDetails(){
+  $(document).on('click','.etf', function(ev){
     ev.preventDefault();
-    const childDiv = $(ev.currentTarget).context.lastElementChild;
-    // debugger;
-    if ($(childDiv).is(':visible')){
-      $(childDiv).slideUp();
-    }else{
-      $(childDiv).slideDown();
-    }
-  })
+  
+    $(`#etf_detail${ev.currentTarget.id}`).toggle('slow');
+  });
 }
 
-const openModal = ()=>{
-  let signInCount = parseInt($('#sign_in_count').val());
-  if (signInCount <= 1 && window.localStorage.count !="1"){
-    $('#myModal').modal('toggle');
-    window.localStorage.count="1";
+function openFacebookModal(){
+  var signInCount = parseInt($('#userSignInCount').val());
+  if (signInCount <= 1 && !window.localStorage.opened){
+    $('#facebookModal').modal('toggle');
+    window.localStorage.opened=true;
   }
 }
-const updateInfo = ()=>{
-        $(document).on('click','#update_user_info',(ev)=>{
-        let name = $('#myModal #recipient-name').val();
-        let email = $('#myModal #recipient-email').val();
-        let phone = $('#myModal #recipient-phone').val();
-         $.ajax({
-            type: 'post',
-            url: `/users/update`,
-            dataType: 'json',
-            data: {
-              "user":{
-              "name": name,
-              "email": email,
-              "phone": phone
-            }
-              
-            }
-          }).done(function(data) {
-            alert("Info updated!")
-             $('#myModal').modal('toggle');
-             location.reload();
-          });
-  })
-}
+
 var counter = 0;
-const clickNext = () =>{
-  $(document).on('click', '#next', (ev)=>{
+function clickNext(){
+  $(document).on('click', '#next', function(ev){
     ev.preventDefault(); 
     if(counter == 0){
        $('.box p').replaceWith(`<p>We think starting is already a big step forward, so we give you 3% in each skill. Hooray! </p>`)
@@ -500,48 +805,25 @@ const clickNext = () =>{
   })
 }
 
-const defaultBox = () =>{
-      if(window.localStorage.box == 0){
-       $('.box p').replaceWith(`<p>We think starting is already a big step forward, so we give you 3% in each skill. Hooray! </p>`)
-    }else if(window.localStorage.box == 1){
-      $('.box p').replaceWith(`<p>Check the app and see where everything is located (each of the tasks is linked to a particular skill, you can see it by pointing on the feature it will show you what skill that feature increases)</p>`)
-    }else if(window.localStorage.box ==2){
-       $('.box p').replaceWith(`<p>So lets just kick it. Ive created few tasks for you, as you finish them you will get to the second level and get more perks opened for you</p>`)
-    }
-}
 
-const sliderIntro = ()=>{
-		jQuery(document).ready(function($) {
-			$('.my-slider').unslider();
-		});
-}
 
-const sliderNext = ()=>{
-  $(document).on('click','#nextBtnSlider',(ev)=>{
+function clickInvest(){
+  $(document).on('click','#investbtn',function(ev){
     ev.preventDefault();
-      $('.my-slider').unslider('next');
-  })
-}
-
-
-
-const clickInvest = ()=>{
-  $(document).on('click','#investbtn',(ev)=>{
-    ev.preventDefault();
-    let etfId = $($(ev.target.parentElement).context.childNodes[2]).val();
-    let etfName = $($(ev.target.parentElement).context.childNodes[3]).val();
+    var etfId = $($(ev.target.parentElement).context.childNodes[2]).val();
+    var etfName = $($(ev.target.parentElement).context.childNodes[3]).val();
     $("#modalETFName").append(etfName);
     $("#etfID").val(etfId);
-    // debugger;
+  
     $('#investModal').modal('toggle');
   })
 }
 
-const submitInvest = ()=>{
-  $(document).on('click', "#makeInvestment", (ev)=>{
+function submitInvest(){
+  $(document).on('click', "#makeInvestment", function(ev){
     ev.preventDefault();
-    let investmentAmount = $("#amountInvested").val()
-    let portfolioId = $('#etfID').val();
+    var investmentAmount = $("#amountInvested").val()
+    var portfolioId = $('#etfID').val();
              $.ajax({
             type: 'post',
             url: `/user_portfolios`,
@@ -551,52 +833,56 @@ const submitInvest = ()=>{
               "portfolio_id": portfolioId
             }
           }).done(function(data) {
-            alert("Investment Made!")
+            alert("Investment Made!");
              location.reload();
           });
+    completeTask('none', 'first_investment');
   })
 }
-const messageFormat = (input)=>{
-  return `                <li class="left clearfix" style="padding:0px">
-                <div class="chat-body clearfix" style="padding:0px">
-                <div class="header">
-                <strong class="primary-font" style="color:rgba(51, 153, 204, 1)">Richie</strong> <small class="pull-right text-muted">
-                <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
-                </div>
-                        <p>
-                            ${input}
-                        </p>
-                </div>
-                </li>`
+function richieMessageFormat(input){
+  return `<li class="msg msg-richie">
+                        <div class="msg-header clearfix">
+                            <strong class="msg-author">Richie</strong> 
+                            <small class="msg-time text-muted">
+                                <span class="fa fa-clock-o"></span>
+                                14 mins ago
+                            </small>
+                        </div>
+                        <div class="msg-body">
+                            <p>${input}</p>
+                        </div>
+                    </li>`
 }
 
-const userMessageFormat = (input, name)=>{
-  return `                <li class="right clearfix" style="padding:0px">
-                <div class="chat-body clearfix" style="padding:0px">
-                <div class="header">
-                <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>10 mins ago</small>
-                <strong class="pull-right primary-font" style="color:rgba(51, 153, 204, 1)">${name}</strong>
-                </div>
-                     <p>
-                        ${input}
-                     </p>
-                </div>
-                </li>`
+function userMessageFormat(input, name){
+  return `<li class="msg msg-user" >
+                        <div class="msg-header clearfix">
+                            <strong class="msg-author" >${name}</strong> 
+                            <small class="msg-time text-muted">
+                                <span class="fa fa-clock-o"></span>
+                                14 mins ago
+                            </small>
+                        </div>
+                        <div class="msg-body">
+                            <p>${input}</p>
+                        </div>
+                    </li>`
 }
 
-const ibmBlueMixSendMesssage = ()=>{
-  $(document).on('submit','#watson',(ev)=>{
+function ibmBlueMixSendMesssage(){
+  $(document).on('submit','#watson',function(ev){
       ev.preventDefault();
       // $('ul.chat').append('<img id="typing" src="https://cdn.codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif"></img>')
     var message = '';
-    if ($(`input.user-input`).val() === ''){
-        message = $(`input.user-input2`).val();
+    if ($(`input#user-input`).val() === ''){
+        message = $(`input#user-input2`).val();
     }else{
-        message = $(`input.user-input`).val();
+        message = $(`input#user-input`).val();
+        
     }
     
      $('ul.chat').append(userMessageFormat(message, $('#username').val()));
-       $(`input#user-input`).val('');
+       $(`input.chat-input`).val('');
    $.ajax
     ({
        type: "POST",
@@ -604,27 +890,54 @@ const ibmBlueMixSendMesssage = ()=>{
         url: "/user_portfolios/watson_proxy.json",
         data: {"insert":{ "input": {"text": message } }}
     }).done(function(data) {
-          $(`ul.chat`).append(messageFormat(data.output.text[0]));
+          $(`ul.chat`).append(richieMessageFormat(data.output.text[0]));
           // $('.panel-body').animate({ scrollTop: $(document).height() }, "slow");
           // $('.chat-box').animate({ scrollTop: $(document).height() }, "slow");
-          $(".panel-body").scrollTop($(".panel-body")[0].scrollHeight);
+          $(".chat-content").scrollTop($(".chat-content")[0].scrollHeight);
           $('.chat-box').scrollTop($(".chat-box")[0].scrollHeight);
+          
+
           });
     
   });
 
 }
 
+function openLargeChatBox(){
+  $(document).on('click',"#openChatBoxModal", function(ev){
+    ev.preventDefault();
+    $('#chatbotModal').modal('toggle');
+  })
+}
+function minimizeChatBox(){
   
-  const openLargeChatBox = ()=>{
-    $(document).on('click',"#openChatBoxModal", (ev)=>{
-      ev.preventDefault();
-      $('#chatbotModal').modal('toggle');
-    })
+  $(document).on('click',"#minimizeChatBox", function(ev){
+    ev.preventDefault();
+    $('.chat-box-fixed').addClass('minimized');
+  });
+  
+  $(window).on('resize', function(){
+    if($(window).width()<600){
+      $('.chat-box-fixed').addClass('minimized');
+    }
+  });
+}
+function restoreChatBox(){
+  if($(window).width()>600){
+    $('.chat-box-fixed').removeClass('minimized');
   }
+  $(document).on('click', "#restoreChatBox", function(ev){
+    ev.preventDefault();
+    $('.chat-box-fixed').removeClass('minimized');
+  });
+  $(document).on('click', ".title-text", function(ev){
+    ev.preventDefault();
+    $('.chat-box-fixed').toggleClass('minimized');
+  })
+}
+
+function addPoint(numPoints){
   
-  const addPoint = (numPoints)=>{
-    debugger;
         $.ajax
     ({
        type: "POST",
@@ -633,53 +946,117 @@ const ibmBlueMixSendMesssage = ()=>{
         data: numPoints
     }).done(function(data) {
         console.log('worked');
-        location.reload();
+        // location.reload();
        });
        
   }
   
-  const addPoint_finishGuide = ()=>{
-    $(document).on('click','button#closeModel', (ev)=>{
-      console.log('closed');
-      addPoint(1);
+function addPoint_finishGuide(){
+  $(document).on('click','button#closeModel', function(ev){
+    console.log('closed');
+    $('#onboardingdiv').attr('style','display: none');
+    // mainWalkThrough();
+    addPoint(1);
+    openFacebookModal();
+  });
+}
+function showOnboardingSlider(){
+  // Onboarding slider
+  disableScroll();
+  $('#onboarding-slider').slick({
+      adaptiveHeight: false,
+      arrows: true,
+      nextArrow: '<button class="slider-next">next</button>',
+      prevArrow: '',
+      infinite: false,
+  });
+  
+  $('#onboarding-slider').on('afterChange', function(slick, currentSlide, nextSlide){
+      // action for last slide only
+      
+      if(currentSlide.currentSlide == (currentSlide.slideCount-1)){
+          $('.slider-next').text('start').attr('id', 'closeModel');
+          $('body').removeClass('noscroll');
+          $( "div" ).remove( "#overlay" );
+      }
   });
 }
 
+function disableScroll(){
+  if($("#onboarding").val() == "0"){
+    $('body').addClass('noscroll');
+    overlay();
+  }else{
+    $('body').removeClass('noscroll');
+  }
+}
+
+function overlay(){
+   $('#onboarding-slider').css({
+  position: 'relative',
+  top     : 0,
+  left    : 0,
+  zIndex  : 100
+ });
+
+ // Add overlay and make clickable
+ var w = $(window).width();
+ var h = $(window).height();
+ var $overlay = $('<div/>', {
+  'id': 'overlay',
+  css: {
+   position   : 'absolute',
+   height     : h + 'px',
+   width      : w + 'px',
+   left       : 0,
+   top        : 0,
+   background : '#000',
+   opacity    : 0.5,
+   zIndex     : 99
+  }
+ }).appendTo('body');
+ // Click overlay to remove
+ $('#overlay').click(function(){
+  $(this).remove();
+ })
+}
+
 // moves character and increments progress bar
-const moveCharacter = ()=>{
-  $('#userChar').animate({left: "+=8px"}, 100);
-   $('#userPic').animate({left: "+=8px"}, 100);
-   incrementProgess();
+function moveCharacter(){
+  var lvl = $('#userLvl').val();
+  if(lvl) {
+      $('#progressUserChar').css('left', lvl+'%');
+      $('#progressUserBar').css('width', lvl+'%');
+  }
 }
 
-const incrementProgess = ()=>{
-  let current_width = $('#myProgress').width();
-  $('#myProgress').width( current_width += 8 );
-}
 
-const etfLocked = ()=>{
-  $(document).on('click','a#etf_grey',(ev)=>{
+function etfLocked(){
+  $(document).on('click','a#etf_grey',function(ev){
     ev.preventDefault();
     alert("Sorry! You don't have access to this one yet, keep doing those tasks!")
   })
 
 }
 
-const mainWalkThrough = ()=>{
-  let signInCount = $('#userSignInCount').val();
-  let points = $('#onboarding').val();
-  if (signInCount <=1 && points == '1' && localStorage.dashboardWalkThrough!= '1'){
+function mainWalkThrough(){
+    debugger;
+    // ev.preventDefault();
+      var signInCount = parseInt($('#userSignInCount').val());
+      var points = $('#onboarding').val();
+    if (signInCount <=1 && localStorage.dashboardWalkThrough!= '1'){
   		var tour = introJs()
 			tour.setOption('tooltipPosition', 'auto');
 			tour.start()
 			localStorage.dashboardWalkThrough = '1';
   }
-  
+// points == '1' 
+
 }
 
-const specificWalkThrough = (element)=>{
-  let signInCount = $('#userSignInCount').val();
-  let points = $('#onboarding').val();
+function specificWalkThrough(element){
+  var signInCount = parseInt($('#userSignInCount').val());
+  var points = $('#onboarding').val();
   // && localStorage.specificWalkThrough != 2
   if (signInCount <=1 && points == '1'){
       var tour = introJs(element);
@@ -689,29 +1066,218 @@ const specificWalkThrough = (element)=>{
   
 };
 
+function mobileMenu(){
+  var menu = $('#mobile-menu'),
+      menuStart = $('#menu-start'),
+      overlay = $('.menu-overlay'),
+      profileToggle = $('.menu_user'),
+      menuProfile = $('.menu_profile'),
+      menuItem = $('.menu_label'),
+      body = $('body');
+      
+  menuStart.click(function(e){
+    e.preventDefault();
+    menu.addClass('active');
+    body.addClass('no-scroll');
+    overlay.show();
+  });
+  
+  menuItem.click(function(e){
+    menu.removeClass('active');
+    body.removeClass('no-scroll');
+    overlay.hide();
+  });
+  
+  overlay.click(function(e){
+    menu.removeClass('active');
+    body.removeClass('no-scroll');
+    overlay.hide();
+  });
+  
+  profileToggle.click(function(){
+    menuProfile.slideToggle();
+  });
+};
+
+function updateInfo(){
+        $(document).on('click','#update_user_info',function(ev){
+          mainWalkThrough();
+        var name = $('#facebookModal #user_name').val();
+        var email = $('#facebookModal #user_email').val();
+        var age = $('#facebookModal #user_age').val();
+        var gender = $('#facebookModal #user_gender').val();
+        var location = $('#facebookModal #user_location').val();
+        var birthday = $('#facebookModal #user_birthday').val();
+         $.ajax({
+            type: 'post',
+            url: `/users/update`,
+            dataType: 'json',
+            data: {
+              "user":{
+              "name": name,
+              "email": email,
+              "age_range": age,
+              "gender": gender,
+              "locale": location,
+              "birthday": birthday
+            }
+              
+            }
+          }).done(function(data) {
+            $('span.h4').text(name) 
+            alert("Thanks!");
+          });
+  })
+}
+
+function correctAnswer(){
+  var clickedChoices = [];
+  $(document).on('click', 'button.correctChoice',function(ev){
+    ev.preventDefault();
+      var contains = $.inArray(ev.target.id, clickedChoices);
+      
+        if(contains == -1){
+          clickedChoices.push(ev.target.id);
+          clickedChoices.push(ev.target.title);
+            quizOneChoiceDescriptions(ev);
+           $(this).toggleClass('btn btn-success');
+             $('#choice2').toggleClass('btn btn-default');
+           var points = parseInt($('#choiceAmount').text().split('$').join(""));
+            // debugger;
+            points +=2;
+           $('#choiceAmount').text(`$${points}`);
+        }
+
+  });
+  
+  $(document).on('click', 'button.incorrectChoice', function(ev){
+    ev.preventDefault();
+    var contains = $.inArray(ev.target.id, clickedChoices);
+    if(contains == -1){
+    clickedChoices.push(ev.target.id);
+    clickedChoices.push(ev.target.title);
+      quizOneChoiceDescriptions(ev);
+      $('#choice1').toggleClass('btn btn-default');
+      $(this).toggleClass('btn btn-danger');
+      var points = parseInt($('#choiceAmount').text().split('$').join(""));
+      // if (points != 0){
+      //   points -=1; 
+      // }
+     $('#choiceAmount').text(`$${points}`);
+    }
+  });
+  $(document).on('click','#finishtask_btn',function(ev){
+    var finalScore =  parseInt($('#choiceAmount').text().split('$').join(""));
+    var currentAmount = parseInt($('#amount').text().split('$').join(""));
+    var total = finalScore + currentAmount;
+    $('#amount').text(`$${total}`);
+    addMoney(finalScore);
+  })
+}
+
+function quizOneChoiceDescriptions(ev){
+  var choice = ev.target.id;
+  switch(choice) {
+    case "q1correctChoice":
+        $('#choiceDesc1').text('Hell yeah! If you get from your 2.1 GPA to the wished 3.0 because of the Mac');
+        break;
+    case "q1incorrectChoice":
+        $('#choiceDesc1').text('I know you feel the Bern but bro it is not an investment');
+        break;
+    case "q2correctChoice":
+      $('#choiceDesc1').text('Even with a backpack you can be such a snob');
+      break;
+    case "q2incorrectChoice":
+      $('#choiceDesc1').text('Ohh its not an investment, unless it is a date');
+      break;
+    case "q3correctChoice":
+      $('#choiceDesc1').text('Well, this was kind of easy ');
+      break;
+    case "q3incorrectChoice":
+      $('#choiceDesc1').text('Its good to have $200 in a piggie bank so you can rent a Mustang but money put aside is not an investment.');
+      break;
+    case "q4correctChoice":
+      $('#choiceDesc1').text('We hope you will make money from it though');
+      break;
+    case "q4incorrectChoice":
+      $('#choiceDesc1').text("Ohh someone's mom would love it, but no income guaranteed");
+      break;
+    case "q5correctChoice":
+      $('#choiceDesc1').text('Idk how that taste but seems kinda cool');
+      break;
+    case "q5incorrectChoice":
+      $('#choiceDesc1').text('Really? 12 hundreds for a pair of shoes?');
+      break;
+    default:
+        "";
+  }
+}
+
+function completeTask(task_name, route){
+      $.ajax({
+            type: 'post',
+            url: `/progress_tracker/${route}`,
+            dataType: 'json',
+            data: {
+              "task_name": task_name
+            }
+       }).done(function(data) {
+         if (data){
+           alert("Task Complete");
+           location.reload();
+         }
+      });
+}
+
+function addMoney(amount){
+        $.ajax({
+            type: 'post',
+            url: `/progress_tracker/add_money`,
+            dataType: 'json',
+            data: {
+              "funds": amount
+            }
+       }).done(function(data) {
+         console.log(data);
+      });
+}
+
+function finishTask(){
+  $(document).on("click","button#finishtask_btn",function(ev){
+    ev.preventDefault();
+    var task_name = ev.target.title
+    completeTask(task_name, 'complete_task');
+    addPoint(1);
+  });
+}
+
+
 $(document).ready(function(){
-    clickSocial();
-    // clickDashBoard();
-    friendsBtn();
-    scoreBoardBtn();
-    everyoneBtn();
-    clickKnowledge();
-    clickExperience();
-    onClickETF();
-    etfLocked();
-    updateInfo();
-    openModal();
-    clickAmount();
-    clickNext();
-    // defaultBox();
-     sliderIntro();
-     sliderNext();
-     clickInvest();
-     submitInvest();
-     ibmBlueMixSendMesssage();
-     openLargeChatBox();
-     addPoint_finishGuide();
-     mainWalkThrough();
+  clickSocial();
+  showOnboardingSlider();
+  friendsBtn();
+  clickKnowledge();
+  clickExperience();
+  moveCharacter();
+  etfDetails();
+  etfLocked();
+  updateInfo();
+  mobileMenu();
+  clickAmount();
+  clickNext();
+  clickInvest();
+  submitInvest();
+  ibmBlueMixSendMesssage();
+  openLargeChatBox();
+  minimizeChatBox();
+  restoreChatBox();
+  addPoint_finishGuide();
+  correctAnswer();
+  clickTasks();
+  finishTask();
+
 })
 
 // git push git@github.com:isuruv/Fiduty.git  cloud9_2:cloud9_2
+
+// $('#facebookModal').modal('toggle');

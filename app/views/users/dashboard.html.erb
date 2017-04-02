@@ -19,16 +19,6 @@ div.panel
     position:absolute;
 }
 
-.container {
-   text-align: center;
- }
- 
- .container div {
-   display: inline-block;
-   padding: 20px;
-   width: 150px;
- }
- 
  .rbc-label-start {
    font-family: fontawesome;
    font-weight: bold;
@@ -54,84 +44,42 @@ div.panel
  
 
 </style>
-
- <!----------------Content Mid
-					---------------------->				
-  <div class="main-dashboard">
-		<div class="middle-content" style="padding-bottom:2em; border-style:none; margin-top: 0px;margin-right: 5px; margin-left: 5px;  box-shadow:none;padding-top:0px; padding-left:20px; padding-right:20px">
-		 <div class="row">
-		 <div class="col-sm-4" style="padding-top:25px;padding-right:20px; padding-left:30px;text-align:center">
-		    <h3 style="color:grey">Complete these tasks to get to: <br><span style="color:green">Level <%=@user.level.level+1 if @user%></span></h3>
-		 </div><!---><div class="col-sm-8" style="padding-left:0px;padding-right:30px">   
-		    <!--<h2 style="text-align:center;">Tasks</h2><br>-->
-	     <!--   <div class="row-fluid">-->
-      <!--      <div class="btn-group btn-group-justified" style="height:80px;">-->
-      <!--        <a href="#" class="btn btn-warning btn-lg" style="white-space: normal">Completed</a>-->
-      <!--        <a href="#" class="btn btn-success btn-lg" style="white-space: normal;">Current tasks</a>-->
-      <!--        <a href="#" class="btn btn-primary btn-lg" style="white-space: normal;">Upcoming tasks</a>-->
-      <!--      </div>-->
-      <!--      </div>-->
-        
- <!----------------Cards---------------------->
-        
-      <div data-step="3" data-intro="Check the app and see where everything is located  Ive created few tasks for you, as you finish them you will get to the second level and get more perks opened for you. My primary job is to guide you, but I can definitely other things too. Feel free to ask me questions about your tasks, friends, rules, investments etc. " class="list-group" style="font-family:'Roboto'; font-size:16px; color:#666666; padding:0px; "><% @user.user_tasks.each do |user_task| %>
-
-                <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
-                <div class="row">
-                    
-                    <div class="col-md-2">
-                         <% if user_task.completed %>
-                        <h4 style="color:green">
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                        </h4>
-                        <%end%>
-                    </div><!----><div class="col-md-6 vcenter" style="height:80;border:0px solid #F00; padding-left:10px;"><h4><%=user_task.task.task%></h4>
-                </div><!---->
-                 <div class="col-md-3 vcenter" style="height:80;border:0px solid #F00; padding-left:10px;color:green"><h4>+1 <%=user_task.task.table_skill.skill_name%></h4></div>
-   
-                </div>
-                </a>
-                <% end %>
+<!----------------Content Mid ---------------------->	
+<div class="main-dashboard">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                 <h2 class="user-task-title grey">Complete these tasks to get to: <br><span class="green">Level <%=@user.level.level+1 if @user%></span></h2>
             </div>
-</div></div>
-			</div>
+            <div class="col-md-8 no-padding">
+                <div data-step="3" data-intro="Check the app and see where everything is located  Ive created few tasks for you, as you finish them you will get to the second level and get more perks opened for you. My primary job is to guide you, but I can definitely other things too. Feel free to ask me questions about your tasks, friends, rules, investments etc. " class="list-group">
+                    <% @user.user_tasks.each do |user_task| %>
+                        <a id="<%=user_task.task.table_skill.skill_name%>" href="#" class="list-group-item user-task">
+                           <div class="row">
+                               <div class="col-md-2">
+                                    <% if user_task.completed %>
+                                        <span class="green">
+                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                        </span>
+                                    <%end%>
+                                </div>
+                                <div class="col-md-6">
+                                    <span><%=user_task.task.task%></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="green">+1 <%=user_task.task.table_skill.skill_name%></span>
+                                </div>
+                           </div>
+                        </a>
+                    <%end%>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-		    </div>
- <!----------------End Content Mid
-					---------------------->	
-
-
-<!---->
-
-<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--  <div class="modal-dialog" role="document">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h5 class="modal-title" id="exampleModalLabel">New message</h5>-->
-<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--          <span aria-hidden="true">&times;</span>-->
-<!--        </button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-<!--        <form>-->
-<!--          <div class="form-group">-->
-<!--            <label for="recipient-name" class="form-control-label">Recipient:</label>-->
-<!--            <input type="text" class="form-control" id="recipient-name">-->
-<!--          </div>-->
-<!--          <div class="form-group">-->
-<!--            <label for="message-text" class="form-control-label">Message:</label>-->
-<!--            <textarea class="form-control" id="message-text"></textarea>-->
-<!--          </div>-->
-<!--        </form>-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-<!--        <button type="button" class="btn btn-primary">Send message</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
+			
+ 
+ <!----------------End Content Mid ---------------------->	
 
     <div class="clearfix"></div>
   	     
@@ -139,7 +87,7 @@ div.panel
 <!-----------Invest Modal---->
   	     
   	 <div class="modal fade" id="investModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:50%; margin-left:25%;margin-top:10%;margin-rigt:auto; position:fixed">
-  	     <div class="modal-content" 
+  	     <div class="modal-content" >
         <div>
             
             <ul class="nav nav-tabs nav-justified" style="font-size:2em">
@@ -168,7 +116,7 @@ div.panel
       			
       		<div class="modal-footer">
       	    	<input type="hidden" id="etfID" value=""></input>
-      			<button id="makeInvestment" type="button" class="btn btn-success" style="width:80px;">Invest</button>
+      			<button id="makeInvestment" type="button" class="btn btn-success" style="margin-bottom:0px; width:80px;">Invest</button>
         		<button type="button" class="btn btn-default" data-dismiss="modal" style="width:80px;">Close</button>
       		</div>
       	
@@ -183,7 +131,7 @@ div.panel
 
 
 <!-----------Cash Modal End---->
-    <div id="cashModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:50%; margin-left:25%;margin-top:5%;margin-rigt:auto; position:fixed">
+    <div id="cashModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:50%; margin-left:25%;margin-top:5%;margin-right:auto; position:fixed">
   	<div class="modal-content">
     <div>
             
@@ -242,51 +190,226 @@ div.panel
 			
 <!------------Chatbot Modal------------->
 
-    
-    
-    <div id="chatbotModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:50%; height:60%; margin-left:25%;margin-top:5%;margin-rigt:auto; position:fixed; overflow:hidden">
-        
-    <div class="modal-content">
-        <h4 style="position-fixed; color:rgba(51, 153, 204, 1); text-align:center;padding-top:5px"><i class="fa fa-comments-o" aria-hidden="true"></i>
-        Richie the Bot</h4>
-        
-        <div class="modal-body" style="overflow-x:hidden;overflow:hidden;">
-
-<div class="chat-box" style="position-fixed;max-height:200px; min-height:200px;overflow:auto;border-style:solid; border-color:#dcdcdc;border-width:thin;border-bottom-style:none">
-    <ul class="chat">
-    </ul>
-</div>
-
-
-      	<div class="modal-footer" style="position-fixed">
-      		    <div class="input-group">
-      		<form id="watson">
-                <input id="user-input" type="text" class="user-input2 form-control input-sm" placeholder="Type your message here..." />
-                <button class="btn btn-primary" id="btn-chat" style="width:80px;">
-                Send</button>
-                <button id="btn-chat" type="button" class="btn btn-default" data-dismiss="modal" style="width:80px;">Close</button>
-            </form>
-      	</div></div>
-
-    </div>
-    </div>
+    <div id="chatbotModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="chatBotModal" aria-hidden="true" >
+        <div class="chat-box chat-box-modal">
+    	    <div data-step="1" data-intro="Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime.">
+                <h4 class="chat-title clearfix">
+                    
+                    <i class="fa fa-comments-o" aria-hidden="true"></i>
+                    Richie the Bot
+                    
+                    <span class="pull-right" >
+                        <span class="chat-control">
+                            <i class="fa fa-close" data-dismiss="modal" aria-hidden="true"></i>
+                        </span>
+                    </span>
+                </h4>
+            </div>
+            <div class="chat-content">
+                <ul class="chat">
+                    <!-- Should probbly be empty, content is just for example -->
+                    <li class="msg msg-richie">
+                        <div class="msg-header clearfix">
+                            <strong class="msg-author">Richie</strong> 
+                            <small class="msg-time text-muted">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                14 mins ago
+                            </small>
+                        </div>
+                        <div class="msg-body">
+                            <p>Feel free to ask me questions anytime.</p>
+                        </div>
+                    </li>
+                    <!--<li class="msg msg-user" >-->
+                    <!--    <div class="msg-header clearfix">-->
+                    <!--        <strong class="msg-author" >User</strong> -->
+                    <!--        <small class="msg-time text-muted">-->
+                    <!--            <i class="fa fa-clock-o" aria-hidden="true"></i>-->
+                    <!--            14 mins ago-->
+                    <!--        </small>-->
+                    <!--    </div>-->
+                    <!--    <div class="msg-body">-->
+                    <!--        <p>Hello, could you please tell me, where should I start?</p>-->
+                    <!--    </div>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+            <div class="chat-footer">
+                <form id="watson">
+                    <div class="chat-form">
+                        <input id="user-input" type="text" class="chat-input" placeholder="Type your message here" />
+                        <!--<input id="btn-chat" type="submit" class="chat-btn btn btn-info" value="Go">-->
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
         
         
 
 
 <!------------------------->
+
+<!-----------Understand Lesson Modal---->
+
+<div id="LessonModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="lessonModal" aria-hidden="true" >
+  	<div class="modal-content modal-centered">
+        <div id="What is investing?" class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+                <i class="fa fa-close"></i>
+            </button>
+            <h2 class="modal-title text-center">What is investment?</h2>
+        </div>
+        <div id="carousel-investment" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner">
+                <!-- Insert any images inside divs -->
+                <div class="item active">
+                    <img class="img-responsive" src="/assets/Presentation 1/Presentation1-1.svg" alt="Some alternative text here">
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="/assets/Presentation 1/Presentation1-2.svg" alt="Some alternative text her">
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="/assets/Presentation 1/Presentation1-3.svg" alt="Some alternative text her">
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="/assets/Presentation 1/Presentation1-4.svg" alt="Some alternative text her">
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="/assets/Presentation 1/Presentation1-5.svg" alt="Some alternative text her">
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="/assets/Presentation 1/Presentation1-6.svg" alt="Some alternative text her">
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="/assets/Presentation 1/Presentation1-7.svg" alt="Some alternative text her">
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="/assets/Presentation 1/Presentation1-8.svg" alt="Some alternative text her">
+                </div>
+                <div class="item item-fixed-height">
+                    <img class="img-responsive" src="/assets/Presentation 1/Presentation1-9.svg" alt="Some alternative text her" style="position:absolute">
+                    <button id="finishtask_btn" class="btn-styled centered" data-dismiss="modal" title="What is investing?">Finish</button>
+                </div>
+            </div>
+     
+            <a class="left carousel-control" href="#carousel-investment" role="button" data-slide="prev">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </a>
+            <a class="right carousel-control" href="#carousel-investment" role="button" data-slide="next">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-----------Understand Lesson Modal End---->
+
+<!-----------Understand Quiz Modal---->
+
+
+<div id="QuizModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="QuizModal" aria-hidden="true" >
+  	<div class="modal-content modal-centered">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+                <i class="fa fa-close"></i>
+            </button>
+            <h2 class="modal-title text-center">Game: Which one is an investment?</h2>
+            <br><center><div class="h1 green" id="choiceAmount" >$0</div></center>
+        </div>
+        <div id="carousel-quiz" class="carousel slide" data-ride="carousel" data-interval="false">
+            
+            
+            <div class="carousel-inner">
+                <!-- Insert any images inside divs -->
+                <div class="item active" style="background:#DCF0FB">
+                    <div class="quiz-box text-center">
+                        <div class="btn-group btn-group-lg">
+                            <div class="quiz-choice">
+        
+                                <button title="q1correctChoice" id="q1incorrectChoice" class="btn btn-default correctChoice">Your fancy Mac if you are in school</button>
+                                <button title="q1incorrectChoice" id="q1correctChoice" class="btn btn-default incorrectChoice">Your morning latte at the "Bernie Sanders Coffee House"</button>
+                            </div>
+                        </div>
+                        <div id="choiceDesc" class="h2 quiz-answer"></div>
+                    </div>
+                <br>
+                </div>
+                
+                <div class="item" style="background:#DCF0FB">
+                    <div class="quiz-box text-center">
+                        <div class="btn-group btn-group-lg">
+                            <div class="quiz-choice">
+                                <button title="q2incorrectChoice" id="q2correctChoice" class="btn btn-default correctChoice">A rented mustang to get to Syracuse</button>
+                                <button title="q2correctChoice" id="q2incorrectChoice" class="btn btn-default incorrectChoice">A backpack trip around New England colleges</button>
+                            </div>
+                        </div>
+                        <div id="choiceDesc" class="h2 quiz-answer"></div>
+                    </div>
+                <br>
+                </div>
+                
+                
+                <div class="item" style="background:#DCF0FB">
+                    <div class="quiz-box text-center">
+                        <div class="btn-group btn-group-lg">
+                            <div class="quiz-choice">
+                                <button title="q3correctChoice" id="q3incorrectChoice" class="btn btn-default incorrectChoice">$200 in my piggie bank</button>
+                                <button title="q3incorrectChoice" id="q3correctChoice" class="btn btn-default correctChoice">20 shares of Apple stock</button>
+                            </div>
+                        </div>
+                        <div id="choiceDesc" class="h2 quiz-answer"></div>
+                    </div>
+                <br>
+                </div>
+                
+                <div class="item" style="background:#DCF0FB">
+                    <div class="quiz-box text-center">
+                        <div class="btn-group btn-group-lg">
+                            <div class="quiz-choice">
+                                <button title="q4incorrectChoice" id="q4correctChoice" class="btn btn-default correctChoice">$40 in Google adwords for your Yoga blog</button>
+                                <button title="q4correctChoice" id="q4incorrectChoice" class="btn btn-default incorrectChoice">$36 Feng Shui Frog</button>
+                            </div>
+                        </div>
+                        <div id="choiceDesc" class="h2 quiz-answer"></div>
+                    </div>
+                <br>
+                </div>
+                
+                <div class="item" style="background:#DCF0FB">
+                    <div class="quiz-box text-center">
+                        <div class="btn-group btn-group-lg">
+                            <div class="quiz-choice">
+                                <button title="q5correctChoice" id="q5incorrectChoice" class="btn btn-default incorrectChoice">Yeezy boots for a grand</button>
+                                <button title="q5incorrectChoice" id="q5correctChoice" class="btn btn-default correctChoice">$40000 to open an instant ice cream shop in BedStuy with a friend</button>
+                            </div>
+                        </div>
+                        <div id="choiceDesc" class="h2 quiz-answer"></div>
+                    </div>
+                    <br>
+                </div>
+                <div class="item item-fixed-height">
+                    <img class="img-responsive" src="/assets/Presentation 1/Presentation1-9.svg" alt="Some alternative text her" style="position:absolute">
+                    <button id="finishtask_btn" class="btn-styled centered" data-dismiss="modal" title="Which One is an Investment?">Finish</button>
+                </div>
+            </div>
+     
+            <a class="left carousel-control" href="#carousel-quiz" role="button" data-slide="prev">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </a>
+            <a class="right carousel-control" href="#carousel-quiz" role="button" data-slide="next">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="modal-footer">
+            <br><center><div id="choiceDesc1" class="h2 quiz-answer"></div></center>
+        </div>
+    </div>
+</div>
+<!-----------Understand Quiz Modal End---->
+
+
+
 			
-			
-			
-	<script>
-	    $('a.unslider-arrow').hide()
-	</script>			
 </body>
 </html>
-
-
-
-
-
-      

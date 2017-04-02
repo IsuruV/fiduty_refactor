@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
     user.name = auth.info.name   # assuming the user model has a name
     user.image = auth.info.image # assuming the user model has an image
     user.points = 0
+    user.set_public_info
     # user.fb_id = auth.uid
     # If you are using confirmable and the provider(s) you use validate emails, 
     # uncomment the line below to skip the confirmation emails.
@@ -68,14 +69,23 @@ end
   
   def self.top_friends_roi(fb_ids)
     array = []
-    friends = User.where(fb_id: [fb_ids])
-    friends.each do |friend|
-      total_investments = friend.calculate_total_investment
-      total_value = friend.user_total_value
-      total_roi = friend.roi(total_value, total_investments)
-      array.push({"name":friend.name, "fb_id": friend.fb_id, "total_roi": total_roi })
+    fb_ids ? friends = User.where(uid: [fb_ids]) : friends = User.all 
+      friends.each do |friend|
+       total_investments = friend.calculate_total_investment
+       total_value = friend.user_total_value
+       total_roi = friend.roi(total_value, total_investments)
+       array.push({"level": friend.level, name:friend.name, "image": friend.image, "total_roi": total_roi.round(3) })
     end
-   array.sort_by{|friend| friend["total_roi"]}[0,5]
+   
+    arr = array.sort_by{|friend| friend[:total_roi]}.reverse![0,5]
+  # array[0,5]
+    arr
+  end
+  
+  def get_top_roi
+    friends_roi = User.top_friends_roi(self.get_friends_fb_ids)
+    everyone_roi = User.top_friends_roi(nil)
+    {"friends": friends_roi, "everyone": everyone_roi}
   end
 
   def self.portfolios_with_vals
@@ -121,13 +131,13 @@ end
 
 
   def self.recent_friend_investment(fb_ids)
-      friends = User.where(fb_id: [fb_ids])
+      friends = User.where(uid: [fb_ids])
       transactions = []
       friends.each do |friend|
         if friend
           friend.user_portfolios.each do |transaction|
             portfolio = Portfolio.find(transaction.portfolio_id)
-            transactions.push({'fb_id': friend.fb_id, 'user_id': friend.id, 'name': friend.name, 'last_portfolio_id': portfolio.id, 'last_portfolio_name': portfolio.name,
+            transactions.push({'image': friend.image, 'user_id': friend.id, 'name': friend.name, 'last_portfolio_id': portfolio.id, 'last_portfolio_name': portfolio.fiduty_name,
                               'roi': transaction.gain_loss, 'investment_date': transaction.investment_date.to_datetime.to_i})
           end
 
@@ -146,7 +156,7 @@ end
         if friend
           friend.user_portfolios.each do |transaction|
             portfolio = Portfolio.find(transaction.portfolio_id)
-            transactions.push({'fb_id': friend.fb_id, 'user_id': friend.id, 'name': friend.name, 'last_portfolio_id': portfolio.id, 'last_portfolio_name': portfolio.name,
+            transactions.push({'image': friend.image, 'user_id': friend.id, 'name': friend.name, 'last_portfolio_id': portfolio.id, 'last_portfolio_name': portfolio.fiduty_name,
                               'roi': transaction.gain_loss, 'investment_date': transaction.investment_date.to_datetime.to_i})
           end
 
@@ -163,7 +173,7 @@ end
   end
   
   def add_to_funds(amt)
-    amount = amt
+    amount = amt.to_i * 100
     self.funds = self.funds + amount 
     self.save
   end
@@ -207,7 +217,7 @@ end
     if tasks
       "User has #{tasks.count} tasks remaning to reach next level"
     else
-      "All tasks complete for #{self.level.level - 1}, User is now at level #{self.level.leve}"
+      "All tasks complete for #{self.level.level - 1}, User is now at level #{self.level.level}"
     end
     end 
   end
@@ -270,10 +280,28 @@ end
   end
   end
   
-  def get_friends
+  def get_friends_fb_ids
     graph = Koala::Facebook::API.new(self.fb_id)
-    graph.get_connections("me", "friends", api_version: 'v2.0')
+    friends = graph.get_connections("me", "friends", api_version: 'v2.0')
+    fb_ids = friends.map{|friend| friend['id']}
+    fb_ids
   end
+  
+  def set_public_info
+    graph = Koala::Facebook::API.new(self.fb_id)
+    self.age_range = graph.get_object("me?fields=age_range")['age_range']['min']
+    self.gender = graph.get_object("me?fields=gender")['gender']
+    self.locale = graph.get_object("me?fields=locale")['locale']
+    self.birthday = graph.get_object("me?fields=birthday")['birthday']
+    self.save
+  end
+  
+  def get_friends
+    fb_ids = self.get_friends_fb_ids
+    User.recent_friend_investment(fb_ids)
+  end
+  
+  
   
   def add_points(points = 1)
     self.points += points

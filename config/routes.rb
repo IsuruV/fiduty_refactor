@@ -13,14 +13,20 @@ Rails.application.routes.draw do
   get '/users/social' => 'users#social'
   post '/users/social' => 'users#social'
   get '/portfolios/etf_return' => 'portfolios#etf_return'
+  get '/users/recent_friend_investment' => 'users#recent_friend_investment'
   get '/users/recent_everyone_investment' => 'users#recent_everyone_investment'
   get '/users/sign_out' => "users#log_out"
   post '/users/update' => "users#update"
   post '/users/add_points' => "users#add_points"
+  get '/users/scoreboard' => "users#scoreboard"
   
   get '/portfolios/ten_portfolios' => "portfolios#ten_portfolios"
   resources :user_portfolios
   post '/user_portfolios/watson_proxy' => "user_portfolios#watson_proxy"
+  
+  post '/progress_tracker/complete_task' => "progress_trackers#complete_task"
+  post '/progress_tracker/first_investment' => "progress_trackers#first_investment"
+  post '/progress_tracker/add_money' => "progress_trackers#add_money"
   # devise_scope :user do
   #   get '/signout', to: 'devise/sessions#destroy', as: :signout
   # end

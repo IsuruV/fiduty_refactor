@@ -24,4 +24,10 @@
 	100% { -webkit-transform: rotateX(0deg); transform: rotateX(0deg); opacity: 1; }
 }
 
+body.noscroll
+{
+    position: fixed; 
+    overflow-y: scroll;
+    width: 100%;
+}
 

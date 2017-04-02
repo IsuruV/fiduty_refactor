@@ -8,6 +8,7 @@ class UsersController < ApplicationController
      if current_user.tasks.empty?
        current_user.add_inital_tasks
      end
+      current_user.level_up
       @user = current_user
     end
     
@@ -46,6 +47,10 @@ class UsersController < ApplicationController
      respond_to do |format|
        format.json {render json: @user.portfolio_with_vals}
      end
+  end
+  
+  def update
+    current_user.update(user_params)
   end
 
 
@@ -96,10 +101,9 @@ end
     end
 
     def recent_friend_investment
-      fb_ids = params[:fb_ids]
-      @users = User.recent_friend_investment(fb_ids)
+      friend_investments = current_user.get_friends
       respond_to do |format|
-        format.json {render json: @users}
+        format.json {render json: friend_investments}
       end
     end
     
@@ -115,6 +119,12 @@ end
       @users = User.everyone_investment
       respond_to do |format|
         format.json {render json: @users.last(25)}
+      end
+    end
+    
+    def scoreboard
+      respond_to do |format|
+        format.json {render json: current_user.get_top_roi }
       end
     end
     
@@ -145,10 +155,9 @@ end
   end
 
 
-  # private
-  # def user_params
-  #   params.require(:user, :choice).permit(:id, :risk_level, :phone, :action,
-  #   :martial_status, :dependants, :citizenship, :dob, :ssn, :address, :fb_id, :email, :name, :password, :funds, :level_id, :task)
-  # end
+  private
+  def user_params
+    params.require(:user).permit(:name, :email, :age_range, :gender, :locale, :birthday)
+  end
 end
 

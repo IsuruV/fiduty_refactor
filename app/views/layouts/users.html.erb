@@ -1,166 +1,195 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Fiduty - Dashboard</title>
+    <title>Fiduty - Dashboard</title>
 
-<meta name="viewport" content="width=device-width, user-scalable=no">
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, user-scalable=no">
 
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-<link href="css/font-awesome.css" rel="stylesheet">
-<script src="js/jquery.min.js"> </script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
 
-<!-- Mainly scripts -->
-<script src="js/jquery.metisMenu.js"></script>
-<script src="js/jquery.slimscroll.min.js"></script>
+    <!-- Vendor styles -->
+    <link href="https://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/introjs.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel='stylesheet'>
+    
+    <!-- Custom app styles -->
+    <link href="css/style.css" rel='stylesheet'>
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="/assets/users.css" rel="stylesheet">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.js"></script>
-<script src="/assets/radial-progress-chart.min.js"></script>
-<script src="/assets/users.js"></script>
+    <!-- JS libraries -->
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
-<!-- Custom and plugin javascript -->
-<link href="css/custom.css" rel="stylesheet">
-<link href="/assets/users.css"></link>
-<script src="js/custom.js"></script>
-<script src="js/screenfull.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script src="https://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/intro.min.js"></script>
+    <script src="js/jquery.metisMenu.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <script src="/assets/radial-progress-chart.min.js"></script>
+    <script src="js/skycons.js"></script>
+    <script src="js/screenfull.js"></script>
 
-		<script>
-		$(function () {
-			$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+    <!-- Custom scripts -->
+    <script src="/assets/users.js"></script>
+    <script src="js/custom.js"></script>
+    <script>
+    	$(function () {
 
-			if (!screenfull.enabled) {
-				return false;
-			}
-
-			$('#toggle').click(function () {
-				screenfull.toggle($('#container')[0]);
-			});
-			});
-		</script>
-
-<!--skycons-icons-->
-<script src="js/skycons.js"></script>
-<!--//skycons-icons-->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<!-- Latest compiled and minified JavaScript -->
-
-
-<!--Slider links-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/unslider/2.0.3/js/unslider-min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/unslider/2.0.3/css/unslider-dots.css"></link>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/unslider/2.0.3/css/unslider.css"></link>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"></link>
-<!---->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> 
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/unslider/2.0.3/css/unslider-dots.css"></link>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/unslider/2.0.3/css/unslider.css"></link>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/unslider/2.0.3/js/unslider-min.js"></script> 
-<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
-
-
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/intro.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/introjs.min.css"></link>
-
+    		$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+    
+    		if (!screenfull.enabled) {
+    			return false;
+    		}
+    		$(window).on("load",function(){
+                $(".chat-content").mCustomScrollbar();
+            });
+    	});
+    </script>
 </head>
-
-
-<!----------------Body
-					---------------------->
-
-<body style="font-family:'Roboto'; font-size: 20px; color:#666666;">
-    <style>
-.grayout {
-    opacity: 0.3; /* Real browsers */
-    filter: alpha(opacity = 40); /* MSIE 
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
-}
-</style>
-
- <input id="onboarding" type="hidden" value=<%=current_user.points if current_user%>></input>
+<body>
+<input id="onboarding" type="hidden" value=<%=current_user.points if current_user%>>
 	
 <!----Onboarding render a Partial _onboarding.html.erb---->
-<div style="display:<%= "none" if current_user.points > 0 %>">
-<%= render partial: '/layouts/onboarding' %>
+<div id="onboardingdiv" <%= 'style=display:none' if current_user.points > 0 %> >
+    <%= render partial: '/layouts/onboarding' %>
 </div>
 <!----End Onboarding---->
 
-
 <%= render partial: '/layouts/header' %>
-<%= render partial: '/layouts/nav' %>
+<!-- Main Grid -->
+<div class="clearfix page-content">
+    <div class="aside visible-lg">
+        <%= render partial: '/layouts/nav' %>
+    </div>
+    <div class="main">
+        <input id="userSignInCount" type="hidden" value=<%=current_user.sign_in_count if current_user%>>
+        <input id="userLvl" type="hidden" value=<%=current_user.level_id if @user%>>
+        <%= render partial: '/layouts/progressboxes' %>
+        <!-------------------Progress bar end----->
+        
+        <%= yield %>
+        
+    </div>
+</div>
 
 
-	<div id="wrapper" style="min-height:100%">
-		<input id="userSignInCount" type="hidden" value=<%=current_user.sign_in_count if current_user%>></input>
-<!------------Chatbot Button------------->
 
-		<!--<div class="box" style="height:250px;width:220px; border-style:solid; border-color:black;border-width:thin; margin-top:260px; margin-left:20px; margin-bottom:40px; position:fixed;overflow:scroll;">-->
-		<!--<p id ="writing" style="font-size:1em; color:rgba(51, 153, 204, 1);">Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime, I'm powered by Artificial Intelligence.</p>-->
-	<div class="col-md-3">
-	   <div data-step="1" data-intro="Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime." class="box" style="min-height:310px;width:240px; margin-top:260px; margin-left:0px; margin-bottom:40px; position:fixed; font-size:16px; border-style:solid; border-color:black;border-width:thin;">
-	       <div class="row"><div class="col-xs-9 col-xs-offset-0"><h4 style="color:rgba(51, 153, 204, 1); text-align:left;padding-top:5px;padding-left:12px"><i class="fa fa-comments-o" aria-hidden="true"></i>
-Richie the Bot</div><div class="col-xs-3" style="text-align:right;padding-right:20px;padding-top:5px"><a id="openChatBoxModal" href="#"><i class="fa fa-plus-square-o" aria-hidden="true" style="color:rgba(51, 153, 204, 1);"></i></a></h4></div></div>
 
-	       <div class="panel-body" style="overflow-y: scroll; padding:5px; height:180px">
+
+    <!------------Chatbot Window------------->
+	<div class="chat-box chat-box-fixed minimized">
+	    <div data-step="1" data-intro="Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime.">
+            <h4 class="chat-title clearfix">
+                <span class="title-text">
+                    <i class="fa fa-comments-o" aria-hidden="true"></i>
+                    Richie the Bot
+                </span>
+                <span class="pull-right" >
+                    <span id="minimizeChatBox" class="chat-control minimized-hidden">
+                        <i class="fa fa-window-minimize" aria-hidden="true"></i>
+                    </span>
+                    <span id="restoreChatBox" class="chat-control maximized-hidden">
+                        <i class="fa fa-window-maximize" aria-hidden="true"></i>
+                    </span>
+                    <span id="openChatBoxModal" class="chat-control">
+                        <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+                    </span>
+                </span>
+            </h4>
+        </div>
+        <div class="chat-content">
             <ul class="chat">
-                <li class="left clearfix" style="padding:0px">
-                <div class="chat-body clearfix" style="padding:0px">
-                <div class="header">
-                <strong class="primary-font" style="color:rgba(51, 153, 204, 1)">Richie</strong> <small class="pull-right text-muted">
-                <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
-                </div>
-                        <p>
-                            Hi Im here to help
-                        </p>
-                </div>
+                <li class="msg msg-richie">
+                    <div class="msg-header clearfix">
+                        <strong class="msg-author">Richie</strong> 
+                        <small class="msg-time text-muted">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            14 mins ago
+                        </small>
+                    </div>
+                    <div class="msg-body">
+                        <p>Feel free to ask me questions anytime.</p>
+                    </div>
                 </li>
+                <!--<li class="msg msg-user" >-->
+                <!--    <div class="msg-header clearfix">-->
+                <!--        <strong class="msg-author" >User</strong> -->
+                <!--        <small class="msg-time text-muted">-->
+                <!--            <i class="fa fa-clock-o" aria-hidden="true"></i>-->
+                <!--            14 mins ago-->
+                <!--        </small>-->
+                <!--    </div>-->
+                <!--    <div class="msg-body">-->
+                <!--        <p>Hello, could you please tell me, where should I start?</p>-->
+                <!--    </div>-->
+                <!--</li>-->
             </ul>
-            </div>
-            
-            <div class="panel-footer">
-                <div class="input-group">
-                     <form id="watson">
-                        <input id="user-input" type="text" class="user-input form-control input-sm" placeholder="Type your message here..." />
-                        <span class="input-group-btn">
-                           <input type="submit" class="btn btn-primary btn-sm" id="btn-chat"value="Send"></input>
-                       </span>
-                     </form>
-                     
+        </div>
+        <div class="chat-footer">
+            <form id="watson">
+                <div class="chat-form">
+                    <input id="user-input2" type="text" class="chat-input" placeholder="Type your message here" />
+                    <!--<input id="btn-chat" type="submit" class="chat-btn btn btn-info" value="Go">-->
                 </div>
-            </div>
-        </div></div>
+            </form>
+        </div>
+    </div>
+    
+    
+<!-----Chatbot End------>
 
-		<!--<a id="next" class="btn btn-default btn-lg" style="white-space: normal; margin-top:520px; margin-left:170px; margin-bottom:40px; position:fixed;"><h4>Next</h4></a>-->
+<!--Facebook info modal-->
+<div id="facebookModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-	
-	<div id="page-wrapper" >
-	<div class="content-main" style="background:white">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">This is what we got from facebook.</h4>
+        <h4 class="modal-title">Make sure everything is correct!</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="user_name" value="<%=current_user.name%>" required>
+        </div>
+        <div class="form-group">
+          <label for="email">email:</label>
+          <input type="email" class="form-control" id="user_email" value="<%=current_user.email%>" required>
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="age" class="form-control" id="user_age" value="<%=current_user.age_range%>" required>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <input type="gender" class="form-control" id="user_gender" value="<%=current_user.gender%>" required>
+        </div>
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <input type="location" class="form-control" id="user_location" value="<%=current_user.locale%>" required>
+        </div>
+        <div class="form-group">
+          <label for="birthday">Birthday:</label>
+          <input type="birthday" class="form-control" id="user_birthday"value="<%=current_user.birthday%>" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="update_user_info" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+      </div>
+    </div>
 
-     <input id="userLvl" type="hidden" value=<%=current_user.level_id if @user%>></input>
-  <%= render partial: '/layouts/progressboxes' %>
-  <%= yield %>
-
-	 
-<!---->
-
-<!------------Footer------------->
-
-
-<!------------------------->
-	
+  </div>
 </div>
-</div>
-	<footer class="copy" style="text-align:right; padding-right:45px;">
-    <p>2017 Fiduty - all rights reserved</p>
-	<div class="clearfix"> </footer>
-</div>
-<!---->
+    <!---->
 
 </body>
 </html>
