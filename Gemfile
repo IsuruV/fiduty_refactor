@@ -5,15 +5,18 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 
 gem 'pg'
+gem 'bootstrap-sass', '3.2.0.2'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 gem 'pry'
+# gem 'therubyracer'
+gem 'coffee-script-source'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
-# gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 4.2'
 gem 'rb-readline', '~> 0.5.3'
 gem 'active_model_serializers'
 gem 'faker', '~> 1.6', '>= 1.6.6'
@@ -21,10 +24,9 @@ gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'yahoo-finance'
 
 
-gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'thin'
-gem 'bootswatch-rails'
+# gem 'bootswatch-rails'
 
 gem 'market_beat'
 gem 'nas-yahoo_stock', '~> 1.0', '>= 1.0.8'
@@ -36,7 +38,7 @@ gem 'whenever', :require => false
 gem 'sms-easy'
 gem 'gmail'
 gem 'mail'
-gem 'sprockets'
+
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -54,6 +56,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'koala'
 gem "fbgraph"
 gem 'rack-cors', :require => 'rack/cors'
+gem 'rails_12factor'
+# gem "sprockets"
+# gem "babel-schmooze-sprockets"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -75,12 +80,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'pg'
+  # gem 'pg'
 end
 
 group :production do
-gem 'pg'
-gem 'rails_12factor', '0.0.2' #Heroku static assets for image and css
+# gem 'pg'
+gem 'rails_12factor'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
