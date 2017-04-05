@@ -958,6 +958,7 @@ function addPoint_finishGuide(){
     // mainWalkThrough();
     addPoint(1);
     openFacebookModal();
+    $('.chat-box').removeClass('hidden');
   });
 }
 function showOnboardingSlider(){
@@ -979,6 +980,7 @@ function showOnboardingSlider(){
           $('body').removeClass('noscroll');
           $( "div" ).remove( "#overlay" );
       }
+      
   });
 }
 
