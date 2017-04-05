@@ -83,8 +83,9 @@
 
 
 
-    <!------------Chatbot Window------------->
-	<div class="chat-box chat-box-fixed minimized">
+<!------------Chatbot Window------------->
+
+	<div class="chat-box chat-box-fixed minimized <%= 'hidden' if current_user.points == 0 %>">
 	    <div data-step="1" data-intro="Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime.">
             <h4 class="chat-title clearfix">
                 <span class="title-text">
@@ -141,7 +142,7 @@
             </form>
         </div>
     </div>
-    
+
     
 <!-----Chatbot End------>
 
