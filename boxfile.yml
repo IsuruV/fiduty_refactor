@@ -1,0 +1,9 @@
+run.config:
+  engine: ruby
+  extra_packages:
+    - nodejs
+data.db:
+  image: nanobox/postgresql:9.5
+
+web.main:
+  start: rails s
