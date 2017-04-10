@@ -16,7 +16,7 @@
                     <span class="h4"><%=@user.name if @user%><span class="caret"></span></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="/users/profile" style="font-family:'Roboto'; font-size:16px; color:black">Profile</a></li>
+                    <li><a id="profile" href="/users/profile" style="font-family:'Roboto'; font-size:16px; color:black">Profile</a></li>
             	    <li><a href="/users/sign_out" style="font-family:'Roboto'; font-size:16px; color:black">Sign Out</a></li>
                 </ul>
                 <input id="username" type="hidden" value=<%=@user.name if @user %>>
@@ -42,31 +42,29 @@
         </div>
         <div class="menu_profile">
             <a class="menu_label hvr-bounce-to-right" href="#" >
-                <i class="fa fa-user nav_icon"></i> 
+                <i class="fa fa-user nav_icon"></i>
                 <span class="nav-label">Profile</span>
             </a>
             <a class="menu_label hvr-bounce-to-right" href="#" >
-                <i class="fa fa-close nav_icon"></i> 
+                <i class="fa fa-close nav_icon"></i>
                 <span class="nav-label">Sign Out</span>
             </a>
         </div>
         <a class="menu_label hvr-bounce-to-right" id="dashboard-tab" href="/users/dashboard" >
             <i class="fa fa-dashboard nav_icon "></i>
-            <span class="nav-label">Dashboards</span> 
+            <span class="nav-label">Dashboards</span>
         </a>
         <a class="menu_label hvr-bounce-to-right" id="knowledge-tab" href="#">
-            <i class="fa fa-picture-o nav_icon"></i> 
-            <span class="nav-label" >Understand</span> 
+            <i class="fa fa-picture-o nav_icon"></i>
+            <span class="nav-label" >Understand</span>
         </a>
         <a class="menu_label hvr-bounce-to-right" id="experience-tab" href="/users/experience" >
-            <i class="fa fa-inbox nav_icon"></i> 
-            <span class="nav-label">Invest</span> 
+            <i class="fa fa-inbox nav_icon"></i>
+            <span class="nav-label">Invest</span>
         </a>
         <a class="menu_label hvr-bounce-to-right" id="social-tab"  href="/users/social" >
-            <i class="fa fa-indent nav_icon"></i> 
+            <i class="fa fa-indent nav_icon"></i>
             <span class="nav-label">Socialize</span>
         </a>
-        
+
     </nav>
-                	
-            

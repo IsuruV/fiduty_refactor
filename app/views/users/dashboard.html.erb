@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
-    
-    
+
+
 <style>
 
 div.panel,p.flip
@@ -24,27 +24,27 @@ div.panel
    font-weight: bold;
    font-size: 30px;
  }
- 
+
  .rbc-center-text {
    font-family: 'Roboto', 'Myriad Set Pro', 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial;
    fill: white;
  }
- 
+
  .calories .rbc-center-text-line0 {
    font-size: 95px;
  }
- 
+
  .calories .rbc-center-text-line1 {
    font-size: 20px;
  }
- 
+
  .gpa .rbc-center-text-line0 {
    font-size: 30px;
  }
- 
+
 
 </style>
-<!----------------Content Mid ---------------------->	
+<!----------------Content Mid ---------------------->
 <div class="main-dashboard">
     <div class="container-fluid">
         <div class="row">
@@ -77,29 +77,29 @@ div.panel
         </div>
     </div>
 </div>
-			
- 
- <!----------------End Content Mid ---------------------->	
+
+
+ <!----------------End Content Mid ---------------------->
 
     <div class="clearfix"></div>
-  	     
-  	     
+
+
 <!-----------Invest Modal---->
-  	     
+
   	 <div class="modal fade" id="investModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:50%; margin-left:25%;margin-top:10%;margin-rigt:auto; position:fixed">
   	     <div class="modal-content" >
         <div>
-            
+
             <ul class="nav nav-tabs nav-justified" style="font-size:2em">
   		    <li class="active" style="color:green"><a data-toggle="tab" href="#Invest" >Invest</a></li>
   		    <h4 id="modalETFName" class="muted" style="text-align:center;color:green"></h4>
-  		    
+
           		<!--<li ><a data-toggle="tab" href="#Cash" >Invest</a></li>-->
 		    </ul>
-        		
+
         <div class="tab-content" >
         <div id="Cash" class="tab-pane fade in active">
-        	
+
         	<div class="row">
         		<div class="col-xs-5 col-md-offset-1" style="height:150px;border-right-style:solid;border-right-color:#dcdcdc; border-right-width:thin;border-bottom-style:solid;border-bottom-color:#dcdcdc; border-bottom-width:thin;text-align:center">
         			<p style="padding-top:10px; font-size:1em">Available cash<br>
@@ -109,23 +109,23 @@ div.panel
         			<span><input id="amountInvested" class="form-control form-control-lg" type="text" placeholder="Enter here"></span></p>
         		</div>
         	</div>
-        		
+
             <div class="modal-body">
                 <h4 style="text-align:center">To get more cash follow this link <i class="fa fa-angle-double-right" aria-hidden="true"></i></h4>
       		</div>
-      			
+
       		<div class="modal-footer">
       	    	<input type="hidden" id="etfID" value=""></input>
       			<button id="makeInvestment" type="button" class="btn btn-success" style="margin-bottom:0px; width:80px;">Invest</button>
         		<button type="button" class="btn btn-default" data-dismiss="modal" style="width:80px;">Close</button>
       		</div>
-      	
+
       	</div>
         </div>
         </div>
         </div>
         </div>
-        
+
 <!-----------Invest Modal End---->
 
 
@@ -134,40 +134,41 @@ div.panel
     <div id="cashModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width:50%; margin-left:25%;margin-top:5%;margin-right:auto; position:fixed">
   	<div class="modal-content">
     <div>
-            
+
             <ul class="nav nav-tabs nav-justified" style="font-size:2em">
   		    <li class="active" style="color:green"><a data-toggle="tab" href="#Invest" >Available Cash</a></li>
 <!--<li ><a data-toggle="tab" href="#Cash" >Invest</a></li>-->
 		    </ul>
-    
+
         <div class="tab-content" >
         <div id="Cash" class="tab-pane fade in active">
-        	
+
         	<div class="row">
         		<div class="col-xs-6 col-xs-offset-3" style="height:120px;border-bottom-style:solid;border-bottom-color:#dcdcdc; border-bottom-width:thin;text-align:center">
         			<span style="color:green;font-size:4em; padding-top:15px">$<%=current_user.funds/100%></span></p>
         		</div>
         	</div>
-        		
+
     <div class="modal-body">
-<h3 style="text-align:center">This is how you can get more cash to invest</h3>    
+<h3 style="text-align:center">This is how you can get more cash to invest</h3>
 <br>
     <div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;" >
-          
-        <a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+
+        <a id= "Understand" href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
             <div class="row">
                 <div class="col-xs-10"><p style="font-family:'Roboto'; font-size:1em; color:#666666;" >Take a quiz and earn $10</p>
             </div><!----><div class="col-xs-2"><button type="button" class="btn btn-default">Go</button></div>
             </div>
         </a>
-      		
-        <a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
+
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffiduty.nanoapp.io%2F&amp;src=sdkpreparse" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
             <div class="row">
                 <div class="col-xs-10"><p style="font-family:'Roboto'; font-size:1em; color:#666666;" >Share on facebook and earn $30</p>
-            </div><!----><div class="col-xs-2"><button type="button" class="btn btn-default">Go</button></div>
-            </div>
+            </div><!----><div class="col-xs-2"><button type="button" class="btn btn-default">Go</button></div></div>
+
         </a>
-      		
+        <!-- <div class="fb-share-button" data-href="http://fiduty.nanoapp.io/" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffiduty.nanoapp.io%2F&amp;src=sdkpreparse">Share</a></div> -->
+
         <a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
             <div class="row">
                 <div class="col-xs-10"><p style="font-family:'Roboto'; font-size:1em; color:#666666;" >Invite a friend and earn $10</p>
@@ -175,29 +176,29 @@ div.panel
             </div>
         </a>
 
-     
+
     </div></div>
-      			
+
       		<div class="modal-footer">
         		<button type="button" class="btn btn-default" data-dismiss="modal" style="width:80px;">Close</button>
       		</div>
-      	
+
       	</div>
         </div>
         </div>
         </div>
         </div>
-			
+
 <!------------Chatbot Modal------------->
 
     <div id="chatbotModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="chatBotModal" aria-hidden="true" >
         <div class="chat-box chat-box-modal">
     	    <div data-step="1" data-intro="Hey there, this is Richie im a bot. I'm created to guide you through this process. Feel free to ask me questions anytime.">
                 <h4 class="chat-title clearfix">
-                    
+
                     <i class="fa fa-comments-o" aria-hidden="true"></i>
                     Richie the Bot
-                    
+
                     <span class="pull-right" >
                         <span class="chat-control">
                             <i class="fa fa-close" data-dismiss="modal" aria-hidden="true"></i>
@@ -210,7 +211,7 @@ div.panel
                     <!-- Should probbly be empty, content is just for example -->
                     <li class="msg msg-richie">
                         <div class="msg-header clearfix">
-                            <strong class="msg-author">Richie</strong> 
+                            <strong class="msg-author">Richie</strong>
                             <small class="msg-time text-muted">
                                 <i class="fa fa-clock-o" aria-hidden="true"></i>
                                 14 mins ago
@@ -244,8 +245,8 @@ div.panel
             </div>
         </div>
     </div>
-        
-        
+
+
 
 
 <!------------------------->
@@ -292,7 +293,7 @@ div.panel
                     <button id="finishtask_btn" class="btn-styled centered" data-dismiss="modal" title="What is investing?">Finish</button>
                 </div>
             </div>
-     
+
             <a class="left carousel-control" href="#carousel-investment" role="button" data-slide="prev">
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
             </a>
@@ -318,15 +319,15 @@ div.panel
             <br><center><div class="h1 green" id="choiceAmount" >$0</div></center>
         </div>
         <div id="carousel-quiz" class="carousel slide" data-ride="carousel" data-interval="false">
-            
-            
+
+
             <div class="carousel-inner">
                 <!-- Insert any images inside divs -->
                 <div class="item active" style="background:#DCF0FB">
                     <div class="quiz-box text-center">
                         <div class="btn-group btn-group-lg">
                             <div class="quiz-choice">
-        
+
                                 <button title="q1incorrectChoice" id="q1correctChoice" class="btn btn-default correctChoice">Your fancy Mac if you are in school</button>
                                 <button title="q1correctChoice" id="q1incorrectChoice" class="btn btn-default incorrectChoice">Your morning latte at the "Bernie Sanders Coffee House"</button>
                             </div>
@@ -335,7 +336,7 @@ div.panel
                     </div>
                 <br>
                 </div>
-                
+
                 <div class="item" style="background:#DCF0FB">
                     <div class="quiz-box text-center">
                         <div class="btn-group btn-group-lg">
@@ -348,8 +349,8 @@ div.panel
                     </div>
                 <br>
                 </div>
-                
-                
+
+
                 <div class="item" style="background:#DCF0FB">
                     <div class="quiz-box text-center">
                         <div class="btn-group btn-group-lg">
@@ -362,7 +363,7 @@ div.panel
                     </div>
                 <br>
                 </div>
-                
+
                 <div class="item" style="background:#DCF0FB">
                     <div class="quiz-box text-center">
                         <div class="btn-group btn-group-lg">
@@ -375,7 +376,7 @@ div.panel
                     </div>
                 <br>
                 </div>
-                
+
                 <div class="item" style="background:#DCF0FB">
                     <div class="quiz-box text-center">
                         <div class="btn-group btn-group-lg">
@@ -393,7 +394,7 @@ div.panel
                     <button id="finishtask_btn" class="btn-styled centered" data-dismiss="modal" title="Which One is an Investment?">Finish</button>
                 </div>
             </div>
-     
+
             <a class="left carousel-control" href="#carousel-quiz" role="button" data-slide="prev">
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
             </a>
@@ -408,8 +409,16 @@ div.panel
 </div>
 <!-----------Understand Quiz Modal End---->
 
+<!-- Facebook share button-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=228025157667481";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!--  -->
 
-
-			
 </body>
 </html>

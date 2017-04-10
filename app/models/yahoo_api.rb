@@ -55,7 +55,7 @@ class YahooApi
     portfolio.update(ytd: ytd, ytd_raw: ytd_raw)
     return portfolio
   end
-  
+
   def self.update_yield(portfolio)
     con = Faraday.new
     res = con.get "https://query2.finance.yahoo.com/v10/finance/quoteSummary/#{portfolio.symbol}?formatted=true&crumb=QtGhLQr%2FrgH&lang=en-US&region=US&modules=defaultKeyStatistics%2CassetProfile%2CtopHoldings%2CfundPerformance%2CfundProfile&corsDomain=finance.yahoo.com"
@@ -73,7 +73,6 @@ class YahooApi
 
   def self.fetch_recent_price(portfolio)
       yahoo_client = YahooFinance::Client.new
-      # require 'pry'; binding.pry
       price = yahoo_client.quotes([portfolio.symbol], [:last_trade_date,:last_trade_price])
       price_formatted = price[0]
       val = {"last_trade_date": price_formatted[:last_trade_date],"last_trade_price": price_formatted[:last_trade_price]}
@@ -81,13 +80,13 @@ class YahooApi
       portfolio.save
       # return portfolio
   end
-  
+
   def self.update_all_etfs
     Portfolio.all.each do |etf|
       self.fetch_recent_price(etf)
       self.fetch_recent_price(etf)
       self.real_time_quotes(etf.symbol)
     end
-  end 
+  end
 
 end

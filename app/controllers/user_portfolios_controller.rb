@@ -16,21 +16,21 @@ class UserPortfoliosController < ApplicationController
           format.json {render json: current_user.portfolios}
       end
     end
-    
+
     def sell
       sell_amount = params[:sell_amount].to_f
       etf = params[:etf_id].to_i
       if current_user.sell_investment(sell_amount, etf)
         respond_to do |format|
           format.json{ render json: 'sold' }
-        end 
+        end
         else
           respond_to do |format|
             format.json{ render json: 'error' }
          end
-         
+
       end
-    end 
+    end
 
     def recent_investments
       investments = UserPortfolio.recent_investments
@@ -45,20 +45,21 @@ class UserPortfoliosController < ApplicationController
         format.json {render json: {"user_portfolios": current_user, "total_investment": current_user.calculate_total_investment, "total_value": current_user.user_total_value}}
       end
     end
-    
+
     def watson_proxy
       conn = Faraday.new(:url => "https://gateway.watsonplatform.net/conversation/api/v1" )
-      conn.basic_auth('fcd45e5b-e1d8-42ea-8b1e-51b506b5d9dd', 'gU37Hs0zV7ti')
+      # conn.basic_auth('fcd45e5b-e1d8-42ea-8b1e-51b506b5d9dd', 'gU37Hs0zV7ti')
+      conn.basic_auth('a92875a0-ed06-443d-ad7a-fc45c638f5e2', 'R6s0HFx7HvRC')
 
       resp = conn.post do |req|
-        req.url '/conversation/api/v1/workspaces/6b52eac7-5172-4546-8d84-cf5a0adf659c/message?version=2017-02-03'
-        req.headers['Content-Type'] = 'application/json' 
+        # req.url '/conversation/api/v1/workspaces/6b52eac7-5172-4546-8d84-cf5a0adf659c/message?version=2017-02-03'
+        req.url '/conversation/api/v1/workspaces/49ab1c76-d4ec-477f-b14e-c2cfea0010a4/message?version=2017-02-03'
+        req.headers['Content-Type'] = 'application/json'
         req.body = params[:insert].to_json
       end
       respond_to do |format|
         format.json{ render json: resp.body}
       end
-    end 
+    end
 
 end
-  

@@ -58,6 +58,6 @@ class PortfoliosController < ApplicationController
           format.json {render json: @user.user_portfolios_data.to_json}
         end
     end
-    
+
 
 end
