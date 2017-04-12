@@ -8,19 +8,19 @@ class ProgressTrackersController < ApplicationController
        end
        render json: {task: current_user.user_tasks}
     end
-    
+
     def first_investment
-        invest_task = current_user.user_tasks.where(task_id: 14).first
+        invest_task = current_user.user_tasks.where(task_id: 2).first
         invest_task.completed = true
         invest_task.save
         render json:{task:"completed task "}
     end
-    
+
     def add_money
         current_user.add_to_funds(fund_params)
         render json: current_user.funds
     end
-    
+
     private
     def task_params
         params.require(:task_name)

@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
- 
+
    layout 'users'
-   
+
    def dashboard
 
      if current_user.tasks.empty?
@@ -11,11 +11,11 @@ class UsersController < ApplicationController
       current_user.level_up
       @user = current_user
     end
-    
+
     def experience
-     
+
     end
-    
+
     def social
       choice = params[:choice]
       fb_ids = params[:fb_ids]
@@ -32,23 +32,23 @@ class UsersController < ApplicationController
         format.html{}
       end
     end
-    
+
     def knowledge
-      
+
     end
-    
+
     def profile
-      
+      render json: {"user": current_user}
     end
-    
-    
+
+
   def show
     @user = User.find(params[:id].to_i)
      respond_to do |format|
        format.json {render json: @user.portfolio_with_vals}
      end
   end
-  
+
   def update
     current_user.update(user_params)
   end
@@ -106,7 +106,7 @@ end
         format.json {render json: friend_investments}
       end
     end
-    
+
     def friends_roi
       fb_ids = params[:fb_ids]
       @friends = User.top_friends_roi(fb_ids)
@@ -114,20 +114,20 @@ end
         format.json { render json: @friends }
       end
     end
-    
+
      def recent_everyone_investment
       @users = User.everyone_investment
       respond_to do |format|
         format.json {render json: @users.last(25)}
       end
     end
-    
+
     def scoreboard
       respond_to do |format|
         format.json {render json: current_user.get_top_roi }
       end
     end
-    
+
 
     def add_funds
       amount = params[:funds].to_i
@@ -138,13 +138,13 @@ end
         format.json {render json: current_user.funds.to_json}
       end
     end
-    
+
   def log_out
     # require 'pry'; binding.pry
     sign_out current_user
     redirect_to root_path
   end
-  
+
   def add_points
     points = params[:points]
     if points
@@ -160,4 +160,3 @@ end
     params.require(:user).permit(:name, :email, :age_range, :gender, :locale, :birthday)
   end
 end
-
