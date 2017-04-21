@@ -496,7 +496,7 @@ function etfList(data){
           <img src="/assets/SPDR.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:30px;margin-bottom:10px">
           </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${lvlEtf.fiduty_name}</h3><small class="text-muted">Underlying Asset: ${lvlEtf.name} (${lvlEtf.symbol})</small>
           </div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:${!!lvlEtf.ytd.match(/-/g)? 'red': 'green'}">${lvlEtf.ytd}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn" class="btn btn-success btn-lg">Invest</button></div>
+          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 id=${lvlEtf.symbol} style="color:${!!lvlEtf.ytd.match(/-/g)? 'red': 'green'}">${lvlEtf.price}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn" class="btn btn-success btn-lg">Invest</button></div>
         </div>
         <div id="etf_detail${lvlEtf.symbol}" class="row" style="display:none;">
           <div class="col-md-3">
@@ -514,7 +514,7 @@ function etfList(data){
           <img src="/assets/SPDR.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:30px;margin-bottom:10px">
           </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${lvlEtf.fiduty_name}</h3><small class="text-muted">Underlying Asset: ${lvlEtf.name} (${lvlEtf.symbol})</small>
           </div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:green">${lvlEtf.ytd}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn_grey" class="btn btn-success btn-lg">Invest</button></div>
+          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 id=${lvlEtf.symbol} style="color:green">${lvlEtf.price}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn_grey" class="btn btn-success btn-lg">Invest</button></div>
         </div>
         <div id="etf_detail${lvlEtf.symbol}" class="row etf_list_item" style="display:none;">
           <div class="col-md-3">
@@ -556,7 +556,8 @@ function getTenPortflios(){
           }).done(function(data) {
             var listing = etfList(data);
             fader(listing, '.main-dashboard');
-            $('.box p').replaceWith(`<p>I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone</p>`)
+            // from yahooFinance.js
+            updateEtfPrices(data);
           });
 }
 
@@ -630,7 +631,7 @@ function clickTasks(){
 
     fader(knowledgeContent(),'.main-dashboard');
     highLight(title);
-    $('#cashModal').modal('hide');
+    $('#cashModal').modal('hide')
     // window.setTimeout(runHighLight, 500);
 
   });

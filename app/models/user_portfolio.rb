@@ -5,7 +5,7 @@ class UserPortfolio < ApplicationRecord
     has_many :sales, :through => :user_portfolio_sales
     default_scope { where(active: true) }
     # default_scope{ where('ROUND(gain_loss, 3)') }
-    
+
   def self.recent_investments
     investments = UserPortfolio.find(:all, :order => "id desc", :limit => 25).reverse
     array = []
@@ -29,7 +29,7 @@ class UserPortfolio < ApplicationRecord
     self.holding_return = holding_ret
     self.save
   end
-  
+
   def calc_weight
     new_weight = self.inital_investment.round(2) / self.portfolio.price.round(2)
     self.weight = new_weight
@@ -38,14 +38,14 @@ class UserPortfolio < ApplicationRecord
   def calc_value
     @portfolio = Portfolio.find(self.portfolio_id)
     # YahooApi.fetch_recent_price(@portfolio)
-    value = @portfolio.price.round(2) * self.weight.round(2)
-    self.value = value
+    value = @portfolio.price * self.weight
+    self.value = value.round
     self.save
   end
 
   def calc_gain_loss
     self.calc_value
-    gain_loss = self.value.round(2) - self.inital_investment.round(2)
+    gain_loss = self.value - self.inital_investment
     self.gain_loss = gain_loss
     self.save
   end

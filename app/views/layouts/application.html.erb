@@ -6,6 +6,13 @@
 </head>
 
 <body>
+  <script type="text/javascript">
+      if (location.protocol != 'https:')
+        {
+            location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+          }
+  </script>
+  
   <%= javascript_include_tag :defaults %>
   <%= yield %>
 </body>

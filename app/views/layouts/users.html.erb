@@ -14,7 +14,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/introjs.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel='stylesheet'>
-    
+
     <!-- Custom app styles -->
     <link href="css/style.css" rel='stylesheet'>
     <link href="css/custom.css" rel="stylesheet">
@@ -37,13 +37,14 @@
     <script src="js/screenfull.js"></script>
 
     <!-- Custom scripts -->
+    <script src="/assets/yahooFinance.js"></script>
     <script src="/assets/users.js"></script>
     <script src="js/custom.js"></script>
     <script>
     	$(function () {
 
     		$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
-    
+
     		if (!screenfull.enabled) {
     			return false;
     		}
@@ -55,7 +56,7 @@
 </head>
 <body>
 <input id="onboarding" type="hidden" value=<%=current_user.points if current_user%>>
-	
+
 <!----Onboarding render a Partial _onboarding.html.erb---->
 <div id="onboardingdiv" <%= 'style=display:none' if current_user.points > 0 %> >
     <%= render partial: '/layouts/onboarding' %>
@@ -73,9 +74,9 @@
         <input id="userLvl" type="hidden" value=<%=current_user.level_id if @user%>>
         <%= render partial: '/layouts/progressboxes' %>
         <!-------------------Progress bar end----->
-        
+
         <%= yield %>
-        
+
     </div>
 </div>
 
@@ -109,7 +110,7 @@
             <ul class="chat">
                 <li class="msg msg-richie">
                     <div class="msg-header clearfix">
-                        <strong class="msg-author">Richie</strong> 
+                        <strong class="msg-author">Richie</strong>
                         <small class="msg-time text-muted">
                             <i class="fa fa-clock-o" aria-hidden="true"></i>
                             14 mins ago
@@ -143,7 +144,7 @@
         </div>
     </div>
 
-    
+
 <!-----Chatbot End------>
 
 <!--Facebook info modal-->
@@ -194,4 +195,3 @@
 
 </body>
 </html>
-

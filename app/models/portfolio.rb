@@ -89,9 +89,10 @@ class Portfolio < ApplicationRecord
 
       def return_price
         yahoo_client = YahooFinance::Client.new
-        data = yahoo_client.quotes([self.symbol], [:last_trade_price], { raw: false })
+        data = yahoo_client.quotes([self.symbol], [:last_trade_price])
         data_formatted = data[0]
-        data_formatted[:last_trade_price]
+        # self.update(price: data_formatted[:last_trade_price].to_f)
+        data_formatted[:last_trade_price].to_f
       end
 
       def self.lvl_based_portfolios
@@ -104,7 +105,7 @@ class Portfolio < ApplicationRecord
                         Fiduty investors and they are Manufacturing, Energy and Transportation sectors of US economy.",
                       portfolios: []
         }
-
+        # Portfolio.where(symbol:['SPY','TAN','QQQ']).each{|port| port.return_price}
         portfolios['portfolios'] = Portfolio.where(symbol:['SPY','TAN','QQQ'])
         portfolios
       end

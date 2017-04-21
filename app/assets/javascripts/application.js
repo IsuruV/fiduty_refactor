@@ -16,5 +16,6 @@
 //= require turbolinks
 //= typed
 //= require users
+//= require yahooFinance
 //= require_tree .
 //= require_tree ./js

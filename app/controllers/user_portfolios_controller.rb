@@ -8,10 +8,11 @@ class UserPortfoliosController < ApplicationController
       current_user.subtract_from_funds(investment_amount)
       @portfolio = Portfolio.find(params[:portfolio_id].to_i)
       # YahooApi.update_ytd(@portfolio)
-      YahooApi.fetch_recent_price(@portfolio)
-      weight = investment_amount / @portfolio.price
+      # YahooApi.fetch_recent_price(@portfolio)
+      current_price = @portfolio.return_price
+      weight = investment_amount /current_price
       # UserPortfolio.create(portfolio: @portfolio, trad_price: @portfolio.price, weight: weight, ytd: @portfolio.ytd_raw, inital_investment: investment_amount, user: current_user, investment_date: Time.now)
-      current_user.user_portfolios.create(portfolio: @portfolio, trad_price: @portfolio.price, weight: weight, ytd: @portfolio.ytd_raw, inital_investment: investment_amount, investment_date: Time.now)
+      current_user.user_portfolios.create(portfolio: @portfolio, trad_price: current_price, weight: weight, ytd: @portfolio.ytd_raw, inital_investment: investment_amount, investment_date: Time.now)
       respond_to do |format|
           format.json {render json: current_user.portfolios}
       end
