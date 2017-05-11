@@ -1,0 +1,88 @@
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+
+    <!-- Vendor styles -->
+    <link href="https://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/introjs.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel='stylesheet'>
+    
+    <!-- Custom app styles -->
+    <link href="css/style.css" rel='stylesheet'>
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="/assets/users.css" rel="stylesheet">
+
+    <!-- JS libraries -->
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script src="https://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/intro.min.js"></script>
+    <script src="js/jquery.metisMenu.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <script src="/assets/radial-progress-chart.min.js"></script>
+    <script src="js/skycons.js"></script>
+    <script src="js/screenfull.js"></script>
+
+
+<script src="/assets/games.js"></script>
+
+<div>
+    <div id="QuizModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="QuizModal" aria-hidden="true" >
+  	<div class="modal-content modal-centered">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+                <i class="fa fa-close"></i>
+            </button>
+            <h2 class="modal-title text-center">What is Volatility?</h2>
+            <br><center><div class="h1 green" id="choiceAmount" >$0</div></center>
+        </div>
+        <div  id="carousel-quiz" class="carousel slide" data-ride="carousel" data-interval="false">
+            
+            
+            <div class="carousel-inner">
+                <!-- Insert any images inside divs -->
+                <div class="item active" style="background:#DCF0FB">
+                    <div class="quiz-box text-center">
+                         <p>volatility refers to the amount of uncertainty or risk about the size of changes in a security's value. 
+                             A higher volatility means that a security's value can potentially be spread out over a larger range of values. 
+                             This means that the price of the security can change dramatically over a short time period in either direction.
+                             A lower volatility means that a security's value does not fluctuate dramatically, 
+                                 but changes in value at a steady pace over a period of time.
+                         </p>
+                    </div>
+                <br>
+                </div>
+                <div class="item" style="background:#DCF0FB">
+                    <div class="quiz-box text-center">
+                        <div class="btn-group btn-group-lg">
+                            <div class="quiz-choice">
+        
+                            </div>
+                        </div>
+                        <div id="choiceDesc" class="h2 quiz-answer"></div>
+                    </div>
+                <br>
+                </div>
+                
+            </div>
+                        <a class="left carousel-control" href="#carousel-quiz" role="button" data-slide="prev">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </a>
+            <a id="next" class="right carousel-control" href="#carousel-quiz" role="button" data-slide="next">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="modal-footer">
+            <br><center><div id="countdown" class="h2 quiz-answer"></div></center>
+        </div>
+    </div>
+</div>
+<!-----------Understand Quiz Modal End---->
+</div>
+

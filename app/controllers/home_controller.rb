@@ -10,4 +10,7 @@ class HomeController < ApplicationController
         render 'home/index'
     end
     
+    def speedmatch
+    end
+    
 end

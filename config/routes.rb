@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root to: 'home#index'
+  get '/users/speedmatch' => "home#speedmatch"
   get '/home' => "home#home"
   get '/home/index' => 'home#index'
   get '/users/profile' => 'users#profile'

@@ -1,3 +1,4 @@
+
 h4, h5, h6,
 h1, h2, h3 {margin: 0;}
 ul, ol {margin: 0;padding: 0;}
@@ -32,22 +33,13 @@ body a{
 .no-scroll {
     overflow: hidden;
 }
-div.wrapper {
-    background-color: #fff;
-    min-height: 100%;
-}
-.page-content {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-}
+
 .aside {
    flex: 1;
 }
 .main {
-   flex: 4;
-   padding: 0 4%;
-   
+   max-width: 700px;
+   margin: 0 auto;
 }
 .grayout {
     opacity: 0.3; /* Real browsers */
@@ -365,33 +357,36 @@ div.wrapper {
 
 
 /*-- header --*/
-.navbar {
-    border-bottom-color:#dcdcdc;
+.header__wrapper {
+    border-bottom: 1px solid #dcdcdc;
 }
-.navbar-flex {
+.header {
+    margin: 0 auto;
+    width: 100%;
+    max-width:1010px;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    padding: 30px;
 }
-.navbar-flex .middle-flex {
-     margin-left: auto;
-   
-    margin-right: auto;
+.header__brand {
+    flex: 1 9999 0%;
 }
-.navbar-toggle {
-    border: 1px solid #dcdcdc;
-    margin-top:25px
+.header__stats {
+    flex: 0 1 auto;
 }
-.navbar-brand {
-    text-align:center;
-    width: 80px;
-    height: 40px;
-    padding: 0 20px;
-    margin-left: 0;
+.header__nav {
+    flex: 1 0 0%;
+    text-align: right;
 }
-.stat-item {
+.stat__item {
     display: block;
     text-align: center;
+}
+
+.navigation__link {
+    margin: 0 10px;
 }
 @media screen and (min-width: 500px){
     .navbar-brand {
@@ -400,7 +395,7 @@ div.wrapper {
     .navbar-flex .middle-flex {
         margin-left: 11%;
     }
-    .stat-item {
+    .stat__item {
         display: inline-block;
         /*text-align: left;*/
     }
@@ -2609,11 +2604,21 @@ tr.table-row {
 }
 /*--responsive--*/
 @media(max-width:1366px){
+.maincenter {
+  max-width:60%; 
+  margin-left:20%;
+  margin-right:20%
+}
 .middle-content {
     padding: 2.75em 2.15em;
 }
 }
 @media(max-width:1280px){
+.maincenter {
+  max-width:60%; 
+  margin-left:20%;
+  margin-right:20%
+}
 .middle-content {
     padding: 3.35em 2.15em;
 }
@@ -2630,6 +2635,11 @@ canvas#polarArea,canvas#radar,canvas#doughnut {
 }
 }
 @media(max-width:1024px){
+.maincenter {
+  max-width:60%; 
+  margin-left:20%;
+  margin-right:20%
+}
 .top-content {
     padding: 0;
     width: 40%;
@@ -2693,16 +2703,31 @@ canvas#polarArea, canvas#radar, canvas#doughnut {
 }
 }
 @media(max-width:930px){
+.maincenter {
+  max-width:60%; 
+  margin-left:20%;
+  margin-right:20%
+}
 .modal-dialog {
     width: 450px;
 }
 }
 @media(max-width:870px){
+.maincenter {
+  max-width:60%; 
+  margin-left:20%;
+  margin-right:20%
+}
 .full-left {
     width: 31%;
 }
 }
 @media(max-width:768px){
+.maincenter {
+  max-width:60%; 
+  margin-left:20%;
+  margin-right:20%
+}
 .content-top-1 {
     padding: 1.5em 2em;
 }
@@ -2860,6 +2885,11 @@ canvas#polarArea, canvas#radar, canvas#doughnut {
 }
 }
 @media (max-width:736px){
+.maincenter {
+  max-width:60%; 
+  margin-left:20%;
+  margin-right:20%
+}
 .navbar-right~.navbar-right {
   display: block;
 }

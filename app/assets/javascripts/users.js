@@ -1,5 +1,5 @@
 console.log("users js");
-function socialContent(users){ 
+function socialContent(users){
 
 var socialFeed = `<div class="main-dashboard">
   <div class="social-content">
@@ -14,14 +14,14 @@ var socialFeed = `<div class="main-dashboard">
                 </div>
         </div>
         <br>
-        
- <!----------------Social Feed 
+
+ <!----------------Social Feed
 					---------------------->
-       
+
 <div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`
-     
+
      if (users.length > 0){
-      
+
        for(var i=0; i<users.length; i++){
           socialFeed += `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
             <div class="row">
@@ -36,8 +36,8 @@ var socialFeed = `<div class="main-dashboard">
        socialFeed+= `<div>Invite Some Friends!</div>`
      }
 
-      
-      
+
+
   socialFeed+=`</div>
 			</div>
 			<div class="clearfix"> </div>
@@ -57,7 +57,7 @@ var socialFeed = `<div class="main-dashboard">
 function socialContentFriendList(users){
   var socialfeed = `<div id="friendsList" data-intro="This is the coolest thing in our app. We believe that you will get far when surrounded by your friends" id="people" class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`
        if (users.length >0){
-      
+
        for(var i=0; i< users.length; i++){
           socialfeed +=  `<a href="#" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
             <div class="row">
@@ -79,11 +79,11 @@ function socialContentFriendList(users){
 }
 
 var mainDashBoardContent =`  <div class="main-dashboard">
-    	
-    	
+
+
     	<div class="col-md-6">
 		<div class="middle-content" style="height:400px; border-style:none; box-shadow:none;padding-top:10px; padding-left:20px; padding-right:20px">
-		    
+
 		    <h2 style="text-align:center;">Tasks</h2><br>
 	        <div class="row-fluid">
             <div class="btn-group btn-group-justified" style="height:80px;">
@@ -92,14 +92,14 @@ var mainDashBoardContent =`  <div class="main-dashboard">
               <a href="#" class="btn btn-primary btn-lg" style="white-space: normal;">Upcoming tasks</a>
             </div>
             </div>
-        
+
  <!----------------Cards---------------------->
-        
+
             <div class="list-group" style="font-family:'Roboto'; font-size:16px; color:#666666; padding-top:1em"><% escape_javascript @user.tasks.each do |task| %>
 
                 <a href="#" class="list-group-item clearfix list-group-item-action flex-column align-items-start" style="border-radius:0px">
                 <div class="row">
-                    
+
                     <div class="col-md-1"><h4 style="color:green"><i class="fa fa-check" aria-hidden="true"></i></h4>
                     </div><!----><div class="col-md-8 vcenter" style="height:80;border:0px solid #F00; padding-left:10px;"><h4><%= escape_javascript task.task%></h4>
                 </div><!----><div class="col-md-3 vcenter" style="height:80;border:0px solid #F00; padding-left:10px;color:green"><h4>+0.5% Try</h4>
@@ -124,7 +124,7 @@ var mainDashBoardContent =`  <div class="main-dashboard">
     					<a href="#" class="list-group-item"  style="border-radius:0px">Real money investment - August 1st, 2017
   						</a>
 					</div>
-		      
+
 		    </div>
 			</div>
 			</div>`
@@ -135,8 +135,8 @@ function getPeopleInvestments(endPoint, render = socialContent, place='.main-das
     url:`/users/${endPoint}.json`,
     dataType:'json'
   }).done(function(data){
-   
-    
+
+
     fader(render(data),place);
   });
 };
@@ -170,7 +170,7 @@ function quizList(){
 function understandList(){
 
   return `<div id="knowlegeContent" data-intro="I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone." class="list-group" style="margin-left:14px;margin-right:14px;font-family:'Roboto'; font-size:14px; color:#666666;">
-    
+
     <a data-toggle="modal" data-target="#LessonModal" href="#" style="border-radius:0px">
         <div id="investing" class="row list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -182,7 +182,7 @@ function understandList(){
           </div>
         </div>
       </a>
-      
+
       <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -205,7 +205,7 @@ function understandList(){
           </div>
         </div>
       </a>
-      
+
       <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -217,7 +217,7 @@ function understandList(){
           </div>
         </div>
       </a>
-      
+
       <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -229,7 +229,7 @@ function understandList(){
           </div>
         </div>
       </a>
-      
+
       <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -241,7 +241,7 @@ function understandList(){
           </div>
         </div>
       </a>
-      
+
       <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -253,7 +253,7 @@ function understandList(){
           </div>
         </div>
       </a>
-      
+
       <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -265,7 +265,7 @@ function understandList(){
           </div>
         </div>
       </a>
-      
+
       <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -277,7 +277,7 @@ function understandList(){
           </div>
         </div>
       </a>
-      
+
      <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -289,7 +289,7 @@ function understandList(){
           </div>
         </div>
       </a>
-      
+
       <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -301,7 +301,7 @@ function understandList(){
           </div>
         </div>
       </a>
-      
+
       <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -313,7 +313,7 @@ function understandList(){
           </div>
         </div>
       </a>
-      
+
       <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -325,7 +325,7 @@ function understandList(){
           </div>
         </div>
       </a>
-    
+
      <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -337,7 +337,7 @@ function understandList(){
           </div>
         </div>
       </a>
-      
+
     <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -349,7 +349,7 @@ function understandList(){
           </div>
         </div>
       </a>
-      
+
       <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -361,7 +361,7 @@ function understandList(){
           </div>
         </div>
       </a>
-      
+
       <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -373,7 +373,7 @@ function understandList(){
           </div>
         </div>
       </a>
-    
+
     <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -385,7 +385,7 @@ function understandList(){
           </div>
         </div>
       </a>
-    
+
      <a id="etf_grey" href="#" style="border-radius:0px">
         <div class="row grayout list-group-item clearfix list-group-item-action align-items-start" style="min-height:130px">
           <div class="col-sm-3">
@@ -404,15 +404,15 @@ function knowledgeContent(renderList = understandList ){
 return `<div class="knowledge-content">
 <div class="main-dashboard">
 	<div  >
-		
-	<!------------Content title------------->	
-	
+
+	<!------------Content title------------->
+
 		<div class="row-fluid" style="margin-bottom: 5%">
 		  <div class="text-center">
 		    <h1>Here you get knowledge to understand finance</h1>
       </div>
     </div>
-    
+
   <!------------------------->
 
     <div class="row-fluid">
@@ -423,12 +423,12 @@ return `<div class="knowledge-content">
     </div>
     </div>
     <br>
-        
+
  <!----------------Cards---------------------->
-        
-    
+
+
       ${renderList()}
-      
+
   </div>
   </div>
   		<script>
@@ -438,8 +438,8 @@ return `<div class="knowledge-content">
       }
 		</script>`
 }
-  
-  
+
+
 
 
 // Imagine all the tech companies in the United States. This portfolio represents little portion of each of them. Apple, Amazon and Google and all of them
@@ -457,7 +457,7 @@ function etfList(data){
       </div>
     </div>
   <!------------------------->
-  
+
 		<div class="row" style="padding-top:10px;">
 		  <div class="col-md-10 col-md-offset-1" style="padding-top:10px;">
 		      <br>
@@ -467,9 +467,9 @@ function etfList(data){
 		      <p><h2 class="featurette-heading">ROI: <span style="color:${userData.roi >= 0 ? 'green' : 'red'}">${Math.round(userData.roi * 100)}%</span></h2></p><br>
 		  </div>
 		</div>
-		
-		
-	<!------------------------->	
+
+
+	<!------------------------->
 	     <div class="row"
 	     <div class="col-md-12">
         <div class="row-fluid">
@@ -481,14 +481,14 @@ function etfList(data){
         <br>
         </div>
 	<!------------Portfolio Listings------------->`;
-	
+
   etf_list += `<div class="row">`
   for(var i=0; i<etfs.length; i++){
     var etfLvl = etfs[i].level;
            for(var z=0; z<etfs[i].portfolios.length; z++){
              var lvlEtf = etfs[i].portfolios[z];
       if(etfLvl == userLvl ){
-        
+
               etf_list += ` <a href="#" id=${lvlEtf.symbol} class="list-group-item clearfix list-group-item-action align-items-start etf" style="border-radius:0px">
         <div id=${lvlEtf.fiduty_name} class="row">
           <div class="col-md-3">
@@ -496,7 +496,7 @@ function etfList(data){
           <img src="/assets/SPDR.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:30px;margin-bottom:10px">
           </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${lvlEtf.fiduty_name}</h3><small class="text-muted">Underlying Asset: ${lvlEtf.name} (${lvlEtf.symbol})</small>
           </div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:${!!lvlEtf.ytd.match(/-/g)? 'red': 'green'}">${lvlEtf.ytd}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn" class="btn btn-success btn-lg">Invest</button></div>
+          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 id=${lvlEtf.symbol} style="color:${!!lvlEtf.ytd.match(/-/g)? 'red': 'green'}">${lvlEtf.price}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn" class="btn btn-success btn-lg">Invest</button></div>
         </div>
         <div id="etf_detail${lvlEtf.symbol}" class="row" style="display:none;">
           <div class="col-md-3">
@@ -514,7 +514,7 @@ function etfList(data){
           <img src="/assets/SPDR.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:30px;margin-bottom:10px">
           </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${lvlEtf.fiduty_name}</h3><small class="text-muted">Underlying Asset: ${lvlEtf.name} (${lvlEtf.symbol})</small>
           </div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 style="color:green">${lvlEtf.ytd}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn_grey" class="btn btn-success btn-lg">Invest</button></div>
+          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 id=${lvlEtf.symbol} style="color:green">${lvlEtf.price}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn_grey" class="btn btn-success btn-lg">Invest</button></div>
         </div>
         <div id="etf_detail${lvlEtf.symbol}" class="row etf_list_item" style="display:none;">
           <div class="col-md-3">
@@ -527,7 +527,7 @@ function etfList(data){
       }
 
     }
-   
+
 
 
 }
@@ -543,11 +543,11 @@ function etfList(data){
       localStorage.specificWalkThroughThree = true;
     }
   </script>`
-  return etf_list  
+  return etf_list
 
 }
 
-  
+
 function getTenPortflios(){
                 $.ajax({
             type: 'get',
@@ -556,9 +556,10 @@ function getTenPortflios(){
           }).done(function(data) {
             var listing = etfList(data);
             fader(listing, '.main-dashboard');
-            $('.box p').replaceWith(`<p>I never quite understood all the apps that don't explain you finance. How can you invest if you do not have a clue what you are doing. We have made some basic cards for you that help you understand and learn finance. And its not for 'hedge Fund' kids, its for everyone</p>`)
+            // from yahooFinance.js
+            updateEtfPrices(data);
           });
-} 
+}
 
 function fader(content, location){
            $(location).fadeOut("normal",function(){
@@ -574,23 +575,23 @@ function clickSocial(){
         getPeopleInvestments(`recent_everyone_investment`);
         socialChoiceTabs();
     $('.box p').replaceWith(`<p>This is the coolest thing in our app. We believe that you will get far when surrounded by your friends</p>`)
- 
+
     })
-    
+
 }
 
 function socialChoiceTabs(){
    $(document).on('click',"#everyonebtn",function(ev){
     ev.preventDefault();
-    
+
     getPeopleInvestments(`recent_everyone_investment`, socialContent);
   });
-  
+
   $(document).on('click','#friendsbtn',function(ev){
     ev.preventDefault();
     getPeopleInvestments('recent_friend_investment', socialContentFriendList, '#friendsList');
   });
-  
+
   $(document).on('click','#scoreboardbtn', function(ev){
       ev.preventDefault();
       getPeopleInvestments('scoreboard', scoreboardContent, '#friendsList');
@@ -609,7 +610,7 @@ function clickKnowledge(){
   $(document).on('click',"#knowledge-tab",function(ev){
     ev.preventDefault();
     fader(knowledgeContent(),'.main-dashboard');
-    
+
   })
   $(document).on('click',"#quiz-selection", function(ev){
     ev.preventDefault();
@@ -620,20 +621,21 @@ function clickKnowledge(){
     // fader(understandList(),'#knowledgeContent');
     fader(knowledgeContent(),'.main-dashboard');
   })
-  
+
 }
 
 function clickTasks(){
   $(document).on('click',"#Understand",function(ev){
     ev.preventDefault();
     var title = ev.target.textContent.replace(/^\s+|\s+$/g,"")
-    
+
     fader(knowledgeContent(),'.main-dashboard');
     highLight(title);
+    $('#cashModal').modal('hide')
     // window.setTimeout(runHighLight, 500);
-    
+
   });
-  
+
   $(document).on('click',"#Co-Invest", function(ev){
     ev.preventDefault();
     clickSocial();
@@ -642,11 +644,11 @@ function clickTasks(){
     ev.preventDefault();
     getTenPortflios();
   })
-  
+
 }
 
 function highLight(name){
- 
+
   switch(name) {
     case "What is investing":
         // $('#LessonModal').modal('toggle');
@@ -662,13 +664,13 @@ function highLight(name){
             window.setTimeout(function(){
               $('div#firstquiz').effect("highlight",{},3000);
             },500);
-            
+
         }, 500);
       break;
     default:
         "";
   }
-  
+
 }
 
 function clickExperience(){
@@ -693,7 +695,7 @@ function friendsBtn(){
       </div>
      </a>
      </div>`
-     
+
       $(document).on('click',"#friendsbtn",function(ev){
         ev.preventDefault();
         fader(friends,"#people");
@@ -707,7 +709,7 @@ function scoreboardContent(people){
         My place:<span style="color:green">134</span>
         </h1><br>
         <div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`;
-        
+
           people.everyone.map(function(person){
           scoreboard += `<a href="#" id="etf" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
         <div class="row">
@@ -722,12 +724,12 @@ function scoreboardContent(people){
           })
           scoreboard+= `</div>`
           scoreboard+= `</div>`
-        
+
         scoreboard += `<div id="friends" class="col-sm-6">
         <h1 style="text-align:center">Top 3 Friends<br>
         My place:<span style="color:green">14</span></h1><br>
         <div class="list-group" style="font-family:'Roboto'; font-size:14px; color:#666666;">`
-        
+
         people.friends.map(function(person){
           scoreboard += `
       <a href="#" id="etf" class="list-group-item clearfix list-group-item-action align-items-start" style="border-radius:0px">
@@ -744,12 +746,12 @@ function scoreboardContent(people){
         scoreboard += `</div>`;
         scoreboard += `</div>`;
         scoreboard+= `</div>`;
-        
-  
- 
+
+
+
 
   scoreboard +=`<div>`
-  return scoreboard; 
+  return scoreboard;
 }
 
 function everyone(data, d){
@@ -774,7 +776,7 @@ function everyone(data, d){
 function etfDetails(){
   $(document).on('click','.etf', function(ev){
     ev.preventDefault();
-  
+
     $(`#etf_detail${ev.currentTarget.id}`).toggle('slow');
   });
 }
@@ -790,7 +792,7 @@ function openFacebookModal(){
 var counter = 0;
 function clickNext(){
   $(document).on('click', '#next', function(ev){
-    ev.preventDefault(); 
+    ev.preventDefault();
     if(counter == 0){
        $('.box p').replaceWith(`<p>We think starting is already a big step forward, so we give you 3% in each skill. Hooray! </p>`)
        counter +=1;
@@ -814,7 +816,7 @@ function clickInvest(){
     var etfName = $($(ev.target.parentElement).context.childNodes[3]).val();
     $("#modalETFName").append(etfName);
     $("#etfID").val(etfId);
-  
+
     $('#investModal').modal('toggle');
   })
 }
@@ -842,7 +844,7 @@ function submitInvest(){
 function richieMessageFormat(input){
   return `<li class="msg msg-richie">
                         <div class="msg-header clearfix">
-                            <strong class="msg-author">Richie</strong> 
+                            <strong class="msg-author">Richie</strong>
                             <small class="msg-time text-muted">
                                 <span class="fa fa-clock-o"></span>
                                 14 mins ago
@@ -857,7 +859,7 @@ function richieMessageFormat(input){
 function userMessageFormat(input, name){
   return `<li class="msg msg-user" >
                         <div class="msg-header clearfix">
-                            <strong class="msg-author" >${name}</strong> 
+                            <strong class="msg-author" >${name}</strong>
                             <small class="msg-time text-muted">
                                 <span class="fa fa-clock-o"></span>
                                 14 mins ago
@@ -878,9 +880,9 @@ function ibmBlueMixSendMesssage(){
         message = $(`input#user-input2`).val();
     }else{
         message = $(`input#user-input`).val();
-        
+
     }
-    
+
      $('ul.chat').append(userMessageFormat(message, $('#username').val()));
        $(`input.chat-input`).val('');
    $.ajax
@@ -895,10 +897,10 @@ function ibmBlueMixSendMesssage(){
           // $('.chat-box').animate({ scrollTop: $(document).height() }, "slow");
           $(".chat-content").scrollTop($(".chat-content")[0].scrollHeight);
           $('.chat-box').scrollTop($(".chat-box")[0].scrollHeight);
-          
+
 
           });
-    
+
   });
 
 }
@@ -910,12 +912,12 @@ function openLargeChatBox(){
   })
 }
 function minimizeChatBox(){
-  
+
   $(document).on('click',"#minimizeChatBox", function(ev){
     ev.preventDefault();
     $('.chat-box-fixed').addClass('minimized');
   });
-  
+
   $(window).on('resize', function(){
     if($(window).width()<600){
       $('.chat-box-fixed').addClass('minimized');
@@ -937,7 +939,7 @@ function restoreChatBox(){
 }
 
 function addPoint(numPoints){
-  
+
         $.ajax
     ({
        type: "POST",
@@ -948,9 +950,9 @@ function addPoint(numPoints){
         console.log('worked');
         // location.reload();
        });
-       
+
   }
-  
+
 function addPoint_finishGuide(){
   $(document).on('click','button#closeModel', function(ev){
     console.log('closed');
@@ -971,16 +973,16 @@ function showOnboardingSlider(){
       prevArrow: '',
       infinite: false,
   });
-  
+
   $('#onboarding-slider').on('afterChange', function(slick, currentSlide, nextSlide){
       // action for last slide only
-      
+
       if(currentSlide.currentSlide == (currentSlide.slideCount-1)){
           $('.slider-next').text('start').attr('id', 'closeModel');
           $('body').removeClass('noscroll');
           $( "div" ).remove( "#overlay" );
       }
-      
+
   });
 }
 
@@ -1042,7 +1044,6 @@ function etfLocked(){
 }
 
 function mainWalkThrough(){
-    debugger;
     // ev.preventDefault();
       var signInCount = parseInt($('#userSignInCount').val());
       var points = $('#onboarding').val();
@@ -1052,7 +1053,7 @@ function mainWalkThrough(){
 			tour.start()
 			localStorage.dashboardWalkThrough = '1';
   }
-// points == '1' 
+// points == '1'
 
 }
 
@@ -1065,7 +1066,7 @@ function specificWalkThrough(element){
 			tour.setOption('tooltipPosition', 'auto');
 			tour.start();
   }
-  
+
 };
 
 function mobileMenu(){
@@ -1076,26 +1077,26 @@ function mobileMenu(){
       menuProfile = $('.menu_profile'),
       menuItem = $('.menu_label'),
       body = $('body');
-      
+
   menuStart.click(function(e){
     e.preventDefault();
     menu.addClass('active');
     body.addClass('no-scroll');
     overlay.show();
   });
-  
+
   menuItem.click(function(e){
     menu.removeClass('active');
     body.removeClass('no-scroll');
     overlay.hide();
   });
-  
+
   overlay.click(function(e){
     menu.removeClass('active');
     body.removeClass('no-scroll');
     overlay.hide();
   });
-  
+
   profileToggle.click(function(){
     menuProfile.slideToggle();
   });
@@ -1123,10 +1124,10 @@ function updateInfo(){
               "locale": location,
               "birthday": birthday
             }
-              
+
             }
           }).done(function(data) {
-            $('span.h4').text(name) 
+            $('span.h4').text(name)
             alert("Thanks!");
           });
   })
@@ -1137,7 +1138,7 @@ function correctAnswer(){
   $(document).on('click', 'button.correctChoice',function(ev){
     ev.preventDefault();
       var contains = $.inArray(ev.target.id, clickedChoices);
-      
+
         if(contains == -1){
           clickedChoices.push(ev.target.id);
           clickedChoices.push(ev.target.title);
@@ -1151,7 +1152,7 @@ function correctAnswer(){
         }
 
   });
-  
+
   $(document).on('click', 'button.incorrectChoice', function(ev){
     ev.preventDefault();
     var contains = $.inArray(ev.target.id, clickedChoices);
@@ -1163,7 +1164,7 @@ function correctAnswer(){
       $(this).toggleClass('btn btn-danger');
       var points = parseInt($('#choiceAmount').text().split('$').join(""));
       // if (points != 0){
-      //   points -=1; 
+      //   points -=1;
       // }
      $('#choiceAmount').text(`$${points}`);
     }
@@ -1253,6 +1254,74 @@ function finishTask(){
   });
 }
 
+function renderProfile(user){
+  return `
+  <div class=" profile">
+   <div class="profile-bottom" style="width:96%; border-style:none;font-family:'Roboto'">
+     <h3><i class="fa fa-user" aria-hidden="true"></i>Profile</h3>
+     <div class="profile-bottom-top">
+     <div class="col-md-4 profile-bottom-img" style="padding-left:70px;padding-top:45px">
+       <img src="${user.image}?type=large" style="height:200px">
+     </div>
+     <div class="col-md-8 profile-text" style="font-family:'Roboto'">
+       <h6 style="padding-left:15px">Name: ${user.name}</h6>
+       <table style="font-family:'Roboto'; text-align:left">
+       <tr><td>Phone number</td>
+       <td>:</td>
+       <td>+1(917)650-5607</td></tr>
+
+       <tr>
+       <td>Email</td>
+       <td> :</td>
+       <td>${user.email}</a></td>
+       </tr>
+       <tr>
+       <td>Password</td>
+       <td> :</td>
+       <td>*********</td>
+       </tr>
+       <tr><td>SSN</td>
+       <td>:</td>
+       <td>***-**-4633</td></tr>
+
+       <tr>
+       <td>Address</td>
+       <td> :</td>
+       <td>${user.locale}</a></td>
+       </tr>
+       <tr>
+       <td>Occupation</td>
+       <td> :</td>
+       <td>${user.occupation}</td>
+       </tr>
+       </table>
+     </div>
+     <div class="clearfix"></div>
+     </div>
+     <br>
+     <div class="profile-btn" >
+               <button type="button" href="#" class="btn bg-red" style="border-radius:0px">Edit</button>
+          <div class="clearfix"></div>
+     </div>
+   </div>
+ </div>
+<div class="clearfix"></div>
+  `
+}
+ function clickProfile(){
+   $(document).on('click','a#profile',function(ev){
+     ev.preventDefault();
+     $.ajax({
+         type: 'get',
+         url: `/users/profile`,
+         dataType: 'json'
+    }).done(function(data) {
+      console.log(data);
+      // debugger;
+      fader(renderProfile(data.user),'.main-dashboard');
+   });
+   });
+ }
 
 $(document).ready(function(){
   clickSocial();
@@ -1277,7 +1346,7 @@ $(document).ready(function(){
   correctAnswer();
   clickTasks();
   finishTask();
-
+  clickProfile();
 })
 
 // git push git@github.com:isuruv/Fiduty.git  cloud9_2:cloud9_2

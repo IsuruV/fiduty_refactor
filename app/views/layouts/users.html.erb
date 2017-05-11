@@ -37,6 +37,7 @@
     <script src="js/screenfull.js"></script>
 
     <!-- Custom scripts -->
+    <script src="/assets/yahooFinance.js"></script>
     <script src="/assets/users.js"></script>
     <script src="js/custom.js"></script>
     <script>
@@ -64,19 +65,13 @@
 
 <%= render partial: '/layouts/header' %>
 <!-- Main Grid -->
-<div class="clearfix page-content">
-    <div class="aside visible-lg">
-        <%= render partial: '/layouts/nav' %>
-    </div>
-    <div class="main">
-        <input id="userSignInCount" type="hidden" value=<%=current_user.sign_in_count if current_user%>>
-        <input id="userLvl" type="hidden" value=<%=current_user.level_id if @user%>>
-        <%= render partial: '/layouts/progressboxes' %>
-        <!-------------------Progress bar end----->
-        
-        <%= yield %>
-        
-    </div>
+
+<div class="main">
+    <input id="userSignInCount" type="hidden" value=<%=current_user.sign_in_count if current_user%>>
+    <input id="userLvl" type="hidden" value=<%=current_user.level_id if @user%>>
+    <%= render partial: '/layouts/progressboxes' %>
+    <!-------------------Progress bar end----->
+    <%= yield %>
 </div>
 
 
