@@ -41,29 +41,52 @@ const getInvestments= ()=>{
     url:`/user_portfolios.json`,
     dataType:'json'
   }).done(function(data){
+    let updatedValue = 0;
     for(let i =0; i<data.length; i++){
-      fetchPrices(data[i].symbol, data[i].transaction);
+      updatedValue += fetchPrices(data[i].symbol, data[i].transaction, updatedValue);
     }
+
+    appendValue(updatedValue);
+
   });
 }
 
-const fetchPrices = (symbol, transaction)=>{
+const fetchPrices = (symbol, transaction, updatedValue)=>{
   this.symbol = symbol;
   this.transaction = transaction;
+  this.updatedValue = updatedValue;
   let lastTrade = '';
   let result = `https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quote%20where%20symbol%20in%20(%22${symbol}%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=`;
   $.get( `${result}`, (data)=> {
     lastTrade = data.query.results.quote.LastTradePriceOnly;
+    return lastTrade;
     // do calculations
-    appendValue(lastTrade, transaction)
-    console.log('WORKS')
+    // updatedValue += calculateValue(lastTrade, transaction);
+
+    // console.log('last trade');
+    // console.log(lastTrade);
+    // console.log('updated value');
+    // console.log(updatedValue);
+    // console.log('WORKS');
+  }).then((lastTrade)=>{
+       calculateValue(lastTrade.query.results.quote.LastTradePriceOnly,transaction);
   });
 }
 
-const appendValue = (lastTrade, transaction)=>{
-  debugger;
+const calculateValue = (lastTrade, transaction)=>{
   let value = lastTrade * transaction.weight;
-  let lastAmount = $('span#value').text(); =
+  console.log('calculate value');
+  console.log(value);
+  debugger;
+  return value;
+}
+
+
+const appendValue = (value)=>{
+  // debugger;
+  // let value = lastTrade * transaction.weight;
+  // let lastAmount = $('span#value').text(); =
+  $('span#value').text(value);
 }
 
 const appendGainLoss = ()=>{
