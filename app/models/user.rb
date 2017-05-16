@@ -301,11 +301,13 @@ end
     User.recent_friend_investment(fb_ids)
   end
 
-
-
   def add_points(points = 1)
     self.points += points
     self.save
+  end
+
+  def user_portfolios_formatted
+    self.user_portfolios.map{|transaction| {'symbol': transaction.portfolio.symbol, 'transaction': transaction}}
   end
 
 end

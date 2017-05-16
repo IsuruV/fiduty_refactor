@@ -462,7 +462,7 @@ function etfList(data){
 		  <div class="col-md-10 col-md-offset-1" style="padding-top:10px;">
 		      <br>
 		      <p><h2 class="featurette-heading">Total Investment: <span style="color:${userData.total_investments >=0 ? 'green' : 'red'}">$${userData.total_investments}</span></h2></p><br>
-		      <p><h2 class="featurette-heading">Total Value: <span style="color:${userData.total_value >= userData.total_investments ? 'green' : 'red'}">$${Math.round(userData.total_value * 100) / 100}</span></h2></p><br>
+		      <p><h2 class="featurette-heading">Total Value: <span id="value" style="color:${userData.total_value >= userData.total_investments ? 'green' : 'red'}">${Math.round(userData.total_value * 100) / 100}</span></h2></p><br>
 		      <p><h2 class="featurette-heading">Total Gain/Loss: <span style="color:${(userData.total_value - userData.total_investments) >= 0 ? 'green': 'red'}">$${Math.round((userData.total_value - userData.total_investments )* 100) / 100}</span></h2></p><br>
 		      <p><h2 class="featurette-heading">ROI: <span style="color:${userData.roi >= 0 ? 'green' : 'red'}">${Math.round(userData.roi * 100)}%</span></h2></p><br>
 		  </div>
@@ -487,8 +487,7 @@ function etfList(data){
     var etfLvl = etfs[i].level;
            for(var z=0; z<etfs[i].portfolios.length; z++){
              var lvlEtf = etfs[i].portfolios[z];
-      if(etfLvl == userLvl ){
-
+      // if(etfLvl == userLvl ){
               etf_list += ` <a href="#" id=${lvlEtf.symbol} class="list-group-item clearfix list-group-item-action align-items-start etf" style="border-radius:0px">
         <div id=${lvlEtf.fiduty_name} class="row">
           <div class="col-md-3">
@@ -506,25 +505,25 @@ function etfList(data){
           </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"></div>
         </div>
       </a>`
-      }else{
-              etf_list += ` <a id="etf_grey" href="#" class="list-group-item clearfix list-group-item-action align-items-start"  style="border-radius:0px">
-        <div class="row grayout" >
-          <div class="col-md-3">
-          <div style="height:140;border:0px solid #000">
-          <img src="/assets/SPDR.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:30px;margin-bottom:10px">
-          </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${lvlEtf.fiduty_name}</h3><small class="text-muted">Underlying Asset: ${lvlEtf.name} (${lvlEtf.symbol})</small>
-          </div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 id=${lvlEtf.symbol} style="color:green">${lvlEtf.price}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn_grey" class="btn btn-success btn-lg">Invest</button></div>
-        </div>
-        <div id="etf_detail${lvlEtf.symbol}" class="row etf_list_item" style="display:none;">
-          <div class="col-md-3">
-          </div><!----><div class="col-md-7 vcenter"><div style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>${lvlEtf.simple_description}.
-          <br><br><span style="color:grey">
-          </span></div>
-          </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"></div>
-        </div>
-      </a>`
-      }
+      // }else{
+      //         etf_list += ` <a id="etf_grey" href="#" class="list-group-item clearfix list-group-item-action align-items-start"  style="border-radius:0px">
+      //   <div class="row grayout" >
+      //     <div class="col-md-3">
+      //     <div style="height:140;border:0px solid #000">
+      //     <img src="/assets/SPDR.jpg" class="img img-fluid" alt="Cinque Terre" width="100" height-max="100" style="margin-top:30px;margin-bottom:10px">
+      //     </div></div><!----><div class="col-md-7 vcenter" style="margin-top:30px"><div style="height:80;border:0px solid #F00"><h3>${lvlEtf.fiduty_name}</h3><small class="text-muted">Underlying Asset: ${lvlEtf.name} (${lvlEtf.symbol})</small>
+      //     </div>
+      //     </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"><h2 id=${lvlEtf.symbol} style="color:green">${lvlEtf.price}</h2><br><input type="hidden" id="portfolioId" value=${lvlEtf.id}></input><input type="hidden" id="portfolioId" value=${etfs[i].name}></input><button type="button" id="investbtn_grey" class="btn btn-success btn-lg">Invest</button></div>
+      //   </div>
+      //   <div id="etf_detail${lvlEtf.symbol}" class="row etf_list_item" style="display:none;">
+      //     <div class="col-md-3">
+      //     </div><!----><div class="col-md-7 vcenter"><div style="height:80;border:0px solid #F00"><h4 style="color:green">Details:</h4><br>${lvlEtf.simple_description}.
+      //     <br><br><span style="color:grey">
+      //     </span></div>
+      //     </div><!----><div class="col-md-2" style="margin-top:20px;text-align:right"></div>
+      //   </div>
+      // </a>`
+      // }
 
     }
 

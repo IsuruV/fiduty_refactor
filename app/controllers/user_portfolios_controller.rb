@@ -63,4 +63,10 @@ class UserPortfoliosController < ApplicationController
       end
     end
 
+    def index
+      respond_to do |format|
+        format.json{ render json: current_user.user_portfolios_formatted }
+      end
+    end
+
 end
