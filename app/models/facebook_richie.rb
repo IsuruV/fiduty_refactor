@@ -1,0 +1,2 @@
+class FacebookRichie < ApplicationRecord
+end

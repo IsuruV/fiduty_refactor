@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :facebook_richies
   resources :progress_points
   # devise_for :users
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
@@ -28,6 +29,8 @@ Rails.application.routes.draw do
   post '/progress_tracker/complete_task' => "progress_trackers#complete_task"
   post '/progress_tracker/first_investment' => "progress_trackers#first_investment"
   post '/progress_tracker/add_money' => "progress_trackers#add_money"
+  
+  match "/facebookAuth" => "facebook_richies#facebook_auth", as: :facebook_auth, via: [:get, :post]
   # devise_scope :user do
   #   get '/signout', to: 'devise/sessions#destroy', as: :signout
   # end

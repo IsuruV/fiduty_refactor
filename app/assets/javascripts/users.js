@@ -1,4 +1,3 @@
-console.log("users js");
 function socialContent(users){
 
 var socialFeed = `<div class="main-dashboard">
@@ -1308,20 +1307,21 @@ function renderProfile(user){
 <div class="clearfix"></div>
   `
 }
- function clickProfile(){
-   $(document).on('click','a#profile',function(ev){
-     ev.preventDefault();
-     $.ajax({
-         type: 'get',
-         url: `/users/profile`,
-         dataType: 'json'
+function clickProfile(){
+  $(document).on('click','a#profile',function(ev){
+    ev.preventDefault();
+    $.ajax({
+      type: 'get',
+      url: `/users/profile`,
+      dataType: 'json'
     }).done(function(data) {
       console.log(data);
       // debugger;
       fader(renderProfile(data.user),'.main-dashboard');
    });
-   });
- }
+  });
+}
+
 
 $(document).ready(function(){
   clickSocial();
