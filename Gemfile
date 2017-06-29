@@ -59,10 +59,13 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'rails_12factor'
 
 gem 'watson-conversation'
+gem 'rest-client'
 # gem "sprockets"
 # gem "babel-schmooze-sprockets"
 # Use Redis adapter to run Action Cable in production
 gem 'redis'
+
+gem 'rack-cors'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

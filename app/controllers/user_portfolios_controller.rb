@@ -47,18 +47,39 @@ class UserPortfoliosController < ApplicationController
     end
     
     def watson_proxy
-      conn = Faraday.new(:url => "https://gateway.watsonplatform.net/conversation/api/v1" )
-      conn.basic_auth('fcd45e5b-e1d8-42ea-8b1e-51b506b5d9dd', 'gU37Hs0zV7ti')
-
+      conn = Faraday.new(:url => 'https://gateway.watsonplatform.net' ) do |faraday|
+        faraday.response :logger
+        faraday.basic_auth('fac0895f-1e6a-4d07-bfbe-7cb792050184', 'EZVgaYTuelIu')
+        faraday.adapter  Faraday.default_adapter
+      end
+      conn.basic_auth('fac0895f-1e6a-4d07-bfbe-7cb792050184', 'EZVgaYTuelIu')
+      
       resp = conn.post do |req|
-        req.url '/conversation/api/v1/workspaces/6b52eac7-5172-4546-8d84-cf5a0adf659c/message?version=2017-02-03'
-        req.headers['Content-Type'] = 'application/json' 
+        # req.url '/conversation/api/v1/workspaces/6b52eac7-5172-4546-8d84-cf5a0adf659c/message?version=2017-02-03'
+        # req.headers['Content-Type'] = 'application/json' 
+        req.url '/conversation/api/v1/workspaces/5386507a-1a1b-4112-9407-0b020bdb5a07/message?version=2017-05-26'
+        req.headers['Content-Type'] = 'application/json'
+        req.headers['Authorization'] = 'Basic ZmFjMDg5NWYtMWU2YS00ZDA3LWJmYmUtN2NiNzkyMDUwMTg0OkVaVmdhWVR1ZWxJdQ=='
         req.body = params[:insert].to_json
       end
+      
+      
+      #         conn = Faraday.new(:url => 'https://gateway.watsonplatform.net/conversation/api' )
+      #   conn.basic_auth('fac0895f-1e6a-4d07-bfbe-7cb792050184', 'EZVgaYTuelIu')
+        
+      #   resp = conn.get do |req|
+      #   # req.url '/conversation/api/v1/workspaces/6b52eac7-5172-4546-8d84-cf5a0adf659c/message?version=2017-02-03'
+      #   # req.headers['Content-Type'] = 'application/json' 
+      #   req.headers['Content-Type'] = 'application/json'
+      # end
+  
+      require 'pry'; binding.pry
       respond_to do |format|
         format.json{ render json: resp.body}
       end
+      
     end 
 
 end
+  
   

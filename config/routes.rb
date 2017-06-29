@@ -4,10 +4,15 @@ Rails.application.routes.draw do
   # devise_for :users
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
+  devise_scope :user do
+    get '/omniauth/facebook_messenger' => 'users/omniauth_callbacks#facebook_messenger'
+  end
+  
   root to: 'home#index'
   get '/users/speedmatch' => "home#speedmatch"
   get '/home' => "home#home"
   get '/home/index' => 'home#index'
+  get '/share' => "home#share"
   get '/users/profile' => 'users#profile'
   get '/users/dashboard' => 'users#dashboard'
   get '/users/experience' => 'users#experience'

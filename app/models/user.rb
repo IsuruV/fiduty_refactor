@@ -17,14 +17,16 @@ class User < ActiveRecord::Base
   belongs_to :level, required: false
  
   def self.from_omniauth(auth)
-  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-    user.fb_id = auth['credentials']['token']
-    user.email = auth.info.email
-    user.password = Devise.friendly_token[0,20]
-    user.name = auth.info.name   # assuming the user model has a name
-    user.image = auth.info.image # assuming the user model has an image
-    user.points = 0
-    user.set_public_info
+    # pic_id = FacebookRichie.fetch_picture_id_facebook_auth(auth.uid)
+    
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+     user.fb_id = auth['credentials']['token']
+     user.email = auth.info.email
+     user.password = Devise.friendly_token[0,20]
+     user.name = auth.info.name   # assuming the user model has a name
+     user.image = auth.info.image # assuming the user model has an image
+     user.points = 0
+     user.set_public_info
     # user.fb_id = auth.uid
     # If you are using confirmable and the provider(s) you use validate emails, 
     # uncomment the line below to skip the confirmation emails.

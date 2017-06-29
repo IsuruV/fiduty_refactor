@@ -295,6 +295,7 @@ DEPENDENCIES
   rails_12factor
   rb-readline (~> 0.5.3)
   redis
+  rest-client
   sass-rails (~> 5.0)
   sms-easy
   spring

@@ -14,6 +14,8 @@ class HomeController < ApplicationController
     def speedmatch
     end
     
+    def share
+    end
 end
 
 
