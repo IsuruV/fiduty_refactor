@@ -1,0 +1,3 @@
+class WaitlistEmail < ApplicationRecord
+    
+end

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Fiduty - Investment for Millennials Made Cool</title>
+  <title>Richie - Investment for Millennials Made Cool</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
@@ -10,7 +10,12 @@
   <link rel="stylesheet" href="/font-awesome.min.css">
   <link rel="stylesheet" href="/bootstrap.css" media="screen">
   <link rel="stylesheet" href="/custom.css">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>-->
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" integrity="sha384-awusxf8AUojygHf2+joICySzB780jVvQaVCAt1clU3QsyAitLGul28Qxb2r1e5g+" crossorigin="anonymous">
   <style>
+  
+  
+  
     canvas {
       display: block; 
       vertical-align: bottom;
@@ -31,6 +36,33 @@
     .particles {
       background: white;
     }
+    #clockdiv{
+	font-family: sans-serif;
+	color: #fff;
+	display: inline-block;
+	font-weight: 100;
+	text-align: center;
+	font-size: 30px;
+}
+
+#clockdiv > div{
+	padding: 10px;
+	border-radius: 3px;
+	background: rgba(51, 153, 204, 0.3);
+	display: inline-block;
+}
+
+#clockdiv div > span{
+	padding: 15px;
+	border-radius: 3px;
+	background: rgba(51, 153, 204, 0.3);
+	display: inline-block;
+}
+
+.smalltext{
+	padding-top: 5px;
+	font-size: 16px;
+}
   </style>
     
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -39,6 +71,7 @@
     <script src="https://bootswatch.com/paper/bower_components/respond/dest/respond.min.js"></script>
   <![endif]-->
   <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script>
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-23019901-1']);
@@ -52,9 +85,10 @@
     })();
   </script>
 </head>
-<body>
+
+<body style="font-size: 18px">
 <!-----HEADER START---->
-  <div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar navbar-default navbar-fixed-top" style="border-style:none; box-shadow:none; background:transparent;">
     <div class="container">
       <ul class="nav navbar-nav">
         <li><a href="https://fiduty-api-isuruv.c9users.io"><img src="/assets/Logo6Richie.svg" height="50"></a></li>
@@ -62,7 +96,7 @@
 
       <ul class="nav navbar-nav navbar-right" style="color:rgba(51, 153, 204, 1)">
         <li>
-          <a href="http://feed.richieinvest.com" style="color:rgba(51, 153, 204, 1)">BLOG</a>
+          <a href="http://feed.richieinvest.com" style="color:rgba(51, 153, 204, 1)" target="_blank">BLOG</a>
         </li>
       </ul>
     </div>
@@ -77,12 +111,38 @@
   <div class="promo-content">
     <div class="container">
       <div class="text-center">
-        <h1 class="cover-heading" style="padding-top:270px;"> 
+
+<!-------countdown-------->
+
+<div id="clockdiv" style="padding-top:150px;">
+  <div>
+    <span class="days"></span>
+    <div class="smalltext">Days</div>
+  </div>
+  <div>
+    <span class="hours"></span>
+    <div class="smalltext">Hours</div>
+  </div>
+  <div>
+    <span class="minutes"></span>
+    <div class="smalltext">Minutes</div>
+  </div>
+  <div>
+    <span class="seconds"></span>
+    <div class="smalltext">Seconds</div>
+  </div>
+</div>
+
+<!-------countdown-------->
+
+
+        <h1 class="cover-heading" style="padding-top:20px;"> 
           <p id="example2"></p> 
         </h1>
         <p class="lead">Investing for Millennials Made Cool</p>
+    
         <p class="lead">
-          <a href="/omniauth/facebook" class="btn btn-lg btn-secondary" style="background: #fff">Waitlist</a>
+          <a data-toggle="modal" data-target="#waitlistModal" class="btn btn-lg btn-secondary" style="background: #fff">Waitlist</a>
         </p>
       </div>
       <div class="mastfoot text-center">
@@ -92,21 +152,47 @@
   </div>
     
 </div>
-<!-- Jumbotron
+
+<!-- Waitlist Modal
 ================================================== -->
+
+<div class="modal"  id="waitlistModal" style="padding-top:15%">
+  <div class="modal-dialog">
+    <div class="modal-content" style="text-align:center">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Let's change Wall Street together</h4>
+      </div>
+      <div class="modal-body">
+      <form action="/emails" method="post">
+        <p><label>E-mail Address</label>
+            <input id="email" name="email" required ></input></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       <input type="submit" class="btn btn-primary" value="Waitlist me"></input>
+        <!--<a href="https://fiduty-api-isuruv.c9users.io/share"><button type="button" class="btn btn-primary" >Waitlist me</button></a>-->
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
 
         
 <!-- Footers
 ================================================== -->
 
 <footer style="border-top:1px solid #ededed; padding-top:35px; height:150px;">
-  <div class="container-fluid">
+  <div class="container">
         <div class="row">
           <div class="col-lg-12">
 
             <ul class="list-unstyled">
               <li class="pull-right"><a href="#top">Back to top</a></li>
-              <li><a href="https://fiduty-api-isuruv.c9users.io/" onclick="pageTracker._link(this.href); return false;">BLOG</a></li>
+              <li><a href="http://feed.richieinvest.com" target="_blank" onclick="pageTracker._link(this.href); return false;">BLOG</a></li>
             </ul>
             <p>Copyright: 2017 General Robotics Inc</p>
                      </div></div>
@@ -122,10 +208,12 @@
   <script src="/js/custom.js"></script>
   <script type="text/javascript">
     $('#example2').typeIt({
-       strings: ['Invest in your passion', 'Coinvest with you friends', 'Bring friendship to investing'],
+       strings: ['Build groups', 'Co-invest with your friends', 'Invest in your passion'],
        speed: 200,
        breakLines: false,
-       autoStart: false
+       autoStart: false,
+       loop: true,
+       loopDelay: 2750,
     });
   </script>
   <script>
@@ -201,7 +289,45 @@
       },
       "retina_detect": true
     });
-  </script>
+</script>
+<script>
 
+var deadline = 'Oct 1 2017 00:00:00 GMT-0400';
+function time_remaining(endtime){
+	var t = Date.parse(endtime) - Date.parse(new Date());
+	var seconds = Math.floor( (t/1000) % 60 );
+	var minutes = Math.floor( (t/1000/60) % 60 );
+	var hours = Math.floor( (t/(1000*60*60)) % 24 );
+	var days = Math.floor( t/(1000*60*60*24) );
+	return {'total':t, 'days':days, 'hours':hours, 'minutes':minutes, 'seconds':seconds};
+}
+function run_clock(id,endtime){
+	var clock = document.getElementById(id);
+	
+	// get spans where our clock numbers are held
+	var days_span = clock.querySelector('.days');
+	var hours_span = clock.querySelector('.hours');
+	var minutes_span = clock.querySelector('.minutes');
+	var seconds_span = clock.querySelector('.seconds');
+
+	function update_clock(){
+		var t = time_remaining(endtime);
+		
+		// update the numbers in each part of the clock
+		days_span.innerHTML = t.days;
+		hours_span.innerHTML = ('0' + t.hours).slice(-2);
+		minutes_span.innerHTML = ('0' + t.minutes).slice(-2);
+		seconds_span.innerHTML = ('0' + t.seconds).slice(-2);
+		
+		if(t.total<=0){ clearInterval(timeinterval); }
+	}
+	update_clock();
+	var timeinterval = setInterval(update_clock,1000);
+}
+run_clock('clockdiv',deadline);
+
+  </script>
+  
 </body>
+
 </html>

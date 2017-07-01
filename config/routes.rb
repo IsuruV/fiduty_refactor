@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :waitlist_emails
   resources :facebook_richies
   resources :progress_points
   # devise_for :users
+  post '/emails' => 'waitlist_emails#create'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   devise_scope :user do
