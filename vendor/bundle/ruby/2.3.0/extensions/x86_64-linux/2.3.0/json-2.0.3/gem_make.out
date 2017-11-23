@@ -1,0 +1,13 @@
+current directory: /app/vendor/bundle/ruby/2.3.0/gems/json-2.0.3/ext/json
+/data/bin/ruby -r ./siteconf20170408-790-1fqmdvj.rb extconf.rb
+creating Makefile
+
+current directory: /app/vendor/bundle/ruby/2.3.0/gems/json-2.0.3/ext/json
+make "DESTDIR=" clean
+
+current directory: /app/vendor/bundle/ruby/2.3.0/gems/json-2.0.3/ext/json
+make "DESTDIR="
+make: Nothing to be done for 'all'.
+
+current directory: /app/vendor/bundle/ruby/2.3.0/gems/json-2.0.3/ext/json
+make "DESTDIR=" install
